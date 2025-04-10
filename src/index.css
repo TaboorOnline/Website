@@ -14,6 +14,16 @@
   --background-end-rgb: 249, 250, 251;
 }
 
+:root {
+  --start: left;
+  --end: right;
+}
+[dir="rtl"] {
+  --start: right;
+  --end: left;
+}
+
+
 @media (prefers-color-scheme: dark) {
   :root {
     --foreground-rgb: 255, 255, 255;
@@ -111,4 +121,267 @@ textarea[dir="rtl"] {
   .btn-lg {
     @apply px-6 py-3 text-lg;
   }
+}
+
+/* RTL-support.css */
+
+/* Add these styles to your global CSS file to improve RTL support */
+
+html[dir="rtl"] body {
+  text-align: right;
+}
+
+html[dir="rtl"] .flex-row {
+  flex-direction: row-reverse;
+}
+
+html[dir="rtl"] .text-left {
+  text-align: right;
+}
+
+html[dir="rtl"] .text-right {
+  text-align: left;
+}
+
+html[dir="rtl"] .ms-auto {
+  margin-right: auto !important;
+  margin-left: 0 !important;
+}
+
+html[dir="rtl"] .me-auto {
+  margin-left: auto !important;
+  margin-right: 0 !important;
+}
+
+html[dir="rtl"] .ml-1, 
+html[dir="rtl"] .ml-2, 
+html[dir="rtl"] .ml-3, 
+html[dir="rtl"] .ml-4,
+html[dir="rtl"] .ml-5,
+html[dir="rtl"] .ml-6,
+html[dir="rtl"] .ml-8,
+html[dir="rtl"] .ml-10,
+html[dir="rtl"] .ml-12 {
+  margin-left: 0 !important;
+}
+
+html[dir="rtl"] .mr-1, 
+html[dir="rtl"] .mr-2, 
+html[dir="rtl"] .mr-3, 
+html[dir="rtl"] .mr-4,
+html[dir="rtl"] .mr-5,
+html[dir="rtl"] .mr-6,
+html[dir="rtl"] .mr-8,
+html[dir="rtl"] .mr-10,
+html[dir="rtl"] .mr-12 {
+  margin-right: 0 !important;
+}
+
+html[dir="rtl"] .ml-1 {
+  margin-right: 0.25rem !important;
+}
+
+html[dir="rtl"] .ml-2 {
+  margin-right: 0.5rem !important;
+}
+
+html[dir="rtl"] .ml-3 {
+  margin-right: 0.75rem !important;
+}
+
+html[dir="rtl"] .ml-4 {
+  margin-right: 1rem !important;
+}
+
+html[dir="rtl"] .ml-5 {
+  margin-right: 1.25rem !important;
+}
+
+html[dir="rtl"] .ml-6 {
+  margin-right: 1.5rem !important;
+}
+
+html[dir="rtl"] .ml-8 {
+  margin-right: 2rem !important;
+}
+
+html[dir="rtl"] .ml-10 {
+  margin-right: 2.5rem !important;
+}
+
+html[dir="rtl"] .ml-12 {
+  margin-right: 3rem !important;
+}
+
+html[dir="rtl"] .mr-1 {
+  margin-left: 0.25rem !important;
+}
+
+html[dir="rtl"] .mr-2 {
+  margin-left: 0.5rem !important;
+}
+
+html[dir="rtl"] .mr-3 {
+  margin-left: 0.75rem !important;
+}
+
+html[dir="rtl"] .mr-4 {
+  margin-left: 1rem !important;
+}
+
+html[dir="rtl"] .mr-5 {
+  margin-left: 1.25rem !important;
+}
+
+html[dir="rtl"] .mr-6 {
+  margin-left: 1.5rem !important;
+}
+
+html[dir="rtl"] .mr-8 {
+  margin-left: 2rem !important;
+}
+
+html[dir="rtl"] .mr-10 {
+  margin-left: 2.5rem !important;
+}
+
+html[dir="rtl"] .mr-12 {
+  margin-left: 3rem !important;
+}
+
+/* Fix button icon positioning for RTL */
+html[dir="rtl"] button svg, 
+html[dir="rtl"] a svg {
+  transform: scaleX(-1);
+}
+
+/* Fix border radius for RTL */
+html[dir="rtl"] .rounded-l {
+  border-radius: 0 !important;
+  border-top-right-radius: 0.25rem !important;
+  border-bottom-right-radius: 0.25rem !important;
+}
+
+html[dir="rtl"] .rounded-r {
+  border-radius: 0 !important;
+  border-top-left-radius: 0.25rem !important;
+  border-bottom-left-radius: 0.25rem !important;
+}
+
+/* Fix text alignment in cards */
+html[dir="rtl"] .card-body {
+  text-align: right;
+}
+
+/* Ensure flex items are properly reversed in RTL */
+html[dir="rtl"] .justify-between {
+  flex-direction: row-reverse;
+}
+
+/* Fix shadows and highlights on RTL */
+html[dir="rtl"] .shadow-lg,
+html[dir="rtl"] .shadow-xl,
+html[dir="rtl"] .shadow-md,
+html[dir="rtl"] .shadow-sm {
+  box-shadow: none !important;
+}
+
+html[dir="rtl"] .shadow-lg {
+  box-shadow: -0.1rem 0 1rem rgba(0, 0, 0, 0.15) !important;
+}
+
+html[dir="rtl"] .shadow-xl {
+  box-shadow: -0.5rem 0 3rem rgba(0, 0, 0, 0.2) !important;
+}
+
+html[dir="rtl"] .shadow-md {
+  box-shadow: -0.0625rem 0 0.5rem rgba(0, 0, 0, 0.1) !important;
+}
+
+html[dir="rtl"] .shadow-sm {
+  box-shadow: -0.03125rem 0 0.25rem rgba(0, 0, 0, 0.05) !important;
+}
+
+/* Fix direction of animations */
+html[dir="rtl"] .animate-slide-right {
+  animation-direction: reverse;
+}
+
+html[dir="rtl"] .animate-slide-left {
+  animation-direction: reverse;
+}
+
+/* Fix overflow issues */
+html[dir="rtl"] body {
+  overflow-x: hidden;
+}
+
+/* Fix padding issues */
+html[dir="rtl"] .pl-1, 
+html[dir="rtl"] .pl-2, 
+html[dir="rtl"] .pl-3, 
+html[dir="rtl"] .pl-4,
+html[dir="rtl"] .pl-5,
+html[dir="rtl"] .pl-6,
+html[dir="rtl"] .pl-8,
+html[dir="rtl"] .pl-10,
+html[dir="rtl"] .pl-12 {
+  padding-left: 0 !important;
+}
+
+html[dir="rtl"] .pr-1, 
+html[dir="rtl"] .pr-2, 
+html[dir="rtl"] .pr-3, 
+html[dir="rtl"] .pr-4,
+html[dir="rtl"] .pr-5,
+html[dir="rtl"] .pr-6,
+html[dir="rtl"] .pr-8,
+html[dir="rtl"] .pr-10,
+html[dir="rtl"] .pr-12 {
+  padding-right: 0 !important;
+}
+
+html[dir="rtl"] .pl-1 {
+  padding-right: 0.25rem !important;
+}
+
+html[dir="rtl"] .pl-2 {
+  padding-right: 0.5rem !important;
+}
+
+html[dir="rtl"] .pl-3 {
+  padding-right: 0.75rem !important;
+}
+
+html[dir="rtl"] .pl-4 {
+  padding-right: 1rem !important;
+}
+
+html[dir="rtl"] .pr-1 {
+  padding-left: 0.25rem !important;
+}
+
+html[dir="rtl"] .pr-2 {
+  padding-left: 0.5rem !important;
+}
+
+html[dir="rtl"] .pr-3 {
+  padding-left: 0.75rem !important;
+}
+
+html[dir="rtl"] .pr-4 {
+  padding-left: 1rem !important;
+}
+
+/* Fix alignment in flex containers */
+html[dir="rtl"] .items-start {
+  align-items: flex-start;
+}
+
+html[dir="rtl"] .justify-start {
+  justify-content: flex-end;
+}
+
+html[dir="rtl"] .justify-end {
+  justify-content: flex-start;
 }

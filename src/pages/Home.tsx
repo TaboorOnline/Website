@@ -13,7 +13,6 @@ import {
   Award,
   Image as ImageIcon,
   CircleUser,
-  ImageOff,
   Star,
   Heart,
   ChevronLeft,
@@ -332,7 +331,7 @@ const Home = () => {
               </motion.p>
               
               <motion.div
-                className="flex flex-wrap gap-4 rtl:space-x-reverse"
+                className="flex flex-wrap gap-4"
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.7, delay: 0.8 }}
@@ -342,7 +341,8 @@ const Home = () => {
                   size="lg" 
                   onClick={scrollToServices}
                   className="bg-white text-primary-600 hover:bg-gray-100 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
-                  rightIcon={<ArrowIcon size={18} />}
+                  rightIcon={isRTL() ? null : <ArrowRight size={18} />}
+                  leftIcon={isRTL() ? <ArrowLeft size={18} /> : null}
                 >
                   {t('home.hero.cta')}
                 </Button>
@@ -522,11 +522,11 @@ const Home = () => {
                   >
                     <ul className="text-left space-y-2">
                       <li className="flex items-start">
-                        <CheckCircle size={16} className="text-primary-500 mt-1 mr-2 flex-shrink-0" />
+                        <CheckCircle size={16} className={`text-primary-500 mt-1 ${isRTL() ? 'ml-2' : 'mr-2'} flex-shrink-0`} />
                         <span className="text-sm text-gray-600 dark:text-gray-400">Premium quality work</span>
                       </li>
                       <li className="flex items-start">
-                        <CheckCircle size={16} className="text-primary-500 mt-1 mr-2 flex-shrink-0" />
+                        <CheckCircle size={16} className={`text-primary-500 mt-1 ${isRTL() ? 'ml-2' : 'mr-2'} flex-shrink-0`} />
                         <span className="text-sm text-gray-600 dark:text-gray-400">Commitment to excellence</span>
                       </li>
                     </ul>
@@ -589,11 +589,11 @@ const Home = () => {
                   >
                     <ul className="text-left space-y-2">
                       <li className="flex items-start">
-                        <CheckCircle size={16} className="text-primary-500 mt-1 mr-2 flex-shrink-0" />
+                        <CheckCircle size={16} className={`text-primary-500 mt-1 ${isRTL() ? 'ml-2' : 'mr-2'} flex-shrink-0`} />
                         <span className="text-sm text-gray-600 dark:text-gray-400">Cutting-edge solutions</span>
                       </li>
                       <li className="flex items-start">
-                        <CheckCircle size={16} className="text-primary-500 mt-1 mr-2 flex-shrink-0" />
+                        <CheckCircle size={16} className={`text-primary-500 mt-1 ${isRTL() ? 'ml-2' : 'mr-2'} flex-shrink-0`} />
                         <span className="text-sm text-gray-600 dark:text-gray-400">Forward-thinking approaches</span>
                       </li>
                     </ul>
@@ -656,11 +656,11 @@ const Home = () => {
                   >
                     <ul className="text-left space-y-2">
                       <li className="flex items-start">
-                        <CheckCircle size={16} className="text-primary-500 mt-1 mr-2 flex-shrink-0" />
+                        <CheckCircle size={16} className={`text-primary-500 mt-1 ${isRTL() ? 'ml-2' : 'mr-2'} flex-shrink-0`} />
                         <span className="text-sm text-gray-600 dark:text-gray-400">24/7 dedicated support</span>
                       </li>
                       <li className="flex items-start">
-                        <CheckCircle size={16} className="text-primary-500 mt-1 mr-2 flex-shrink-0" />
+                        <CheckCircle size={16} className={`text-primary-500 mt-1 ${isRTL() ? 'ml-2' : 'mr-2'} flex-shrink-0`} />
                         <span className="text-sm text-gray-600 dark:text-gray-400">Fast response times</span>
                       </li>
                     </ul>
@@ -870,7 +870,7 @@ const Home = () => {
         <div className="absolute bottom-0 left-0 w-64 h-64 bg-primary-100 dark:bg-primary-900/10 rounded-full blur-3xl opacity-30 -mb-32 -ml-32 z-0"></div>
         
         <div className="container mx-auto px-4 sm:px-6 relative z-10">
-          {/* Section header */}
+                      {/* Section header */}
           <div className="flex flex-col md:flex-row md:items-end md:justify-between mb-12">
             <SectionTitle
               title={t('services.title')}
@@ -887,7 +887,7 @@ const Home = () => {
               transition={{ duration: 0.5, delay: 0.3 }}
               className="mt-6 md:mt-0"
             >
-              <div className="p-1 border border-gray-200 dark:border-gray-700 rounded-full bg-white dark:bg-gray-700 shadow-sm flex">
+              <div className="p-1 border border-gray-200 dark:border-gray-700 rounded-full bg-white dark:bg-gray-700 shadow-sm flex rtl:flex-row-reverse">
                 <button className="text-xs sm:text-sm px-3 sm:px-4 py-2 rounded-full bg-primary-500 text-white font-medium">
                   {t('services.allServices')}
                 </button>
@@ -932,7 +932,7 @@ const Home = () => {
                     <Card.Body className="p-6">
                       <div className="flex items-start">
                         <motion.div 
-                          className="w-12 h-12 rounded-full bg-primary-100 dark:bg-primary-900/30 flex items-center justify-center text-primary-600 dark:text-primary-400 mr-4"
+                          className={`w-12 h-12 rounded-full bg-primary-100 dark:bg-primary-900/30 flex items-center justify-center text-primary-600 dark:text-primary-400 ${isRTL() ? 'ml-4' : 'mr-4'}`}
                           whileHover={{ 
                             scale: 1.1,
                             rotate: 5,
@@ -952,23 +952,31 @@ const Home = () => {
                             </div>
                           </div>
                           
-                          <p className="text-gray-600 dark:text-gray-300 mb-4 line-clamp-3">
+                          <p className={`text-gray-600 dark:text-gray-300 mb-4 line-clamp-3 ${isRTL() ? 'text-right' : 'text-left'}`}>
                             {isRTL() ? service.description_ar : service.description_en}
                           </p>
                           
-                          <div className="mt-4 flex items-center justify-between">
+                          <div className="mt-4 flex items-center justify-between rtl:flex-row-reverse">
                             <Button
                               variant="link"
                               to={`/services#${service.id}`}
                               className="text-primary-600 dark:text-primary-400 font-medium inline-flex items-center group"
-                              rightIcon={
+                              rightIcon={isRTL() ? null : (
                                 <motion.div
                                   whileHover={{ x: 5 }}
                                   transition={{ duration: 0.2 }}
                                 >
-                                  <ArrowIcon size={16} className="group-hover:translate-x-1 transition-transform" />
+                                  <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
                                 </motion.div>
-                              }
+                              )}
+                              leftIcon={isRTL() ? (
+                                <motion.div
+                                  whileHover={{ x: -5 }}
+                                  transition={{ duration: 0.2 }}
+                                >
+                                  <ArrowLeft size={16} className="group-hover:-translate-x-1 transition-transform" />
+                                </motion.div>
+                              ) : null}
                             >
                               {t('common.readMore')}
                             </Button>
@@ -1032,21 +1040,21 @@ const Home = () => {
                 whileInView={{ opacity: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: 0.3 }}
-                className="mt-6 md:mt-0 flex space-x-2"
+                className="mt-6 md:mt-0 flex space-x-2 rtl:space-x-reverse"
               >
                 <motion.button
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   className="p-2 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-500 dark:text-gray-400 hover:bg-primary-50 hover:text-primary-600 dark:hover:bg-gray-700 dark:hover:text-primary-400"
                 >
-                  <ChevronLeft size={20} />
+                  {isRTL() ? <ChevronRight size={20} /> : <ChevronLeft size={20} />}
                 </motion.button>
                 <motion.button
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   className="p-2 rounded-full bg-primary-100 dark:bg-primary-900/30 text-primary-600 dark:text-primary-400 hover:bg-primary-200 dark:hover:bg-primary-800/50"
                 >
-                  <ChevronRight size={20} />
+                  {isRTL() ? <ChevronLeft size={20} /> : <ChevronRight size={20} />}
                 </motion.button>
               </motion.div>
             </div>
@@ -1134,14 +1142,22 @@ const Home = () => {
                           variant="outline"
                           to={`/projects/${project.id}`}
                           className="w-full justify-center hover:bg-primary-50 dark:hover:bg-primary-900/20 hover:text-primary-600 dark:hover:text-primary-400 transition-colors duration-300 group"
-                          rightIcon={
+                          rightIcon={!isRTL() ? (
                             <motion.div
                               animate={{ x: [0, 4, 0] }}
                               transition={{ duration: 1, repeat: Infinity, repeatDelay: 1 }}
                             >
-                              <ArrowIcon size={16} />
+                              <ArrowRight size={16} />
                             </motion.div>
-                          }
+                          ) : null}
+                          leftIcon={isRTL() ? (
+                            <motion.div
+                              animate={{ x: [0, -4, 0] }}
+                              transition={{ duration: 1, repeat: Infinity, repeatDelay: 1 }}
+                            >
+                              <ArrowLeft size={16} />
+                            </motion.div>
+                          ) : null}
                         >
                           {t('projects.viewProject')}
                         </Button>
@@ -1164,7 +1180,8 @@ const Home = () => {
                 variant="primary"
                 size="lg"
                 to="/projects"
-                rightIcon={<ArrowIcon size={18} />}
+                rightIcon={!isRTL() ? <ArrowRight size={18} /> : null}
+                leftIcon={isRTL() ? <ArrowLeft size={18} /> : null}
                 className="shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
               >
                 {t('common.seeAll')}
@@ -1227,14 +1244,22 @@ const Home = () => {
                 size="lg" 
                 to="/contact"
                 className="bg-white text-primary-600 hover:bg-gray-100 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
-                rightIcon={
+                rightIcon={!isRTL() ? (
                   <motion.div
                     animate={{ x: [0, 4, 0] }}
                     transition={{ duration: 1.5, repeat: Infinity, repeatDelay: 1 }}
                   >
-                    <ArrowIcon size={18} />
+                    <ArrowRight size={18} />
                   </motion.div>
-                }
+                ) : null}
+                leftIcon={isRTL() ? (
+                  <motion.div
+                    animate={{ x: [0, -4, 0] }}
+                    transition={{ duration: 1.5, repeat: Infinity, repeatDelay: 1 }}
+                  >
+                    <ArrowLeft size={18} />
+                  </motion.div>
+                ) : null}
               >
                 {t('home.cta.button')}
               </Button>
