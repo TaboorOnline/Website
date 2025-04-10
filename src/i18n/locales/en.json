@@ -1,0 +1,406 @@
+{
+  "site": {
+    "name": "Helal Tech",
+    "tagline": "Innovative Technical Solutions for an Evolving Digital World",
+    "description": "A leading company providing integrated technological solutions and specialized consulting services"
+  },
+  "nav": {
+    "home": "Home",
+    "about": "About Us",
+    "services": "Services",
+    "projects": "Projects",
+    "testimonials": "Testimonials",
+    "contact": "Contact Us"
+  },
+  "home": {
+    "hero": {
+      "title": "Innovative Technical Solutions",
+      "subtitle": "Turning your ideas into digital reality",
+      "cta": "Explore Our Services"
+    },
+    "features": {
+      "title": "Why Choose Helal Tech?",
+      "quality": {
+        "title": "Exceptional Quality",
+        "description": "We ensure services that meet the highest global quality standards"
+      },
+      "innovation": {
+        "title": "Continuous Innovation",
+        "description": "We constantly develop creative solutions that meet changing market needs"
+      },
+      "support": {
+        "title": "Continuous Support",
+        "description": "Our team is ready to help you anytime, anywhere"
+      }
+    },
+    "stats": {
+      "title": "Our Achievements in Numbers",
+      "clients": "Satisfied Clients",
+      "projects": "Completed Projects",
+      "years": "Years of Experience",
+      "awards": "Excellence Awards"
+    },
+    "cta": {
+      "title": "Ready to Develop Your Next Project",
+      "description": "Let us help you turn your ideas into tangible reality",
+      "button": "Contact Us Now"
+    }
+  },
+  "about": {
+    "title": "About Us",
+    "subtitle": "Get to Know Helal Tech",
+    "story": {
+      "title": "Our Story",
+      "content": "Helal Tech was launched with the aim of providing outstanding technological solutions that meet the needs of our customers. We always strive for leadership in the field of technology through a specialized team of experts."
+    },
+    "vision": {
+      "title": "Our Vision",
+      "content": "To be the first technical partner for companies and institutions in the region, and to contribute to supporting digital transformation and building an advanced knowledge economy."
+    },
+    "mission": {
+      "title": "Our Mission",
+      "content": "Providing innovative and high-quality technical solutions that help our customers achieve their goals and develop their business, while adhering to the highest standards of quality and efficiency."
+    },
+    "values": {
+      "title": "Our Values",
+      "innovation": "Innovation",
+      "quality": "Quality",
+      "integrity": "Integrity",
+      "commitment": "Commitment",
+      "teamwork": "Teamwork"
+    },
+    "team": {
+      "title": "Our Team",
+      "description": "We are proud of our distinguished team of experts and specialists in various fields of technology"
+    }
+  },
+  "services": {
+    "title": "Our Services",
+    "subtitle": "Integrated Solutions to Meet Your Needs",
+    "description": "We offer a variety of technical services that help our customers achieve their goals",
+    "web": {
+      "title": "Web Development",
+      "description": "Design and develop modern websites that are responsive to all devices"
+    },
+    "mobile": {
+      "title": "Mobile Applications",
+      "description": "Develop distinguished applications for smart devices with Android and iOS systems"
+    },
+    "desktop": {
+      "title": "Desktop Applications",
+      "description": "Programming specialized desktop applications that are integrated with enterprise systems"
+    },
+    "systems": {
+      "title": "Management Systems",
+      "description": "Building integrated management systems that help automate processes and improve productivity"
+    },
+    "ai": {
+      "title": "AI Solutions",
+      "description": "Developing smart applications that take advantage of artificial intelligence and machine learning technologies"
+    },
+    "consulting": {
+      "title": "Technical Consulting",
+      "description": "Providing specialized consultations in various technical fields"
+    },
+    "cta": "Contact us to learn more about our services"
+  },
+  "projects": {
+    "title": "Our Projects",
+    "subtitle": "Samples of Our Previous Work",
+    "description": "Browse some of the projects we have implemented for our clients",
+    "filters": {
+      "all": "All",
+      "web": "Web Sites",
+      "mobile": "Mobile Apps",
+      "desktop": "Desktop Apps",
+      "ai": "Artificial Intelligence"
+    },
+    "noProjects": "No projects to display currently",
+    "viewProject": "View Project",
+    "technologies": "Technologies Used",
+    "client": "Client",
+    "date": "Completion Date",
+    "category": "Category"
+  },
+  "testimonials": {
+    "title": "Testimonials",
+    "subtitle": "What Our Clients Say About Us",
+    "description": "Opinions and impressions of some of our clients we have dealt with",
+    "noTestimonials": "No testimonials to display currently",
+    "addTestimonial": "Add Your Opinion",
+    "form": {
+      "title": "Share Your Opinion",
+      "name": "Name",
+      "email": "Email",
+      "company": "Company",
+      "position": "Position",
+      "rating": "Rating",
+      "message": "Message",
+      "submit": "Submit",
+      "success": "Your opinion has been sent successfully and will be reviewed soon",
+      "error": "An error occurred while sending your opinion, please try again",
+      "ratingHint": "Choose your rating from 1 to 5",
+      "validation": {
+        "required": "This field is required",
+        "email": "Please enter a valid email",
+        "minLength": "This field must contain at least {{min}} characters",
+        "maxLength": "This field must not exceed {{max}} characters"
+      }
+    }
+  },
+  "contact": {
+    "title": "Contact Us",
+    "subtitle": "We're Here to Answer Your Inquiries",
+    "description": "Contact us through the form below or using the available contact information",
+    "form": {
+      "name": "Name",
+      "email": "Email",
+      "phone": "Phone Number (Optional)",
+      "subject": "Subject",
+      "message": "Message",
+      "submit": "Send",
+      "success": "Your message has been sent successfully and we will respond to you soon",
+      "error": "An error occurred while sending the message, please try again",
+      "validation": {
+        "required": "This field is required",
+        "email": "Please enter a valid email",
+        "minLength": "This field must contain at least {{min}} characters",
+        "maxLength": "This field must not exceed {{max}} characters"
+      }
+    },
+    "info": {
+      "title": "Contact Information",
+      "address": "Address",
+      "addressValue": "King Fahd Road, Riyadh, Saudi Arabia",
+      "phone": "Phone",
+      "phoneValue": "+966 12 345 6789",
+      "email": "Email",
+      "emailValue": "info@helaltech.com",
+      "hours": "Working Hours",
+      "hoursValue": "Sunday - Thursday: 9:00 AM - 5:00 PM"
+    }
+  },
+  "admin": {
+    "dashboard": {
+      "title": "Dashboard",
+      "welcome": "Welcome to Helal Tech Dashboard",
+      "stats": {
+        "title": "Statistics",
+        "visitors": "Visitors",
+        "pageViews": "Page Views",
+        "testimonials": "Testimonials",
+        "messages": "Messages",
+        "projects": "Projects",
+        "services": "Services"
+      }
+    },
+    "content": {
+      "title": "Content Management",
+      "sections": {
+        "home": "Home Page",
+        "about": "About Us",
+        "services": "Services",
+        "contact": "Contact Us"
+      },
+      "actions": {
+        "edit": "Edit",
+        "save": "Save",
+        "cancel": "Cancel",
+        "success": "Changes saved successfully",
+        "error": "An error occurred while saving changes"
+      }
+    },
+    "projects": {
+      "title": "Projects Management",
+      "addNew": "Add New Project",
+      "edit": "Edit Project",
+      "delete": "Delete Project",
+      "confirmDelete": "Are you sure you want to delete this project?",
+      "form": {
+        "titleAr": "Project Title (Arabic)",
+        "titleEn": "Project Title (English)",
+        "descriptionAr": "Project Description (Arabic)",
+        "descriptionEn": "Project Description (English)",
+        "image": "Project Image",
+        "technologies": "Technologies Used",
+        "url": "Project URL (Optional)",
+        "order": "Order",
+        "submit": "Save",
+        "cancel": "Cancel"
+      },
+      "success": {
+        "add": "Project added successfully",
+        "edit": "Project edited successfully",
+        "delete": "Project deleted successfully"
+      },
+      "error": {
+        "add": "An error occurred while adding the project",
+        "edit": "An error occurred while editing the project",
+        "delete": "An error occurred while deleting the project"
+      }
+    },
+    "services": {
+      "title": "Services Management",
+      "addNew": "Add New Service",
+      "edit": "Edit Service",
+      "delete": "Delete Service",
+      "confirmDelete": "Are you sure you want to delete this service?",
+      "form": {
+        "titleAr": "Service Title (Arabic)",
+        "titleEn": "Service Title (English)",
+        "descriptionAr": "Service Description (Arabic)",
+        "descriptionEn": "Service Description (English)",
+        "icon": "Service Icon",
+        "order": "Order",
+        "submit": "Save",
+        "cancel": "Cancel"
+      },
+      "success": {
+        "add": "Service added successfully",
+        "edit": "Service edited successfully",
+        "delete": "Service deleted successfully"
+      },
+      "error": {
+        "add": "An error occurred while adding the service",
+        "edit": "An error occurred while editing the service",
+        "delete": "An error occurred while deleting the service"
+      }
+    },
+    "testimonials": {
+      "title": "Testimonials Management",
+      "pending": "Pending Testimonials",
+      "approved": "Approved Testimonials",
+      "preview": "Preview",
+      "approve": "Approve",
+      "reject": "Reject",
+      "confirmReject": "Are you sure you want to reject this testimonial?",
+      "noTestimonials": "No testimonials to display",
+      "reply": "Reply to Email",
+      "replyForm": {
+        "subject": "Subject",
+        "message": "Message",
+        "send": "Send",
+        "cancel": "Cancel"
+      },
+      "success": {
+        "approve": "Testimonial approved successfully",
+        "reject": "Testimonial rejected successfully",
+        "reply": "Reply sent successfully"
+      },
+      "error": {
+        "approve": "An error occurred while approving the testimonial",
+        "reject": "An error occurred while rejecting the testimonial",
+        "reply": "An error occurred while sending the reply"
+      }
+    },
+    "messages": {
+      "title": "Messages Management",
+      "unread": "Unread Messages",
+      "read": "Read Messages",
+      "details": "Message Details",
+      "reply": "Reply",
+      "delete": "Delete",
+      "confirmDelete": "Are you sure you want to delete this message?",
+      "noMessages": "No messages to display",
+      "markAsRead": "Mark as Read",
+      "replyForm": {
+        "subject": "Subject",
+        "message": "Message",
+        "send": "Send",
+        "cancel": "Cancel"
+      },
+      "success": {
+        "reply": "Reply sent successfully",
+        "delete": "Message deleted successfully",
+        "markAsRead": "Message marked as read"
+      },
+      "error": {
+        "reply": "An error occurred while sending the reply",
+        "delete": "An error occurred while deleting the message",
+        "markAsRead": "An error occurred while marking the message as read"
+      }
+    },
+    "stats": {
+      "title": "Statistics",
+      "period": {
+        "daily": "Daily",
+        "weekly": "Weekly",
+        "monthly": "Monthly",
+        "yearly": "Yearly"
+      },
+      "metrics": {
+        "visitors": "Visitors",
+        "pageViews": "Page Views",
+        "bounceRate": "Bounce Rate",
+        "avgSessionDuration": "Average Session Duration"
+      },
+      "pages": {
+        "title": "Most Visited Pages",
+        "page": "Page",
+        "views": "Views",
+        "uniqueVisitors": "Unique Visitors"
+      }
+    },
+    "auth": {
+      "login": {
+        "title": "Login",
+        "email": "Email",
+        "password": "Password",
+        "submit": "Login",
+        "rememberMe": "Remember Me",
+        "forgotPassword": "Forgot Password?",
+        "success": "Logged in successfully",
+        "error": "Incorrect email or password"
+      },
+      "logout": {
+        "title": "Logout",
+        "confirm": "Are you sure you want to logout?",
+        "yes": "Yes",
+        "no": "No",
+        "success": "Logged out successfully"
+      }
+    }
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "An error occurred",
+    "retry": "Retry",
+    "readMore": "Read More",
+    "seeAll": "See All",
+    "back": "Back",
+    "save": "Save",
+    "cancel": "Cancel",
+    "submit": "Submit",
+    "delete": "Delete",
+    "edit": "Edit",
+    "add": "Add",
+    "search": "Search",
+    "filter": "Filter",
+    "sort": "Sort",
+    "yes": "Yes",
+    "no": "No",
+    "confirm": "Confirm",
+    "success": "Success",
+    "next": "Next",
+    "previous": "Previous",
+    "language": "Language",
+    "arabic": "Arabic",
+    "english": "English",
+    "emptyState": "No data to display",
+    "notFound": "Page not found",
+    "goHome": "Go to Home"
+  },
+  "footer": {
+    "rights": "All rights reserved © {{year}} Helal Tech",
+    "terms": "Terms and Conditions",
+    "privacy": "Privacy Policy",
+    "follow": "Follow Us",
+    "subscribe": {
+      "title": "Subscribe to Our Newsletter",
+      "placeholder": "Email",
+      "submit": "Subscribe",
+      "success": "Subscribed successfully",
+      "error": "An error occurred while subscribing"
+    }
+  }
+}
