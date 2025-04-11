@@ -77,14 +77,14 @@ textarea[dir="rtl"] {
   text-align: right;
 }
 
-/* تصميم سكرول بار مخصص */
+/* سكرول بار مخصص */
 ::-webkit-scrollbar {
   width: 8px;
   height: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #f1f1f1;
+  background: rgb(var(--background-start-rgb));
 }
 
 ::-webkit-scrollbar-thumb {
@@ -247,6 +247,10 @@ html[dir="rtl"] .mr-10 {
 
 html[dir="rtl"] .mr-12 {
   margin-left: 3rem !important;
+}
+
+button {
+  cursor: pointer;
 }
 
 /* Fix button icon positioning for RTL */
