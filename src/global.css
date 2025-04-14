@@ -1,0 +1,157 @@
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@200..1000&display=swap');
+@import 'tailwindcss';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@tailwind screens;
+@tailwind typography;
+
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+
+button {
+  cursor: pointer;
+}
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+  }
+
+  /* Explicitly set background/foreground colors without relying on custom properties */
+  body {
+    @apply bg-white text-gray-900 font-sans transition-colors duration-300;
+  }
+
+  .dark body {
+    @apply bg-gray-900 text-gray-50;
+  }
+
+  *[dir="rtl"] {
+    font-family: 'Cairo', sans-serif;
+  }
+}
+
+@layer components {
+  .btn {
+    @apply px-4 py-2 rounded-md transition-all duration-200 font-medium;
+  }
+
+  .btn-primary {
+    /* @apply bg-primary-600 hover:bg-primary-700 text-white; */
+  }
+
+  .btn-secondary {
+    /* @apply bg-secondary-600 hover:bg-secondary-700 text-white; */
+  }
+
+  .btn-outline {
+    @apply border border-gray-300 hover:bg-gray-100 dark:border-gray-700 dark:hover:bg-gray-800;
+  }
+
+  .input {
+    /* @apply px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent dark:bg-gray-800 dark:border-gray-700 dark:focus:ring-primary-400; */
+  }
+
+  .card {
+    @apply bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden;
+  }
+
+  .h1 {
+    @apply text-4xl font-bold md:text-5xl;
+  }
+
+  .h2 {
+    @apply text-3xl font-bold md:text-4xl;
+  }
+
+  .h3 {
+    @apply text-2xl font-bold md:text-3xl;
+  }
+
+  .h4 {
+    @apply text-xl font-bold md:text-2xl;
+  }
+
+  .container-custom {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+}
+
+/* Animation classes */
+.fade-in {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.slide-up {
+  animation: slideUp 0.5s ease-in-out;
+}
+
+.slide-right {
+  animation: slideRight 0.5s ease-in-out;
+}
+
+.slide-left {
+  animation: slideLeft 0.5s ease-in-out;
+}
+
+/* RTL support */
+[dir="rtl"] .slide-right {
+  animation: slideLeft 0.5s ease-in-out;
+}
+
+[dir="rtl"] .slide-left {
+  animation: slideRight 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  0% {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideRight {
+  0% {
+    transform: translateX(-20px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideLeft {
+  0% {
+    transform: translateX(20px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
