@@ -11,7 +11,7 @@ import { Language } from '../../shared/types/types';
 import { 
   FiSun, FiMoon, FiGlobe, FiMenu, FiX, FiTwitter, 
   FiLinkedin, FiFacebook, FiInstagram, FiMail, FiPhone, 
-  FiMapPin, FiArrowUp, FiChevronRight
+  FiMapPin, FiArrowUp, FiChevronRight, FiHeart
 } from 'react-icons/fi';
 
 interface LandingLayoutProps {
@@ -25,6 +25,7 @@ const LandingLayout = ({ children }: LandingLayoutProps) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [showScrollTop, setShowScrollTop] = useState(false);
+  const isRTL = i18n.language === 'ar';
 
   // Navigation links
   const navLinks = [
@@ -64,16 +65,16 @@ const LandingLayout = ({ children }: LandingLayoutProps) => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-white dark:bg-gray-900">
+    <div className="min-h-screen flex flex-col bg-white dark:bg-gray-950" dir={isRTL ? "rtl" : "ltr"}>
       {/* Header */}
       <header 
         className={`sticky top-0 z-50 transition-all duration-300 ${
           scrolled 
-            ? 'bg-white/90 dark:bg-gray-900/90 backdrop-blur-md shadow-md' 
-            : 'bg-white dark:bg-gray-900'
+            ? 'bg-white/90 dark:bg-gray-950/90 backdrop-blur-md shadow-md' 
+            : 'bg-white dark:bg-gray-950'
         }`}
       >
-        <div className="container-custom py-4">
+        <div className="container mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
             {/* Logo */}
             <Link to="/" className="flex items-center">
@@ -83,10 +84,10 @@ const LandingLayout = ({ children }: LandingLayoutProps) => {
                 transition={{ duration: 0.3 }}
                 className="flex items-center"
               >
-                <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-blue-600 to-purple-600 dark:from-blue-500 dark:to-purple-500 mr-3 flex items-center justify-center shadow-md">
+                <div className="w-10 h-10 rounded-xl bg-indigo-600 dark:bg-indigo-500 mr-3 flex items-center justify-center shadow-md">
                   <span className="text-white font-bold text-xl">H</span>
                 </div>
-                <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-500 dark:to-purple-500 text-2xl font-bold">
+                <span className="text-indigo-600 dark:text-indigo-400 text-2xl font-bold">
                   Hilal Tech
                 </span>
               </motion.div>
@@ -98,9 +99,9 @@ const LandingLayout = ({ children }: LandingLayoutProps) => {
                 <Link
                   key={link.path}
                   to={link.path}
-                  className={`relative px-4 py-2 text-sm font-medium transition-all rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 ${
+                  className={`relative px-4 py-2 text-sm font-medium transition-all rounded-lg hover:bg-gray-100 dark:hover:bg-gray-900 ${
                     location.pathname === link.path
-                      ? 'text-blue-600 dark:text-blue-400'
+                      ? 'text-indigo-600 dark:text-indigo-400'
                       : 'text-gray-700 dark:text-gray-300'
                   }`}
                 >
@@ -108,7 +109,7 @@ const LandingLayout = ({ children }: LandingLayoutProps) => {
                   {location.pathname === link.path && (
                     <motion.div
                       layoutId="nav-indicator"
-                      className="absolute bottom-0 left-0 right-0 h-0.5 mx-4 bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-400"
+                      className="absolute bottom-0 left-0 right-0 h-0.5 mx-4 bg-indigo-600 dark:bg-indigo-400"
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
                       transition={{ duration: 0.3 }}
@@ -123,11 +124,11 @@ const LandingLayout = ({ children }: LandingLayoutProps) => {
               {/* Theme Toggle */}
               <button
                 onClick={toggleTheme}
-                className="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+                className="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-900 transition-colors"
                 aria-label={theme === 'dark' ? t('theme.light') : t('theme.dark')}
               >
                 {theme === 'dark' ? (
-                  <FiSun className="text-yellow-400 w-5 h-5" />
+                  <FiSun className="text-amber-400 w-5 h-5" />
                 ) : (
                   <FiMoon className="text-gray-700 w-5 h-5" />
                 )}
@@ -136,10 +137,10 @@ const LandingLayout = ({ children }: LandingLayoutProps) => {
               {/* Language Toggle */}
               <button
                 onClick={toggleLanguage}
-                className="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 flex items-center transition-colors"
+                className="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-900 flex items-center transition-colors"
                 aria-label={i18n.language === 'en' ? t('language.arabic') : t('language.english')}
               >
-                <FiGlobe className="w-5 h-5 mr-1 text-blue-600 dark:text-blue-400" />
+                <FiGlobe className="w-5 h-5 mr-1 text-indigo-600 dark:text-indigo-400" />
                 <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
                   {i18n.language === 'en' ? 'AR' : 'EN'}
                 </span>
@@ -148,7 +149,7 @@ const LandingLayout = ({ children }: LandingLayoutProps) => {
               {/* Contact Button (desktop only) */}
               <Link
                 to="/contact"
-                className="hidden md:flex px-4 py-2 text-sm font-medium text-white rounded-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 shadow-sm hover:shadow-md transition-all duration-300 ml-2"
+                className="hidden md:flex px-5 py-2.5 text-sm font-medium text-white rounded-lg bg-indigo-600 hover:bg-indigo-700 dark:bg-indigo-600 dark:hover:bg-indigo-700 transition-all duration-300 ml-2 shadow-lg shadow-indigo-500/20 dark:shadow-indigo-800/20"
               >
                 {t('nav.getInTouch')}
               </Link>
@@ -156,7 +157,7 @@ const LandingLayout = ({ children }: LandingLayoutProps) => {
               {/* Mobile Menu Button */}
               <button
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
-                className="md:hidden p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+                className="md:hidden p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-900 transition-colors"
                 aria-label={isMenuOpen ? t('nav.close') : t('nav.menu')}
               >
                 {isMenuOpen ? <FiX className="w-5 h-5" /> : <FiMenu className="w-5 h-5" />}
@@ -174,10 +175,10 @@ const LandingLayout = ({ children }: LandingLayoutProps) => {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.4, ease: [0.25, 1, 0.5, 1] }}
-            className="md:hidden fixed top-[72px] left-0 right-0 z-40 bg-white/95 dark:bg-gray-900/95 backdrop-blur-md border-b border-gray-100 dark:border-gray-800 shadow-lg"
+            className="md:hidden fixed top-[72px] left-0 right-0 z-40 bg-white/95 dark:bg-gray-950/95 backdrop-blur-md border-b border-gray-100 dark:border-gray-800 shadow-lg"
             style={{ maxHeight: 'calc(100vh - 72px)', overflowY: 'auto' }}
           >
-            <div className="container-custom py-6">
+            <div className="container mx-auto px-6 py-6">
               <nav className="flex flex-col space-y-2">
                 {navLinks.map((link) => (
                   <Link
@@ -185,8 +186,8 @@ const LandingLayout = ({ children }: LandingLayoutProps) => {
                     to={link.path}
                     className={`text-sm font-medium py-3 px-4 rounded-lg transition-all ${
                       location.pathname === link.path
-                        ? 'bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400'
-                        : 'text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800'
+                        ? 'bg-indigo-50 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400'
+                        : 'text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-900'
                     }`}
                   >
                     {link.label}
@@ -194,7 +195,7 @@ const LandingLayout = ({ children }: LandingLayoutProps) => {
                 ))}
                 <Link
                   to="/contact"
-                  className="mt-4 text-sm font-medium py-3 px-4 rounded-lg text-white bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 transition-all duration-300 shadow-sm text-center"
+                  className="mt-4 text-sm font-medium py-3 px-4 rounded-lg text-white bg-indigo-600 hover:bg-indigo-700 dark:bg-indigo-600 dark:hover:bg-indigo-700 transition-all duration-300 shadow-md text-center"
                 >
                   {t('nav.getInTouch')}
                 </Link>
@@ -218,7 +219,7 @@ const LandingLayout = ({ children }: LandingLayoutProps) => {
             exit={{ opacity: 0, scale: 0.5 }}
             transition={{ duration: 0.3 }}
             onClick={scrollToTop}
-            className="fixed bottom-8 right-8 w-12 h-12 rounded-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 flex items-center justify-center text-white shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110 z-50"
+            className="fixed bottom-8 right-8 w-12 h-12 rounded-xl bg-indigo-600 hover:bg-indigo-700 dark:bg-indigo-600 dark:hover:bg-indigo-700 flex items-center justify-center text-white shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110 z-50"
             aria-label={t('common.scrollToTop')}
           >
             <FiArrowUp className="w-5 h-5" />
@@ -227,160 +228,140 @@ const LandingLayout = ({ children }: LandingLayoutProps) => {
       </AnimatePresence>
 
       {/* Footer */}
-      <footer className="bg-gray-50 dark:bg-gray-800 border-t border-gray-100 dark:border-gray-700 relative overflow-hidden">
-        {/* Decorative elements */}
-        <div className="absolute top-0 right-0 w-1/3 h-1/3 bg-gradient-to-b from-blue-50/30 to-transparent dark:from-blue-900/10 dark:to-transparent"></div>
-        <div className="absolute -bottom-20 -left-20 w-64 h-64 bg-purple-100/30 dark:bg-purple-900/10 rounded-full blur-3xl opacity-70"></div>
-        
-        <div className="container-custom py-16 relative z-10">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
-            {/* About */}
-            <div>
-              <div className="flex items-center mb-6">
-                <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-blue-600 to-purple-600 dark:from-blue-500 dark:to-purple-500 mr-3 flex items-center justify-center shadow-md">
-                  <span className="text-white font-bold text-xl">H</span>
+      <footer className="bg-gray-50 dark:bg-gray-900 mt-20">
+        {/* Footer top section with color accent */}
+        <div className="relative">
+          
+          <div className="container mx-auto px-6 py-16 relative">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+              {/* About */}
+              <div>
+                <div className="flex items-center mb-6">
+                  <div className="w-10 h-10 rounded-xl bg-indigo-600 dark:bg-indigo-500 mr-3 flex items-center justify-center">
+                    <span className="text-white font-bold text-xl">H</span>
+                  </div>
+                  <span className="text-indigo-600 dark:text-indigo-400 text-2xl font-bold">
+                    Hilal Tech
+                  </span>
                 </div>
-                <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-500 dark:to-purple-500 text-2xl font-bold">
-                  Hilal Tech
-                </span>
-              </div>
-              <p className="text-gray-600 dark:text-gray-400 mb-6 leading-relaxed">
-                {t('footer.aboutDescription')}
-              </p>
-              <div className="flex space-x-3">
-                <a 
-                  href="#" 
-                  className="w-10 h-10 rounded-full bg-gray-100 dark:bg-gray-700 flex items-center justify-center text-gray-600 dark:text-gray-400 hover:bg-blue-100 hover:text-blue-600 dark:hover:bg-blue-900/40 dark:hover:text-blue-400 transition-all duration-300 shadow-sm hover:shadow-md"
-                  aria-label="Twitter"
-                >
-                  <FiTwitter className="w-5 h-5" />
-                </a>
-                <a 
-                  href="#" 
-                  className="w-10 h-10 rounded-full bg-gray-100 dark:bg-gray-700 flex items-center justify-center text-gray-600 dark:text-gray-400 hover:bg-blue-100 hover:text-blue-600 dark:hover:bg-blue-900/40 dark:hover:text-blue-400 transition-all duration-300 shadow-sm hover:shadow-md"
-                  aria-label="Facebook"
-                >
-                  <FiFacebook className="w-5 h-5" />
-                </a>
-                <a 
-                  href="#" 
-                  className="w-10 h-10 rounded-full bg-gray-100 dark:bg-gray-700 flex items-center justify-center text-gray-600 dark:text-gray-400 hover:bg-blue-100 hover:text-blue-600 dark:hover:bg-blue-900/40 dark:hover:text-blue-400 transition-all duration-300 shadow-sm hover:shadow-md"
-                  aria-label="LinkedIn"
-                >
-                  <FiLinkedin className="w-5 h-5" />
-                </a>
-                <a 
-                  href="#" 
-                  className="w-10 h-10 rounded-full bg-gray-100 dark:bg-gray-700 flex items-center justify-center text-gray-600 dark:text-gray-400 hover:bg-blue-100 hover:text-blue-600 dark:hover:bg-blue-900/40 dark:hover:text-blue-400 transition-all duration-300 shadow-sm hover:shadow-md"
-                  aria-label="Instagram"
-                >
-                  <FiInstagram className="w-5 h-5" />
-                </a>
-              </div>
-            </div>
-
-            {/* Quick Links */}
-            <div>
-              <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-6 relative">
-                {t('footer.quickLinks')}
-                <span className="absolute -bottom-2 left-0 w-10 h-1 bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-400 rounded-full"></span>
-              </h3>
-              <ul className="space-y-4">
-                {navLinks.map((link) => (
-                  <li key={link.path}>
-                    <Link
-                      to={link.path}
-                      className="text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-300 flex items-center"
+                <p className="text-gray-600 dark:text-gray-400 mb-6 leading-relaxed">
+                  {t('footer.aboutDescription')}
+                </p>
+                <div className="flex space-x-3">
+                  {[FiTwitter, FiFacebook, FiLinkedin, FiInstagram].map((Icon, index) => (
+                    <a 
+                      key={index}
+                      href="#" 
+                      className="w-10 h-10 rounded-xl bg-white dark:bg-gray-800 flex items-center justify-center text-gray-600 dark:text-gray-400 hover:bg-indigo-100 hover:text-indigo-600 dark:hover:bg-indigo-900/40 dark:hover:text-indigo-400 transition-all duration-300"
+                      aria-label={`Social media ${index + 1}`}
                     >
-                      <FiChevronRight className="w-4 h-4 mr-2 text-blue-500/70 dark:text-blue-400/70" />
-                      {link.label}
-                    </Link>
+                      <Icon className="w-5 h-5" />
+                    </a>
+                  ))}
+                </div>
+              </div>
+
+              {/* Quick Links */}
+              <div>
+                <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-6">
+                  {t('footer.quickLinks')}
+                </h3>
+                <ul className="space-y-3">
+                  {navLinks.map((link) => (
+                    <li key={link.path}>
+                      <Link
+                        to={link.path}
+                        className="text-gray-600 dark:text-gray-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors duration-300 flex items-center"
+                      >
+                        <FiChevronRight className={`w-4 h-4 ${isRTL ? 'ml-2' : 'mr-2'} text-indigo-500/70 dark:text-indigo-400/70`} />
+                        {link.label}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              {/* Contact Info */}
+              <div>
+                <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-6">
+                  {t('footer.contact')}
+                </h3>
+                <ul className="space-y-4 text-gray-600 dark:text-gray-400">
+                  <li className="flex items-start">
+                    <div className={`flex-shrink-0 mt-1 w-10 h-10 bg-indigo-100 dark:bg-indigo-900/30 rounded-xl flex items-center justify-center text-indigo-600 dark:text-indigo-400 ${isRTL ? 'ml-3' : 'mr-3'}`}>
+                      <FiMapPin className="w-5 h-5" />
+                    </div>
+                    <div>{t('footer.address')}</div>
                   </li>
-                ))}
-              </ul>
-            </div>
+                  <li className="flex items-center">
+                    <div className={`flex-shrink-0 w-10 h-10 bg-indigo-100 dark:bg-indigo-900/30 rounded-xl flex items-center justify-center text-indigo-600 dark:text-indigo-400 ${isRTL ? 'ml-3' : 'mr-3'}`}>
+                      <FiMail className="w-5 h-5" />
+                    </div>
+                    <a
+                      href="mailto:info@hilaltech.com"
+                      className="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors duration-300"
+                    >
+                      info@hilaltech.com
+                    </a>
+                  </li>
+                  <li className="flex items-center">
+                    <div className={`flex-shrink-0 w-10 h-10 bg-indigo-100 dark:bg-indigo-900/30 rounded-xl flex items-center justify-center text-indigo-600 dark:text-indigo-400 ${isRTL ? 'ml-3' : 'mr-3'}`}>
+                      <FiPhone className="w-5 h-5" />
+                    </div>
+                    <a
+                      href="tel:+1234567890"
+                      className="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors duration-300"
+                    >
+                      +123 456 7890
+                    </a>
+                  </li>
+                </ul>
+              </div>
 
-            {/* Contact Info */}
-            <div>
-              <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-6 relative">
-                {t('footer.contact')}
-                <span className="absolute -bottom-2 left-0 w-10 h-1 bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-400 rounded-full"></span>
-              </h3>
-              <ul className="space-y-4 text-gray-600 dark:text-gray-400">
-                <li className="flex items-start">
-                  <div className="flex-shrink-0 mt-1 w-8 h-8 bg-blue-100 dark:bg-blue-900/30 rounded-full flex items-center justify-center text-blue-600 dark:text-blue-400 mr-3">
-                    <FiMapPin className="w-4 h-4" />
-                  </div>
-                  <div>{t('footer.address')}</div>
-                </li>
-                <li className="flex items-center">
-                  <div className="flex-shrink-0 w-8 h-8 bg-blue-100 dark:bg-blue-900/30 rounded-full flex items-center justify-center text-blue-600 dark:text-blue-400 mr-3">
-                    <FiMail className="w-4 h-4" />
-                  </div>
-                  <a
-                    href="mailto:info@hilaltech.com"
-                    className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-300"
+              {/* Newsletter */}
+              <div>
+                <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-6">
+                  {t('footer.newsletter')}
+                </h3>
+                <p className="text-gray-600 dark:text-gray-400 mb-4">
+                  {t('footer.newsletterDescription')}
+                </p>
+                <form className="flex">
+                  <input 
+                    type="email" 
+                    placeholder={t('footer.emailPlaceholder')} 
+                    className="flex-1 px-4 py-3 rounded-l-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:focus:ring-indigo-400"
+                  />
+                  <button 
+                    type="submit"
+                    className="px-4 py-3 rounded-r-lg bg-indigo-600 hover:bg-indigo-700 dark:bg-indigo-600 dark:hover:bg-indigo-700 text-white font-medium transition-all duration-300"
                   >
-                    info@hilaltech.com
-                  </a>
-                </li>
-                <li className="flex items-center">
-                  <div className="flex-shrink-0 w-8 h-8 bg-blue-100 dark:bg-blue-900/30 rounded-full flex items-center justify-center text-blue-600 dark:text-blue-400 mr-3">
-                    <FiPhone className="w-4 h-4" />
-                  </div>
-                  <a
-                    href="tel:+1234567890"
-                    className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-300"
-                  >
-                    +123 456 7890
-                  </a>
-                </li>
-              </ul>
-            </div>
-
-            {/* Newsletter */}
-            <div>
-              <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-6 relative">
-                {t('footer.newsletter')}
-                <span className="absolute -bottom-2 left-0 w-10 h-1 bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-400 rounded-full"></span>
-              </h3>
-              <p className="text-gray-600 dark:text-gray-400 mb-4">
-                {t('footer.newsletterDescription')}
-              </p>
-              <form className="flex">
-                <input 
-                  type="email" 
-                  placeholder={t('footer.emailPlaceholder')} 
-                  className="flex-1 px-4 py-2 rounded-l-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400"
-                />
-                <button 
-                  type="submit"
-                  className="px-4 py-2 rounded-r-lg bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 text-white font-medium transition-all duration-300"
-                >
-                  {t('footer.subscribe')}
-                </button>
-              </form>
+                    {t('footer.subscribe')}
+                  </button>
+                </form>
+              </div>
             </div>
           </div>
+        </div>
 
-          {/* Divider */}
-          <div className="h-px bg-gradient-to-r from-transparent via-gray-300 dark:via-gray-700 to-transparent my-10"></div>
-
-          {/* Copyright */}
-          <div className="flex flex-col md:flex-row justify-between items-center">
-            <p className="text-gray-600 dark:text-gray-400 mb-4 md:mb-0">
-              &copy; {new Date().getFullYear()} Hilal Tech. {t('footer.rights')}
-            </p>
-            <div className="flex space-x-6">
-              <a href="#" className="text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors text-sm">
-                {t('footer.privacy')}
-              </a>
-              <a href="#" className="text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors text-sm">
-                {t('footer.terms')}
-              </a>
-              <a href="#" className="text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors text-sm">
-                {t('footer.sitemap')}
-              </a>
+        {/* Footer bottom / copyright */}
+        <div className="border-t border-gray-200 dark:border-gray-800">
+          <div className="container mx-auto px-6 py-6">
+            <div className="flex flex-col md:flex-row justify-between items-center">
+              <p className="text-gray-600 dark:text-gray-400 mb-4 md:mb-0">
+                &copy; {new Date().getFullYear()} Hilal Tech. {t('footer.rights')}
+              </p>
+              <div className="flex space-x-6">
+                <a href="#" className="text-gray-600 dark:text-gray-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors text-sm">
+                  {t('footer.privacy')}
+                </a>
+                <a href="#" className="text-gray-600 dark:text-gray-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors text-sm">
+                  {t('footer.terms')}
+                </a>
+                <a href="#" className="text-gray-600 dark:text-gray-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors text-sm">
+                  {t('footer.sitemap')}
+                </a>
+              </div>
             </div>
           </div>
         </div>
