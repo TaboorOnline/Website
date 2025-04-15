@@ -8,6 +8,7 @@ interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   iconPosition?: 'left' | 'right';
   fullWidth?: boolean;
   helperText?: string;
+  custom?: string;
 }
 
 const Input = forwardRef<HTMLInputElement, InputProps>(
@@ -20,6 +21,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
     helperText,
     className = '',
     id,
+    custom,
     ...props
   }, ref) => {
     // Generate ID if not provided
@@ -48,7 +50,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
             id={inputId}
             className={`input ${fullWidth ? 'w-full' : ''} ${
               error ? 'border-red-300 text-red-900 placeholder-red-300 focus:ring-red-500 focus:border-red-500' : ''
-            } ${icon && iconPosition === 'left' ? 'pl-10' : ''} ${icon && iconPosition === 'right' ? 'pr-10' : ''}`}
+            } ${icon && iconPosition === 'left' ? 'pl-10' : ''} ${icon && iconPosition === 'right' ? 'pr-10' : ''} ${custom}`}
             aria-invalid={error ? 'true' : 'false'}
             aria-describedby={error ? `${inputId}-error` : helperText ? `${inputId}-description` : undefined}
             {...props}

@@ -5,7 +5,6 @@ import { motion } from 'framer-motion';
 import { FiArrowRight, FiCalendar, FiUser, FiFileText } from 'react-icons/fi';
 import { useBlogPosts } from '../services/blogService';
 import Button from '../../../shared/components/Button';
-import useIntersectionObserver from '../../../shared/hooks/useIntersectionObserver';
 import { useTheme } from '../../../shared/hooks/useTheme';
 import Image from '../../../shared/components/Image';
 
@@ -13,27 +12,26 @@ const BlogPreview = () => {
   const { t, i18n } = useTranslation();
   const { theme } = useTheme();
   const { data: posts, isLoading, error } = useBlogPosts(3); // Limit to 3 most recent posts
-  const [sectionRef, isVisible] = useIntersectionObserver<HTMLDivElement>({ threshold: 0.1, triggerOnce: true });
-  
   const currentLanguage = i18n.language as 'en' | 'ar';
+  const isRTL = currentLanguage === 'ar';
 
+  // Animation variants
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
       transition: {
-        delayChildren: 0.3,
         staggerChildren: 0.1
       }
     }
   };
 
   const itemVariants = {
-    hidden: { y: 20, opacity: 0 },
+    hidden: { y: 30, opacity: 0 },
     visible: {
       y: 0,
       opacity: 1,
-      transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] }
+      transition: { duration: 0.5, ease: "easeOut" }
     }
   };
 
@@ -50,18 +48,19 @@ const BlogPreview = () => {
     if (isLoading) {
       return Array(3).fill(0).map((_, index) => (
         <motion.div key={index} variants={itemVariants} className="animate-pulse">
-          <div className="h-full bg-white dark:bg-gray-800 rounded-xl shadow-md overflow-hidden border border-gray-100 dark:border-gray-700">
-            <div className="aspect-video bg-gray-200 dark:bg-gray-700"></div>
-            <div className="p-6">
-              <div className="h-7 bg-gray-200 dark:bg-gray-700 rounded-md w-3/4 mb-4"></div>
-              <div className="space-y-3">
-                <div className="h-4 bg-gray-200 dark:bg-gray-700 rounded-full w-full"></div>
-                <div className="h-4 bg-gray-200 dark:bg-gray-700 rounded-full w-5/6"></div>
-                <div className="h-4 bg-gray-200 dark:bg-gray-700 rounded-full w-4/6 mb-4"></div>
+          <div className="h-full bg-white dark:bg-gray-900 rounded-xl overflow-hidden">
+            <div className="aspect-video bg-gray-200 dark:bg-gray-800"></div>
+            <div className="p-8">
+              <div className="h-4 w-24 bg-indigo-200 dark:bg-indigo-900 rounded-full mb-4"></div>
+              <div className="h-8 bg-gray-200 dark:bg-gray-800 rounded-lg w-3/4 mb-4"></div>
+              <div className="space-y-3 mb-6">
+                <div className="h-4 bg-gray-200 dark:bg-gray-800 rounded-full w-full"></div>
+                <div className="h-4 bg-gray-200 dark:bg-gray-800 rounded-full w-5/6"></div>
+                <div className="h-4 bg-gray-200 dark:bg-gray-800 rounded-full w-4/6"></div>
               </div>
-              <div className="flex justify-between pt-4">
-                <div className="h-4 bg-gray-200 dark:bg-gray-700 rounded-full w-24"></div>
-                <div className="h-4 bg-gray-200 dark:bg-gray-700 rounded-full w-20"></div>
+              <div className="flex justify-between">
+                <div className="h-4 w-32 bg-gray-200 dark:bg-gray-800 rounded-full"></div>
+                <div className="h-4 w-24 bg-gray-200 dark:bg-gray-800 rounded-full"></div>
               </div>
             </div>
           </div>
@@ -97,15 +96,15 @@ const BlogPreview = () => {
       return (
         <motion.div key={post.id} variants={itemVariants}>
           <Link to={`/blog/${post.slug}`} className="block h-full group">
-            <div className="h-full bg-white dark:bg-gray-800 rounded-xl shadow-md hover:shadow-xl overflow-hidden border border-gray-100 dark:border-gray-700 hover:border-blue-200 dark:hover:border-blue-800 transition-all duration-300 transform group-hover:-translate-y-1">
+            <div className="h-full bg-white dark:bg-gray-900 rounded-xl overflow-hidden transform transition-all duration-500 hover:shadow-xl hover:shadow-indigo-500/10 dark:hover:shadow-indigo-500/5">
               <div className="aspect-video bg-gray-100 dark:bg-gray-800 overflow-hidden">
                 <Image 
                   src={post.featured_image} 
                   alt={title}
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                   customIcon={
-                    <div className="flex flex-col items-center justify-center h-full bg-gray-200 dark:bg-gray-700">
-                      <FiFileText className="w-14 h-14 text-gray-400 dark:text-gray-600 mb-2" />
+                    <div className="flex flex-col items-center justify-center h-full">
+                      <FiFileText className="w-12 h-12 text-gray-400 dark:text-gray-600 mb-2" />
                       <div className="text-sm text-gray-500 dark:text-gray-400">
                         {t('blog.imageNotAvailable')}
                       </div>
@@ -113,21 +112,21 @@ const BlogPreview = () => {
                   }
                 />
               </div>
-              <div className="p-6">
-                <div className="flex items-center space-x-2 mb-3">
-                  <span className="px-3 py-1 bg-blue-100/70 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 text-xs rounded-full font-medium">
+              <div className="p-8" dir={isRTL ? "rtl" : "ltr"}>
+                <div className="mb-4">
+                  <span className="px-3 py-1 text-xs font-medium text-indigo-700 dark:text-indigo-300 bg-indigo-100 dark:bg-indigo-900/40 rounded-full">
                     {post.category || t('blog.defaultCategory')}
                   </span>
                 </div>
-                <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3 line-clamp-2 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-300">{title}</h3>
-                <p className="text-gray-600 dark:text-gray-300 mb-5 line-clamp-3 leading-relaxed">{excerpt}</p>
-                <div className="flex justify-between text-sm text-gray-500 dark:text-gray-400 border-t border-gray-100 dark:border-gray-700 pt-4">
+                <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-4 line-clamp-2 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors duration-300">{title}</h3>
+                <p className="text-gray-600 dark:text-gray-400 mb-6 line-clamp-3">{excerpt}</p>
+                <div className="flex justify-between text-sm text-gray-500 dark:text-gray-500 border-t border-gray-100 dark:border-gray-800 pt-4">
                   <div className="flex items-center">
-                    <FiCalendar className="mr-1.5" />
+                    <FiCalendar className={`${isRTL ? 'ml-2' : 'mr-2'}`} />
                     <span>{formatDate(post.published_at || post.created_at)}</span>
                   </div>
                   <div className="flex items-center">
-                    <FiUser className="mr-1.5" />
+                    <FiUser className={`${isRTL ? 'ml-2' : 'mr-2'}`} />
                     <span>{post.profiles?.name || t('blog.admin')}</span>
                   </div>
                 </div>
@@ -140,44 +139,35 @@ const BlogPreview = () => {
   };
 
   return (
-    <section className="py-24 relative overflow-hidden bg-gradient-to-b from-white to-gray-50 dark:from-gray-900 dark:to-gray-950" id="blog-preview">
-      {/* Background decorative elements */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-0 left-0 w-full h-1/3 bg-gradient-to-b from-purple-50/20 to-transparent dark:from-purple-900/10 dark:to-transparent"></div>
-        <div className="absolute bottom-0 right-0 w-full h-1/3 bg-gradient-to-t from-blue-50/20 to-transparent dark:from-blue-900/10 dark:to-transparent"></div>
-        
-        <div className="absolute -top-40 right-1/4 w-96 h-96 bg-blue-100/30 dark:bg-blue-900/10 rounded-full blur-3xl opacity-70 transform translate-x-1/2"></div>
-        <div className="absolute -bottom-20 -left-20 w-80 h-80 bg-purple-100/30 dark:bg-purple-900/10 rounded-full blur-3xl opacity-70"></div>
-        
-        {/* Decorative grid patterns */}
-        <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGQ9Ik0zNiAxOGMxLjIgMCAyIC44IDIgMnYyMGMwIDEuMi0uOCAyLTIgMkgxOGMtMS4yIDAtMi0uOC0yLTJWMjBjMC0xLjIuOC0yIDItMmgxOHoiIHN0cm9rZT0icmdiYSgwLDAsMCwwLjAyKSIgc3Ryb2tlLXdpZHRoPSIyIi8+PC9nPjwvc3ZnPg==')] dark:bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGQ9Ik0zNiAxOGMxLjIgMCAyIC44IDIgMnYyMGMwIDEuMi0uOCAyLTIgMkgxOGMtMS4yIDAtMi0uOC0yLTJWMjBjMC0xLjIuOC0yIDItMmgxOHoiIHN0cm9rZT0icmdiYSgyNTUsMjU1LDI1NSwwLjAzKSIgc3Ryb2tlLXdpZHRoPSIyIi8+PC9nPjwvc3ZnPg==')]"></div>
-      </div>
+    <section className="py-24 bg-gray-50 dark:bg-gray-950" id="blog-preview">
+      {/* Subtle color accents */}
+      <div className="absolute right-0 top-1/4 w-64 h-64 bg-indigo-100 dark:bg-indigo-950 rounded-full opacity-50 -z-10 blur-3xl"></div>
+      <div className="absolute left-0 bottom-1/4 w-64 h-64 bg-rose-100 dark:bg-rose-950 rounded-full opacity-50 -z-10 blur-3xl"></div>
       
-      <div className="container-custom relative z-10">
+      <div className="container mx-auto px-6 relative">
         <motion.div
-          ref={sectionRef}
           initial="hidden"
-          animate={isVisible ? "visible" : "hidden"}
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.1 }}
           variants={containerVariants}
           className="text-center mb-16"
         >
-          <motion.span 
-            variants={itemVariants} 
-            className="inline-block px-4 py-1.5 text-sm font-medium text-blue-700 dark:text-blue-300 bg-blue-100/80 dark:bg-blue-900/30 rounded-full mb-5 backdrop-blur-sm border border-blue-200/50 dark:border-blue-800/50"
-          >
-            {t('blog.badge')}
-          </motion.span>
+          <motion.div variants={itemVariants}>
+            <span className="inline-block px-4 py-1 text-xs font-bold uppercase tracking-widest text-indigo-600 dark:text-indigo-400 mb-5">
+              {t('blog.badge')}
+            </span>
+          </motion.div>
           
           <motion.h2 
             variants={itemVariants} 
-            className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-5 leading-tight"
+            className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6"
           >
             {t('blog.latestTitle')}
           </motion.h2>
           
           <motion.p 
             variants={itemVariants} 
-            className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed"
+            className="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto"
           >
             {t('blog.latestSubtitle')}
           </motion.p>
@@ -185,27 +175,29 @@ const BlogPreview = () => {
 
         <motion.div
           initial="hidden"
-          animate={isVisible ? "visible" : "hidden"}
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.1 }}
           variants={containerVariants}
-          className="grid grid-cols-1 md:grid-cols-3 gap-8 relative"
+          className="grid grid-cols-1 md:grid-cols-3 gap-8"
         >
-          {/* Decorative elements */}
-          <div className="absolute -top-10 -right-10 w-20 h-20 bg-blue-100/30 dark:bg-blue-900/10 rounded-full blur-xl"></div>
-          <div className="absolute -bottom-10 left-1/3 w-24 h-24 bg-purple-100/30 dark:bg-purple-900/10 rounded-full blur-xl transform -translate-x-1/2"></div>
-          
           {renderBlogPosts()}
         </motion.div>
 
         <motion.div
-          variants={itemVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={containerVariants}
           className="mt-16 text-center"
         >
-          <Link to="/blog">
-            <button className="px-6 py-3 text-white font-medium rounded-lg bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-500 hover:to-blue-600 shadow-md hover:shadow-lg shadow-blue-500/20 dark:shadow-blue-800/30 transition-all duration-300 inline-flex items-center">
-              <span className="mr-2">{t('blog.viewAll')}</span>
-              <FiArrowRight className="transition-transform duration-300 group-hover:translate-x-1" />
-            </button>
-          </Link>
+          <motion.div variants={itemVariants}>
+            <Link to="/blog">
+              <button className="px-8 py-4 text-white font-medium rounded-xl bg-indigo-600 hover:bg-indigo-700 dark:bg-indigo-600 dark:hover:bg-indigo-700 transition-all duration-300 hover:shadow-lg hover:shadow-indigo-500/30 dark:hover:shadow-indigo-500/20 flex items-center mx-auto">
+                <span className={`${isRTL ? 'ml-2' : 'mr-2'}`}>{t('blog.viewAll')}</span>
+                <FiArrowRight className={`transition-transform duration-300 group-hover:${isRTL ? 'translate-x-minus-1' : 'translate-x-1'}`} />
+              </button>
+            </Link>
+          </motion.div>
         </motion.div>
       </div>
     </section>

@@ -2,16 +2,18 @@
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
-import { FiSearch, FiCalendar, FiUser, FiTag } from 'react-icons/fi';
+import { FiSearch, FiCalendar, FiUser, FiTag, FiArchive } from 'react-icons/fi';
 import { Link } from 'react-router-dom';
 import { useBlogPosts } from '../services/blogService';
-import Card from '../../../shared/components/Card';
+// import Card from '../../../shared/components/Card';
 import Input from '../../../shared/components/Input';
 import Button from '../../../shared/components/Button';
 import useDebounce from '../../../shared/hooks/useDebounce';
+import Image from '../../../shared/components/Image';
 
 const Blog = () => {
   const { t, i18n } = useTranslation();
+  const isRTL = i18n.language === 'ar';
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedTag, setSelectedTag] = useState<string | null>(null);
   const debouncedSearchQuery = useDebounce(searchQuery, 300);
@@ -84,39 +86,55 @@ const Blog = () => {
     visible: {
       opacity: 1,
       transition: {
-        delayChildren: 0.3,
         staggerChildren: 0.1
       }
     }
   };
 
   const itemVariants = {
-    hidden: { y: 20, opacity: 0 },
+    hidden: { y: 30, opacity: 0 },
     visible: {
       y: 0,
       opacity: 1,
-      transition: { duration: 0.5 }
+      transition: { duration: 0.5, ease: "easeOut" }
     }
   };
 
   return (
-    <div>
+    <div dir={isRTL ? "rtl" : "ltr"}>
       {/* Hero section */}
-      <section className="bg-gradient-to-b from-white to-gray-50 dark:from-gray-900 dark:to-gray-800 py-20">
-        <div className="container-custom">
+      <section className="relative py-24 bg-white dark:bg-gray-950">
+        {/* Color accent */}
+        <div className="absolute inset-0 overflow-hidden">
+          <div className="absolute -top-32 -right-32 w-64 h-64 bg-indigo-100 dark:bg-indigo-950 rounded-full"></div>
+          <div className="absolute top-1/2 -left-24 w-48 h-48 bg-rose-100 dark:bg-rose-950 rounded-full"></div>
+          <div className="absolute -bottom-32 right-1/2 w-80 h-80 bg-amber-100 dark:bg-amber-950 rounded-full"></div>
+        </div>
+
+        <div className="container mx-auto px-6 relative z-10">
           <motion.div
             initial="hidden"
             animate="visible"
             variants={containerVariants}
             className="text-center max-w-3xl mx-auto"
           >
-            <motion.span variants={itemVariants} className="inline-block px-3 py-1 text-sm text-primary-700 dark:text-primary-300 bg-primary-100 dark:bg-primary-900/30 rounded-full mb-4">
-              {t('blog.badge')}
-            </motion.span>
-            <motion.h1 variants={itemVariants} className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6 leading-tight">
+            <motion.div variants={itemVariants}>
+              <span className="inline-block px-4 py-1 text-xs font-bold uppercase tracking-widest text-indigo-600 dark:text-indigo-400 mb-6">
+                {t('blog.badge')}
+              </span>
+            </motion.div>
+            
+            <motion.h1 
+              variants={itemVariants} 
+              className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6"
+            >
               {t('blog.pageTitle')}
             </motion.h1>
-            <motion.p variants={itemVariants} className="text-xl text-gray-600 dark:text-gray-300 mb-8">
+            
+            <motion.p 
+              variants={itemVariants} 
+              className="text-xl text-gray-600 dark:text-gray-400"
+            >
               {t('blog.pageSubtitle')}
             </motion.p>
           </motion.div>
@@ -124,9 +142,9 @@ const Blog = () => {
       </section>
 
       {/* Blog content */}
-      <section className="py-16 bg-white dark:bg-gray-900">
-        <div className="container-custom">
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+      <section className="py-20 bg-gray-50 dark:bg-gray-900">
+        <div className="container mx-auto px-6">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
             {/* Main content */}
             <div className="lg:col-span-2">
               {/* Search for mobile */}
@@ -136,6 +154,7 @@ const Blog = () => {
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   icon={<FiSearch className="text-gray-400" />}
+                  className="bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-700 rounded-xl"
                 />
               </div>
 
@@ -143,34 +162,44 @@ const Blog = () => {
               {isLoading ? (
                 <div className="space-y-8">
                   {Array(3).fill(0).map((_, index) => (
-                    <Card key={index} className="animate-pulse">
-                      <div className="h-48 bg-gray-200 dark:bg-gray-700 rounded-lg mb-4"></div>
-                      <div className="h-6 bg-gray-200 dark:bg-gray-700 rounded w-3/4 mb-4"></div>
-                      <div className="h-4 bg-gray-200 dark:bg-gray-700 rounded mb-2 w-full"></div>
-                      <div className="h-4 bg-gray-200 dark:bg-gray-700 rounded mb-2 w-5/6"></div>
-                      <div className="h-4 bg-gray-200 dark:bg-gray-700 rounded w-4/6 mb-4"></div>
-                      <div className="flex justify-between">
-                        <div className="h-4 bg-gray-200 dark:bg-gray-700 rounded w-24"></div>
-                        <div className="h-4 bg-gray-200 dark:bg-gray-700 rounded w-24"></div>
+                    <div key={index} className="bg-white dark:bg-gray-800 rounded-xl shadow-md overflow-hidden animate-pulse">
+                      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 p-6">
+                        <div className="aspect-video md:aspect-square bg-gray-200 dark:bg-gray-700 rounded-xl"></div>
+                        <div className="md:col-span-2">
+                          <div className="h-7 bg-gray-200 dark:bg-gray-700 rounded-xl w-3/4 mb-4"></div>
+                          <div className="space-y-3">
+                            <div className="h-4 bg-gray-200 dark:bg-gray-700 rounded-full w-full"></div>
+                            <div className="h-4 bg-gray-200 dark:bg-gray-700 rounded-full w-5/6"></div>
+                            <div className="h-4 bg-gray-200 dark:bg-gray-700 rounded-full w-4/6"></div>
+                          </div>
+                          <div className="flex justify-between mt-6">
+                            <div className="h-4 bg-gray-200 dark:bg-gray-700 rounded-full w-24"></div>
+                            <div className="h-4 bg-gray-200 dark:bg-gray-700 rounded-full w-24"></div>
+                          </div>
+                        </div>
                       </div>
-                    </Card>
+                    </div>
                   ))}
                 </div>
               ) : error ? (
-                <div className="text-center py-12">
-                  <p className="text-red-500 mb-4">{t('errors.blogLoadFailed')}</p>
-                  <Button onClick={() => window.location.reload()}>
+                <div className="text-center py-12 bg-white dark:bg-gray-800 rounded-xl shadow-md">
+                  <p className="text-red-500 dark:text-red-400 mb-4">{t('errors.blogLoadFailed')}</p>
+                  <Button 
+                    onClick={() => window.location.reload()}
+                    className="bg-indigo-600 hover:bg-indigo-700 dark:bg-indigo-600 dark:hover:bg-indigo-700 text-white rounded-xl px-6 py-3"
+                  >
                     {t('general.tryAgain')}
                   </Button>
                 </div>
               ) : filteredPosts.length === 0 ? (
-                <div className="text-center py-12 bg-gray-50 dark:bg-gray-800 rounded-lg">
-                  <p className="text-gray-600 dark:text-gray-300 mb-4">{t('blog.noPostsFound')}</p>
+                <div className="text-center py-12 bg-white dark:bg-gray-800 rounded-xl shadow-md">
+                  <p className="text-gray-600 dark:text-gray-400 mb-4">{t('blog.noPostsFound')}</p>
                   <Button 
                     onClick={() => {
                       setSearchQuery('');
                       setSelectedTag(null);
                     }}
+                    className="bg-indigo-600 hover:bg-indigo-700 dark:bg-indigo-600 dark:hover:bg-indigo-700 text-white rounded-xl px-6 py-3"
                   >
                     {t('blog.clearFilters')}
                   </Button>
@@ -190,33 +219,38 @@ const Blog = () => {
                     return (
                       <motion.div key={post.id} variants={itemVariants}>
                         <Link to={`/blog/${post.slug}`}>
-                          <Card hoverable className="transition-all duration-300 hover:shadow-md">
-                            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                              <div className="aspect-video md:aspect-square bg-gray-100 dark:bg-gray-800 rounded-lg overflow-hidden">
-                                <img 
+                          <div className="bg-white dark:bg-gray-800 rounded-xl shadow-md hover:shadow-xl overflow-hidden border border-gray-100 dark:border-gray-700 hover:border-indigo-200 dark:hover:border-indigo-800 transition-all duration-300 hover:-translate-y-1">
+                            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 p-6">
+                              <div className="aspect-video md:aspect-square bg-gray-100 dark:bg-gray-700 rounded-xl overflow-hidden">
+
+                                <Image 
                                   src={post.featured_image} 
                                   alt={title}
                                   className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
-                                  onError={(e) => {
-                                    // Fallback for broken images
-                                    (e.target as HTMLImageElement).src = 'https://via.placeholder.com/600x400?text=Blog+Post';
-                                  }}
+                                  customIcon={
+                                    <div className="flex flex-col items-center justify-center h-full bg-indigo-50 dark:bg-indigo-950/30">
+                                      <FiArchive className="w-20 h-20 text-indigo-300 dark:text-indigo-700 mb-2" />
+                                      <div className="text-sm text-indigo-500 dark:text-indigo-400">
+                                        {t('blog.photoNotAvailable')}
+                                      </div>
+                                    </div>
+                                  }
                                 />
                               </div>
                               <div className="md:col-span-2">
-                                <h2 className="text-2xl font-semibold text-gray-900 dark:text-white mb-2 line-clamp-2">
+                                <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-3 line-clamp-2 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">
                                   {title}
                                 </h2>
-                                <p className="text-gray-600 dark:text-gray-300 mb-4 line-clamp-3">
+                                <p className="text-gray-600 dark:text-gray-400 mb-4 line-clamp-3">
                                   {excerpt}
                                 </p>
                                 <div className="flex flex-wrap items-center text-sm text-gray-500 dark:text-gray-400 mb-4">
-                                  <div className="flex items-center mr-4">
-                                    <FiCalendar className="mr-1" />
+                                  <div className={`flex items-center ${isRTL ? 'ml-4' : 'mr-4'}`}>
+                                    <FiCalendar className={`${isRTL ? 'ml-1.5' : 'mr-1.5'}`} />
                                     <span>{formatDate(post.published_at || post.created_at)}</span>
                                   </div>
                                   <div className="flex items-center">
-                                    <FiUser className="mr-1" />
+                                    <FiUser className={`${isRTL ? 'ml-1.5' : 'mr-1.5'}`} />
                                     <span>{post.profiles?.name || 'Admin'}</span>
                                   </div>
                                 </div>
@@ -225,7 +259,7 @@ const Blog = () => {
                                     {post.tags.map((tag: string, index: number) => (
                                       <span
                                         key={index}
-                                        className="px-2 py-1 text-xs rounded-full bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300"
+                                        className="px-3 py-1 text-xs rounded-full bg-indigo-50 dark:bg-indigo-900/20 text-indigo-600 dark:text-indigo-400"
                                       >
                                         {tag}
                                       </span>
@@ -234,7 +268,7 @@ const Blog = () => {
                                 )}
                               </div>
                             </div>
-                          </Card>
+                          </div>
                         </Link>
                       </motion.div>
                     );
@@ -244,49 +278,57 @@ const Blog = () => {
             </div>
 
             {/* Sidebar */}
-            <div className="lg:sticky lg:top-24 lg:h-fit">
+            <div className="lg:sticky lg:top-24 lg:h-fit space-y-8">
               {/* Search */}
-              <div className="hidden lg:block mb-8">
+                <div className="hidden lg:block">
                 <Input
                   placeholder={t('blog.searchPlaceholder')}
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   icon={<FiSearch className="text-gray-400" />}
+                  className="bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-700 rounded-xl"
+                  custom="py-[12px] pr-[12px] pl-[40px] outline-none"
                 />
-              </div>
+                </div>
 
               {/* Categories/Tags */}
-              <div className="bg-gray-50 dark:bg-gray-800 p-6 rounded-lg mb-8">
-                <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4 flex items-center">
-                  <FiTag className="mr-2" />
+              <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md border border-gray-100 dark:border-gray-700">
+                <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-6 flex items-center">
+                  <FiTag className={`text-indigo-600 dark:text-indigo-400 ${isRTL ? 'ml-2' : 'mr-2'}`} />
                   {t('blog.tags')}
                 </h3>
                 
                 <div className="flex flex-wrap gap-2">
-                  <Button
-                    size="sm"
-                    variant={selectedTag === null ? 'primary' : 'outline'}
+                  <button
+                    className={`px-3 py-1.5 text-sm rounded-lg ${
+                      selectedTag === null
+                        ? 'bg-indigo-600 dark:bg-indigo-600 text-white'
+                        : 'bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600'
+                    } transition-colors`}
                     onClick={() => setSelectedTag(null)}
                   >
                     {t('blog.allPosts')}
-                  </Button>
+                  </button>
                   
                   {allTags.map((tag) => (
-                    <Button
+                    <button
                       key={tag}
-                      size="sm"
-                      variant={selectedTag === tag ? 'primary' : 'outline'}
+                      className={`px-3 py-1.5 text-sm rounded-lg ${
+                        selectedTag === tag
+                          ? 'bg-indigo-600 dark:bg-indigo-600 text-white'
+                          : 'bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600'
+                      } transition-colors`}
                       onClick={() => setSelectedTag(tag === selectedTag ? null : tag)}
                     >
                       {tag}
-                    </Button>
+                    </button>
                   ))}
                 </div>
               </div>
 
               {/* Recent Posts */}
-              <div className="bg-gray-50 dark:bg-gray-800 p-6 rounded-lg">
-                <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">
+              <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md border border-gray-100 dark:border-gray-700">
+                <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-6">
                   {t('blog.recentPosts')}
                 </h3>
                 
@@ -294,36 +336,39 @@ const Blog = () => {
                   <div className="space-y-4">
                     {Array(3).fill(0).map((_, index) => (
                       <div key={index} className="flex gap-3 animate-pulse">
-                        <div className="w-16 h-16 bg-gray-200 dark:bg-gray-700 rounded"></div>
+                        <div className="w-16 h-16 bg-gray-200 dark:bg-gray-700 rounded-lg"></div>
                         <div className="flex-1">
-                          <div className="h-4 bg-gray-200 dark:bg-gray-700 rounded mb-2 w-full"></div>
-                          <div className="h-4 bg-gray-200 dark:bg-gray-700 rounded w-1/2"></div>
+                          <div className="h-4 bg-gray-200 dark:bg-gray-700 rounded-full mb-2 w-full"></div>
+                          <div className="h-4 bg-gray-200 dark:bg-gray-700 rounded-full w-1/2"></div>
                         </div>
                       </div>
                     ))}
                   </div>
                 ) : posts && posts.length > 0 ? (
-                  <div className="space-y-4">
+                  <div className="space-y-5">
                     {posts.slice(0, 3).map((post) => {
                       const postTranslations = (post.translations as Record<'en' | 'ar', { title: string; excerpt?: string; content?: string }>)?.[currentLanguage] || {};
                       const title = postTranslations.title || post.title;
                       
                       return (
                         <Link key={post.id} to={`/blog/${post.slug}`}>
-                          <div className="flex gap-3 group">
-                            <div className="w-16 h-16 bg-gray-200 dark:bg-gray-700 rounded overflow-hidden">
-                              <img 
-                                src={post.featured_image} 
-                                alt={title}
-                                className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-                                onError={(e) => {
-                                  // Fallback for broken images
-                                  (e.target as HTMLImageElement).src = 'https://via.placeholder.com/100x100?text=Post';
-                                }}
-                              />
+                          <div className="flex gap-4 group mb-1">
+                            <div className="w-16 h-16 bg-gray-100 dark:bg-gray-700 rounded-lg overflow-hidden">
+                    
+                            <Image 
+                              src={post.featured_image} 
+                              alt={title}
+                              className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                              customIcon={
+                                <div className="flex flex-col items-center justify-center h-full bg-indigo-50 dark:bg-indigo-950/30">
+                                  <FiUser className="w-20 h-20 text-indigo-300 dark:text-indigo-700 mb-2" />
+                                </div>
+                              }
+                            />
+
                             </div>
                             <div>
-                              <h4 className="font-medium text-gray-900 dark:text-white line-clamp-2 group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors">
+                              <h4 className="font-medium text-gray-900 dark:text-white line-clamp-2 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
                                 {title}
                               </h4>
                               <p className="text-sm text-gray-500 dark:text-gray-400">
@@ -347,25 +392,34 @@ const Blog = () => {
       </section>
 
       {/* Newsletter subscription */}
-      <section className="py-16 bg-gray-50 dark:bg-gray-800">
-        <div className="container-custom">
+      <section className="py-20 bg-white dark:bg-gray-950 relative overflow-hidden">
+        {/* Color accent */}
+        <div className="absolute inset-0 overflow-hidden">
+          <div className="absolute top-1/2 -left-24 w-48 h-48 bg-indigo-100 dark:bg-indigo-950 rounded-full opacity-50 transform -translate-y-1/2"></div>
+          <div className="absolute -bottom-20 right-1/4 w-64 h-64 bg-amber-100 dark:bg-amber-950 rounded-full opacity-30"></div>
+        </div>
+        
+        <div className="container mx-auto px-6 relative z-10">
           <div className="max-w-3xl mx-auto text-center">
-            <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-6">
               {t('blog.newsletterTitle')}
             </h2>
-            <p className="text-lg text-gray-600 dark:text-gray-300 mb-8">
+            <p className="text-lg text-gray-600 dark:text-gray-400 mb-8">
               {t('blog.newsletterDescription')}
             </p>
             
             <form className="flex flex-col sm:flex-row gap-4 max-w-lg mx-auto">
-              <Input
-                placeholder={t('blog.emailPlaceholder')}
+              <input
                 type="email"
-                className="flex-1"
+                placeholder={t('blog.emailPlaceholder')}
+                className="flex-1 px-4 py-3 rounded-xl border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:focus:ring-indigo-400"
               />
-              <Button type="submit">
+              <button
+                type="submit"
+                className="px-6 py-3 rounded-xl bg-indigo-600 hover:bg-indigo-700 dark:bg-indigo-600 dark:hover:bg-indigo-700 text-white font-medium shadow-lg shadow-indigo-500/20 dark:shadow-indigo-600/20 transition-all duration-300"
+              >
                 {t('blog.subscribe')}
-              </Button>
+              </button>
             </form>
           </div>
         </div>

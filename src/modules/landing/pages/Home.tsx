@@ -1,7 +1,8 @@
 // src/modules/landing/pages/Home.tsx
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
+import { FiArrowUp } from 'react-icons/fi';
 import Hero from '../components/Hero';
 import Services from '../components/Services';
 import Projects from '../components/Projects';
@@ -12,12 +13,31 @@ import BlogPreview from '../components/BlogPreview';
 import ContactForm from '../components/ContactForm';
 
 const Home = () => {
-  // const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const isRTL = i18n.language === 'ar';
+  const [showScrollTop, setShowScrollTop] = useState(false);
 
   // Scroll to the top when the component mounts
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
+  // Add scroll event listener for the scroll-to-top button
+  useEffect(() => {
+    const handleScroll = () => {
+      setShowScrollTop(window.scrollY > 300);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  // Scroll to top function
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  };
 
   // Define animation variants for scroll animations
   const fadeInUp = {
@@ -26,13 +46,14 @@ const Home = () => {
       opacity: 1, 
       y: 0,
       transition: {
-        duration: 0.6
+        duration: 0.6,
+        ease: "easeOut"
       }
     }
   };
 
   return (
-    <div>
+    <div dir={isRTL ? "rtl" : "ltr"}>
       {/* Hero Section */}
       <Hero />
 
@@ -78,52 +99,23 @@ const Home = () => {
       {/* Contact Form */}
       <ContactForm />
 
-      {/* Scroll to top button - appears after scrolling */}
-      <ScrollToTopButton />
+      {/* Scroll to top button */}
+      <AnimatePresence>
+        {showScrollTop && (
+          <motion.button
+            initial={{ opacity: 0, scale: 0.5 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.5 }}
+            transition={{ duration: 0.3 }}
+            onClick={scrollToTop}
+            className="fixed bottom-8 right-8 w-12 h-12 rounded-xl bg-indigo-600 hover:bg-indigo-700 dark:bg-indigo-600 dark:hover:bg-indigo-700 flex items-center justify-center text-white shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110 z-50"
+            aria-label={t('common.scrollToTop')}
+          >
+            <FiArrowUp className="w-5 h-5" />
+          </motion.button>
+        )}
+      </AnimatePresence>
     </div>
-  );
-};
-
-// Scroll to top button component
-const ScrollToTopButton = () => {
-  const { t } = useTranslation();
-  
-  useEffect(() => {
-    const toggleVisibility = () => {
-      const button = document.getElementById('scroll-to-top');
-      if (button) {
-        if (window.pageYOffset > 500) {
-          button.classList.remove('opacity-0', 'pointer-events-none');
-          button.classList.add('opacity-100');
-        } else {
-          button.classList.remove('opacity-100');
-          button.classList.add('opacity-0', 'pointer-events-none');
-        }
-      }
-    };
-
-    window.addEventListener('scroll', toggleVisibility);
-    return () => window.removeEventListener('scroll', toggleVisibility);
-  }, []);
-
-  const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-    });
-  };
-
-  return (
-    <button
-      id="scroll-to-top"
-      onClick={scrollToTop}
-      aria-label={t('general.scrollToTop')}
-      className="fixed bottom-8 right-8 p-3 rounded-full bg-primary-600 text-white shadow-lg opacity-0 pointer-events-none transition-opacity duration-300 hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 z-50"
-    >
-      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 10l7-7m0 0l7 7m-7-7v18" />
-      </svg>
-    </button>
   );
 };
 

@@ -46,7 +46,7 @@ const Services = () => {
       accessor: 'featured' as const,
       cell: (service: Service) => (
         <div className="flex justify-center">
-          {service.featured ? (
+          {service.title ? (
             <FiStar className="text-yellow-500" />
           ) : (
             <FiStar className="text-gray-300 dark:text-gray-600" />

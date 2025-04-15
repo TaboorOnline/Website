@@ -5,11 +5,9 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
-import { FiMail, FiUser, FiPhone, FiMessageSquare, FiMapPin } from 'react-icons/fi';
+import { FiMail, FiUser, FiPhone, FiMessageSquare, FiMapPin, FiCheck } from 'react-icons/fi';
 import Button from '../../../shared/components/Button';
-import Input from '../../../shared/components/Input';
 import { sendContactMessage } from '../services/contactService';
-import useIntersectionObserver from '../../../shared/hooks/useIntersectionObserver';
 import { useTheme } from '../../../shared/hooks/useTheme';
 
 interface ContactFormData {
@@ -20,12 +18,12 @@ interface ContactFormData {
 }
 
 const ContactForm = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const { theme } = useTheme();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const [error, setError] = useState('');
-  const [formRef, isVisible] = useIntersectionObserver<HTMLDivElement>({ threshold: 0.1, triggerOnce: true });
+  const isRTL = i18n.language === 'ar';
 
   const contactSchema = yup.object({
     name: yup.string().required(t('validation.required')),
@@ -58,160 +56,161 @@ const ContactForm = () => {
     }
   };
 
+  // Animation variants
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
       transition: {
-        delayChildren: 0.3,
-        staggerChildren: 0.2
+        staggerChildren: 0.1
       }
     }
   };
 
   const itemVariants = {
-    hidden: { y: 20, opacity: 0 },
+    hidden: { y: 30, opacity: 0 },
     visible: {
       y: 0,
       opacity: 1,
-      transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] }
+      transition: { duration: 0.5, ease: "easeOut" }
     }
   };
 
+  // Contact information with icons
+  const contactInfo = [
+    {
+      icon: <FiMail className="w-5 h-5" />,
+      title: t('contact.email'),
+      content: 'info@hilaltech.com'
+    },
+    {
+      icon: <FiPhone className="w-5 h-5" />,
+      title: t('contact.phone'),
+      content: '+123 456 7890'
+    },
+    {
+      icon: <FiMapPin className="w-5 h-5" />,
+      title: t('contact.address'),
+      content: '123 Tech Street, Business Bay, Dubai, UAE'
+    }
+  ];
+
   return (
-    <section className="py-24 relative overflow-hidden bg-gradient-to-b from-white to-gray-50 dark:from-gray-900 dark:to-gray-950" id="contact-form">
-      {/* Background decorative elements */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-0 left-0 w-full h-1/3 bg-gradient-to-b from-blue-50/20 to-transparent dark:from-blue-900/10 dark:to-transparent"></div>
-        <div className="absolute bottom-0 right-0 w-full h-1/3 bg-gradient-to-t from-purple-50/20 to-transparent dark:from-purple-900/10 dark:to-transparent"></div>
-        
-        <div className="absolute -top-20 -right-20 w-80 h-80 bg-blue-100/30 dark:bg-blue-900/10 rounded-full blur-3xl opacity-70"></div>
-        <div className="absolute -bottom-40 left-1/4 w-96 h-96 bg-purple-100/30 dark:bg-purple-900/10 rounded-full blur-3xl opacity-70 transform -translate-x-1/2"></div>
-        
-        {/* Decorative grid patterns */}
-        <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGQ9Ik0zNiAxOGMxLjIgMCAyIC44IDIgMnYyMGMwIDEuMi0uOCAyLTIgMkgxOGMtMS4yIDAtMi0uOC0yLTJWMjBjMC0xLjIuOC0yIDItMmgxOHoiIHN0cm9rZT0icmdiYSgwLDAsMCwwLjAyKSIgc3Ryb2tlLXdpZHRoPSIyIi8+PC9nPjwvc3ZnPg==')] dark:bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGQ9Ik0zNiAxOGMxLjIgMCAyIC44IDIgMnYyMGMwIDEuMi0uOCAyLTIgMkgxOGMtMS4yIDAtMi0uOC0yLTJWMjBjMC0xLjIuOC0yIDItMmgxOHoiIHN0cm9rZT0icmdiYSgyNTUsMjU1LDI1NSwwLjAzKSIgc3Ryb2tlLXdpZHRoPSIyIi8+PC9nPjwvc3ZnPg==')]"></div>
-      </div>
-      
-      <div className="container-custom relative z-10">
+    <section 
+      className="py-24 bg-white dark:bg-gray-950" 
+      id="contact-form"
+      dir={isRTL ? "rtl" : "ltr"}
+    >
+      <div className="container mx-auto px-6">
         <motion.div
-          ref={formRef}
           initial="hidden"
-          animate={isVisible ? "visible" : "hidden"}
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.1 }}
           variants={containerVariants}
-          className="max-w-5xl mx-auto"
+          className="text-center mb-16"
         >
-          <motion.div variants={itemVariants} className="text-center mb-16">
-            <span className="inline-block px-4 py-1.5 text-sm font-medium text-blue-700 dark:text-blue-300 bg-blue-100/80 dark:bg-blue-900/30 rounded-full mb-5 backdrop-blur-sm border border-blue-200/50 dark:border-blue-800/50">
+          <motion.div variants={itemVariants}>
+            <span className="inline-block px-4 py-1 text-xs font-bold uppercase tracking-widest text-indigo-600 dark:text-indigo-400 mb-5">
               {t('contact.badge')}
             </span>
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-5 leading-tight">
-              {t('contact.title')}
-            </h2>
-            <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed">
-              {t('contact.subtitle')}
-            </p>
+          </motion.div>
+          
+          <motion.h2 
+            variants={itemVariants} 
+            className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6"
+          >
+            {t('contact.title')}
+          </motion.h2>
+          
+          <motion.p 
+            variants={itemVariants} 
+            className="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto"
+          >
+            {t('contact.subtitle')}
+          </motion.p>
+        </motion.div>
+
+        <div className="max-w-6xl mx-auto">
+          {/* Contact Information Cards */}
+          <motion.div 
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.1 }}
+            variants={containerVariants}
+            className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16"
+          >
+            {contactInfo.map((info, index) => (
+              <motion.div key={index} variants={itemVariants}>
+                <div className="bg-gray-50 dark:bg-gray-900 rounded-xl p-8 text-center transition-all duration-300 hover:shadow-xl hover:shadow-indigo-500/10 dark:hover:shadow-indigo-500/5">
+                  <div className="w-16 h-16 bg-indigo-100 dark:bg-indigo-900/40 rounded-full flex items-center justify-center mx-auto mb-6 text-indigo-600 dark:text-indigo-400">
+                    {info.icon}
+                  </div>
+                  <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">{info.title}</h3>
+                  <p className="text-gray-600 dark:text-gray-400">{info.content}</p>
+                </div>
+              </motion.div>
+            ))}
           </motion.div>
 
+          {/* Contact Form */}
           <motion.div
-            variants={itemVariants}
-            className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl overflow-hidden border border-gray-100 dark:border-gray-700 relative z-10"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.1 }}
+            variants={containerVariants}
+            className="max-w-3xl mx-auto relative"
           >
-            <div className="grid grid-cols-1 md:grid-cols-5">
-              <div className="md:col-span-2 bg-gradient-to-br from-blue-600 to-blue-700 dark:from-blue-700 dark:to-blue-800 text-white p-8 md:p-12 relative overflow-hidden">
-                {/* Decorative shapes */}
-                <div className="absolute top-0 right-0 w-40 h-40 bg-blue-500/20 rounded-full blur-3xl"></div>
-                <div className="absolute bottom-0 left-0 w-60 h-60 bg-blue-500/20 rounded-full blur-3xl -translate-x-1/2 translate-y-1/3"></div>
-                
-                <div className="relative z-10">
-                  <h3 className="text-2xl font-bold mb-6">{t('contact.getInTouch')}</h3>
-                  <p className="mb-10 text-blue-100/90 leading-relaxed">{t('contact.contactDescription')}</p>
-                  
-                  <div className="space-y-8">
-                    <div className="flex items-start">
-                      <div className="flex-shrink-0 mt-1 w-10 h-10 bg-blue-500/30 rounded-lg flex items-center justify-center">
-                        <FiMail className="w-5 h-5 text-white" />
-                      </div>
-                      <div className="ml-4">
-                        <h4 className="text-lg font-semibold">{t('contact.email')}</h4>
-                        <p className="text-blue-100">info@hilaltech.com</p>
-                      </div>
-                    </div>
-                    
-                    <div className="flex items-start">
-                      <div className="flex-shrink-0 mt-1 w-10 h-10 bg-blue-500/30 rounded-lg flex items-center justify-center">
-                        <FiPhone className="w-5 h-5 text-white" />
-                      </div>
-                      <div className="ml-4">
-                        <h4 className="text-lg font-semibold">{t('contact.phone')}</h4>
-                        <p className="text-blue-100">+123 456 7890</p>
-                      </div>
-                    </div>
-                    
-                    <div className="flex items-start">
-                      <div className="flex-shrink-0 mt-1 w-10 h-10 bg-blue-500/30 rounded-lg flex items-center justify-center">
-                        <FiMapPin className="w-5 h-5 text-white" />
-                      </div>
-                      <div className="ml-4">
-                        <h4 className="text-lg font-semibold">{t('contact.address')}</h4>
-                        <p className="text-blue-100">
-                          123 Tech Street, Business Bay<br />
-                          Dubai, United Arab Emirates
-                        </p>
-                      </div>
-                    </div>
+            <motion.div 
+              variants={itemVariants}
+              className="relative z-10"
+            >
+              {isSuccess ? (
+                <div className="bg-white dark:bg-gray-900 rounded-2xl p-10 text-center shadow-xl">
+                  <div className="w-20 h-20 bg-green-100 dark:bg-green-900/30 rounded-full flex items-center justify-center mx-auto mb-6 text-green-600 dark:text-green-400">
+                    <FiCheck className="w-10 h-10" />
                   </div>
-                </div>
-              </div>
-              
-              <div className="md:col-span-3 p-8 md:p-12">
-                {isSuccess ? (
-                  <motion.div
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    className="h-full flex flex-col items-center justify-center text-center py-8"
+                  <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+                    {t('contact.thankYou')}
+                  </h3>
+                  <p className="text-gray-600 dark:text-gray-400 mb-8 max-w-md mx-auto">
+                    {t('contact.messageReceived')}
+                  </p>
+                  <Button 
+                    onClick={() => setIsSuccess(false)}
+                    className="px-6 py-3 text-white font-medium rounded-xl bg-indigo-600 hover:bg-indigo-700 dark:bg-indigo-600 dark:hover:bg-indigo-700 transition-all duration-300"
                   >
-                    <div className="w-24 h-24 bg-green-100 dark:bg-green-900/30 rounded-full flex items-center justify-center mb-8 shadow-md shadow-green-500/10 dark:shadow-green-800/30">
-                      <svg className="w-12 h-12 text-green-600 dark:text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                      </svg>
+                    {t('contact.sendAnother')}
+                  </Button>
+                </div>
+              ) : (
+                <div className="bg-white dark:bg-gray-900 rounded-2xl p-8 md:p-10 shadow-xl">
+                  <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-8 text-center">
+                    {t('contact.getInTouch')}
+                  </h3>
+                  
+                  {error && (
+                    <div className="p-4 bg-red-50 dark:bg-red-900/20 text-red-700 dark:text-red-300 rounded-xl text-sm border border-red-100 dark:border-red-800/50 mb-6">
+                      {error}
                     </div>
-                    <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
-                      {t('contact.thankYou')}
-                    </h3>
-                    <p className="text-gray-600 dark:text-gray-300 mb-10 max-w-md mx-auto leading-relaxed">
-                      {t('contact.messageReceived')}
-                    </p>
-                    <button 
-                      onClick={() => setIsSuccess(false)}
-                      className="px-6 py-3 text-white font-medium rounded-lg bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-500 hover:to-blue-600 shadow-md hover:shadow-lg shadow-blue-500/20 dark:shadow-blue-800/30 transition-all duration-300"
-                    >
-                      {t('contact.sendAnother')}
-                    </button>
-                  </motion.div>
-                ) : (
+                  )}
+                  
                   <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
-                    {error && (
-                      <div className="p-4 bg-red-50 dark:bg-red-900/20 text-red-700 dark:text-red-300 rounded-lg text-sm border border-red-100 dark:border-red-800/50">
-                        {error}
-                      </div>
-                    )}
-                    
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                       <div>
-                        <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1.5">
+                        <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                           {t('contact.name')}
                         </label>
                         <div className="relative">
-                          <div className="absolute top-3.5 left-3.5 text-gray-400">
+                          <div className="absolute top-3.5 left-3.5 text-gray-500 dark:text-gray-400">
                             <FiUser className="w-5 h-5" />
                           </div>
                           <input
                             id="name"
                             type="text"
-                            className={`w-full px-4 py-3 pl-11 rounded-lg border outline-none ${
+                            className={`w-full px-4 py-3 pl-11 rounded-xl border outline-none ${
                               errors.name
-                                ? 'border-red-300 dark:border-red-800 text-red-900 dark:text-red-300 placeholder-red-300 dark:placeholder-red-700 focus:ring-red-500 dark:focus:ring-red-700 focus:border-red-500 dark:focus:border-red-700'
-                                : 'border-gray-300 dark:border-gray-700 focus:ring-blue-500 dark:focus:ring-blue-700 focus:border-blue-500 dark:focus:border-blue-700'
+                                ? 'border-red-300 dark:border-red-800 text-red-900 dark:text-red-300 focus:ring-red-500 dark:focus:ring-red-700 focus:border-red-500 dark:focus:border-red-700'
+                                : 'border-gray-300 dark:border-gray-700 focus:ring-indigo-500 dark:focus:ring-indigo-700 focus:border-indigo-500 dark:focus:border-indigo-700'
                             } bg-white dark:bg-gray-800 transition-colors duration-200`}
                             placeholder={t('contact.namePlaceholder')}
                             {...register('name')}
@@ -225,20 +224,20 @@ const ContactForm = () => {
                       </div>
                       
                       <div>
-                        <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1.5">
+                        <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                           {t('contact.email')}
                         </label>
                         <div className="relative">
-                          <div className="absolute top-3.5 left-3.5 text-gray-400">
+                          <div className="absolute top-3.5 left-3.5 text-gray-500 dark:text-gray-400">
                             <FiMail className="w-5 h-5" />
                           </div>
                           <input
                             id="email"
                             type="email"
-                            className={`w-full px-4 py-3 pl-11 rounded-lg border outline-none ${
+                            className={`w-full px-4 py-3 pl-11 rounded-xl border outline-none ${
                               errors.email
-                                ? 'border-red-300 dark:border-red-800 text-red-900 dark:text-red-300 placeholder-red-300 dark:placeholder-red-700 focus:ring-red-500 dark:focus:ring-red-700 focus:border-red-500 dark:focus:border-red-700'
-                                : 'border-gray-300 dark:border-gray-700 focus:ring-blue-500 dark:focus:ring-blue-700 focus:border-blue-500 dark:focus:border-blue-700'
+                                ? 'border-red-300 dark:border-red-800 text-red-900 dark:text-red-300 focus:ring-red-500 dark:focus:ring-red-700 focus:border-red-500 dark:focus:border-red-700'
+                                : 'border-gray-300 dark:border-gray-700 focus:ring-indigo-500 dark:focus:ring-indigo-700 focus:border-indigo-500 dark:focus:border-indigo-700'
                             } bg-white dark:bg-gray-800 transition-colors duration-200`}
                             placeholder={t('contact.emailPlaceholder')}
                             {...register('email')}
@@ -253,20 +252,20 @@ const ContactForm = () => {
                     </div>
                     
                     <div>
-                      <label htmlFor="phone" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1.5">
+                      <label htmlFor="phone" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                         {t('contact.phone')}
                       </label>
                       <div className="relative">
-                        <div className="absolute top-3.5 left-3.5 text-gray-400">
+                        <div className="absolute top-3.5 left-3.5 text-gray-500 dark:text-gray-400">
                           <FiPhone className="w-5 h-5" />
                         </div>
                         <input
                           id="phone"
                           type="tel"
-                          className={`w-full px-4 py-3 pl-11 rounded-lg border outline-none ${
+                          className={`w-full px-4 py-3 pl-11 rounded-xl border outline-none ${
                             errors.phone
-                              ? 'border-red-300 dark:border-red-800 text-red-900 dark:text-red-300 placeholder-red-300 dark:placeholder-red-700 focus:ring-red-500 dark:focus:ring-red-700 focus:border-red-500 dark:focus:border-red-700'
-                              : 'border-gray-300 dark:border-gray-700 focus:ring-blue-500 dark:focus:ring-blue-700 focus:border-blue-500 dark:focus:border-blue-700'
+                              ? 'border-red-300 dark:border-red-800 text-red-900 dark:text-red-300 focus:ring-red-500 dark:focus:ring-red-700 focus:border-red-500 dark:focus:border-red-700'
+                              : 'border-gray-300 dark:border-gray-700 focus:ring-indigo-500 dark:focus:ring-indigo-700 focus:border-indigo-500 dark:focus:border-indigo-700'
                           } bg-white dark:bg-gray-800 transition-colors duration-200`}
                           placeholder={t('contact.phonePlaceholder')}
                           {...register('phone')}
@@ -280,20 +279,20 @@ const ContactForm = () => {
                     </div>
                     
                     <div>
-                      <label htmlFor="message" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1.5">
+                      <label htmlFor="message" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                         {t('contact.message')}
                       </label>
                       <div className="relative">
-                        <div className="absolute top-3.5 left-3.5 text-gray-400">
+                        <div className="absolute top-3.5 left-3.5 text-gray-500 dark:text-gray-400">
                           <FiMessageSquare className="w-5 h-5" />
                         </div>
                         <textarea
                           id="message"
                           rows={5}
-                          className={`w-full px-4 py-3 pl-11 rounded-lg border outline-none ${
+                          className={`w-full px-4 py-3 pl-11 rounded-xl border outline-none ${
                             errors.message
-                              ? 'border-red-300 dark:border-red-800 text-red-900 dark:text-red-300 placeholder-red-300 dark:placeholder-red-700 focus:ring-red-500 dark:focus:ring-red-700 focus:border-red-500 dark:focus:border-red-700'
-                              : 'border-gray-300 dark:border-gray-700 focus:ring-blue-500 dark:focus:ring-blue-700 focus:border-blue-500 dark:focus:border-blue-700'
+                              ? 'border-red-300 dark:border-red-800 text-red-900 dark:text-red-300 focus:ring-red-500 dark:focus:ring-red-700 focus:border-red-500 dark:focus:border-red-700'
+                              : 'border-gray-300 dark:border-gray-700 focus:ring-indigo-500 dark:focus:ring-indigo-700 focus:border-indigo-500 dark:focus:border-indigo-700'
                           } bg-white dark:bg-gray-800 transition-colors duration-200`}
                           placeholder={t('contact.messagePlaceholder')}
                           {...register('message')}
@@ -306,11 +305,11 @@ const ContactForm = () => {
                       )}
                     </div>
                     
-                    <div>
+                    <div className="pt-4">
                       <button
                         type="submit"
                         disabled={isSubmitting}
-                        className="w-full px-6 py-3.5 text-white font-medium rounded-lg bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-500 hover:to-blue-600 shadow-md hover:shadow-lg shadow-blue-500/20 dark:shadow-blue-800/30 transition-all duration-300 flex justify-center items-center"
+                        className="w-full px-6 py-4 text-white font-medium rounded-xl bg-indigo-600 hover:bg-indigo-700 dark:bg-indigo-600 dark:hover:bg-indigo-700 shadow-lg shadow-indigo-500/20 dark:shadow-indigo-800/20 transition-all duration-300 flex justify-center items-center"
                       >
                         {isSubmitting ? (
                           <>
@@ -326,15 +325,15 @@ const ContactForm = () => {
                       </button>
                     </div>
                   </form>
-                )}
-              </div>
-            </div>
+                </div>
+              )}
+            </motion.div>
+
+            {/* Background decorative elements */}
+            <div className="absolute top-1/2 -left-20 -translate-y-1/2 w-40 h-40 bg-indigo-100 dark:bg-indigo-900/20 rounded-full -z-10 blur-2xl opacity-80"></div>
+            <div className="absolute -bottom-20 right-1/4 w-40 h-40 bg-rose-100 dark:bg-rose-900/20 rounded-full -z-10 blur-2xl opacity-80"></div>
           </motion.div>
-          
-          {/* Decorative elements */}
-          <div className="absolute -top-10 -left-10 w-20 h-20 bg-blue-100/30 dark:bg-blue-900/10 rounded-full blur-xl"></div>
-          <div className="absolute -bottom-10 right-1/3 w-24 h-24 bg-purple-100/30 dark:bg-purple-900/10 rounded-full blur-xl transform translate-x-1/2"></div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

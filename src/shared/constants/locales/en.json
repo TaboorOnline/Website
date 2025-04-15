@@ -68,15 +68,7 @@
     "badge": "Our Services",
     "title": "What We Offer",
     "subtitle": "We provide a range of services to help your business thrive in the digital world.",
-    "learnMore": "Learn More",
     "viewAll": "View All Services",
-    "defaultCategory": "Service",
-    "ourServices": "Our Services",
-    "pageTitle": "Professional Services",
-    "pageSubtitle": "Discover our complete suite of solutions designed to help your business succeed",
-    "keyFeatures": "Key Features",
-    "interestedInService": "Interested in this service?",
-    "contactUs": "Contact Us",
     "addService": "Add Service",
     "editService": "Edit Service",
     "deleteService": "Delete Service",
@@ -91,7 +83,55 @@
     "icon": "Icon",
     "iconHelp": "Enter an emoji or an icon symbol",
     "order": "Display Order",
-    "featured": "Featured Service"
+    "featured": "Featured Service",
+    "ourServices": "Our Services",
+    "pageTitle": "Solutions Tailored to Your Business",
+    "pageSubtitle": "Explore our comprehensive range of services designed to help your business grow and succeed in the digital landscape.",
+    "exploreServices": "Explore Services",
+    "whatWeOffer": "What We Offer",
+    "offerDescription": "We provide a variety of specialized services to meet your specific needs and help your business thrive in today's competitive market.",
+    "learnMore": "Learn More",
+    "keyFeatures": "Key Features & Benefits",
+    "interestedInService": "Interested in this service or have questions?",
+    "contactUs": "Contact Us Now",
+    "defaultCategory": "Service"
+  },
+  "about": {
+    "badge": "About Us",
+    "title": "Who We Are",
+    "subtitle": "Learn about our journey, mission and the team that makes it all possible",
+    
+    "companyOverview": "Company Overview",
+    "overviewTitle": "Building Digital Solutions Since 2013",
+    "overviewParagraph1": "Founded in 2013, Hilal Tech has been at the forefront of digital innovation, creating transformative solutions for businesses across various industries. Our approach combines technical expertise with strategic insight to deliver results that exceed expectations.",
+    "overviewParagraph2": "We believe in the power of technology to solve complex problems and create meaningful experiences. Our diverse team brings together different perspectives, skills, and backgrounds to drive innovation and deliver excellence in everything we do.",
+    
+    "yearsExperience": "Years of Experience",
+    "projectsDelivered": "Projects Delivered",
+    "teamMembers": "Team Members",
+    "happyClients": "Happy Clients",
+    
+    "missionVision": "Mission & Vision",
+    "purposeTitle": "Our Purpose & Principles",
+    "purposeSubtitle": "Guided by strong values and a clear vision, we work to make a positive impact through technology",
+    
+    "missionTitle": "Our Mission",
+    "missionText": "To empower organizations through innovative technology solutions that drive growth, efficiency, and competitive advantage while delivering exceptional user experiences.",
+    
+    "visionTitle": "Our Vision",
+    "visionText": "To be the leading digital partner that transforms how businesses and people interact with technology, making complex processes simple and accessible for everyone.",
+    
+    "valuesTitle": "Our Core Values",
+    
+    "value1Title": "Innovation",
+    "value1Text": "We constantly push boundaries and explore new technologies to create forward-thinking solutions that address current and future challenges.",
+    
+    "value2Title": "Excellence",
+    "value2Text": "We are committed to delivering the highest quality in everything we do, from code to customer service, always striving to exceed expectations.",
+
+    "value3Title": "Integrity",
+    "value3Text": "We build relationships based on trust, transparency, and honesty, ensuring ethical practices in all our business interactions.",
+    "photoNotAvailable":"Image not available"
   },
   "projects": {
     "badge": "Our Work",
@@ -589,5 +629,11 @@
   "general": {
     "scrollToTop": "Scroll to top",
     "tryAgain": "Try Again"
+  },
+  "notFound": {
+    "title": "Page Not Found",
+    "description": "Sorry, the page you are looking for doesn't exist. Please check the URL or return to the homepage.",
+    "goHome": "Return to Home Page",
+    "goBack": "Return to Previous Page"
   }
 }
