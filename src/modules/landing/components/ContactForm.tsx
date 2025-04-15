@@ -328,10 +328,6 @@ const ContactForm = () => {
                 </div>
               )}
             </motion.div>
-
-            {/* Background decorative elements */}
-            <div className="absolute top-1/2 -left-20 -translate-y-1/2 w-40 h-40 bg-indigo-100 dark:bg-indigo-900/20 rounded-full -z-10 blur-2xl opacity-80"></div>
-            <div className="absolute -bottom-20 right-1/4 w-40 h-40 bg-rose-100 dark:bg-rose-900/20 rounded-full -z-10 blur-2xl opacity-80"></div>
           </motion.div>
         </div>
       </div>
