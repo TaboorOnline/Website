@@ -157,3 +157,45 @@ button {
     opacity: 1;
   }
 }
+
+
+/* Global scrollbar styles that match Hilal Tech dark theme */
+
+:root {
+  --scrollbar-width: 6px;
+  
+  /* Primary colors from Hilal Tech website */
+  --hilal-bg: #0a0b14;
+  --hilal-purple: #6c5ce7;
+  --hilal-purple-hover: #8878ff;
+  --hilal-gray: #2d3748;
+}
+
+/* Webkit browsers (Chrome, Safari, Edge) */
+::-webkit-scrollbar {
+  width: var(--scrollbar-width);
+  height: var(--scrollbar-width);
+}
+
+::-webkit-scrollbar-track {
+  background: var(--hilal-bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--hilal-gray);
+  border-radius: 3px;
+  transition: background-color 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--hilal-purple);
+  box-shadow: 0 0 8px var(--hilal-purple-hover);
+}
+
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--hilal-gray) var(--hilal-bg);
+}
+
+/* Firefox hover effect needs to be implemented via JS */
