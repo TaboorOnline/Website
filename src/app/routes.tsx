@@ -1,10 +1,10 @@
 // src/app/routes.tsx
-import { ReactNode, useEffect, useState } from 'react';
-import { Navigate, Route, Routes, useLocation } from 'react-router-dom';
+import { ReactNode, /* useEffect, useState */ } from 'react';
+import { /* Navigate, */ Route, Routes, useLocation } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
-import { getCurrentUser, getUserRole } from './supabaseClient';
+// import { getCurrentUser, getUserRole } from './supabaseClient';
 import LandingLayout from './layout/LandingLayout';
-import DashboardLayout from './layout/DashboardLayout';
+// import DashboardLayout from './layout/DashboardLayout';
 
 // Landing pages
 import Home from '../modules/landing/pages/Home';
@@ -20,79 +20,79 @@ import ForgotPassword from '../modules/auth/pages/ForgotPassword';
 import ResetPassword from '../modules/auth/pages/ResetPassword';
 
 // Dashboard pages
-import Dashboard from '../modules/dashboard/pages/Dashboard';
-import DashboardUsers from '../modules/dashboard/pages/Users';
-import DashboardServices from '../modules/dashboard/pages/Services';
-import DashboardTeam from '../modules/dashboard/pages/Team';
-import DashboardReviews from '../modules/dashboard/pages/Reviews';
-import DashboardBlog from '../modules/dashboard/pages/Blog';
-import DashboardInbox from '../modules/dashboard/pages/Inbox';
-import DashboardTasks from '../modules/dashboard/pages/Tasks';
-import DashboardStats from '../modules/dashboard/pages/Stats';
-import Profile from '../modules/dashboard/pages/Profile';
-import Settings from '../modules/dashboard/pages/Settings';
+// import Dashboard from '../modules/dashboard/pages/Dashboard';
+// import DashboardUsers from '../modules/dashboard/pages/Users';
+// import DashboardServices from '../modules/dashboard/pages/Services';
+// import DashboardTeam from '../modules/dashboard/pages/Team';
+// import DashboardReviews from '../modules/dashboard/pages/Reviews';
+// import DashboardBlog from '../modules/dashboard/pages/Blog';
+// import DashboardInbox from '../modules/dashboard/pages/Inbox';
+// import DashboardTasks from '../modules/dashboard/pages/Tasks';
+// import DashboardStats from '../modules/dashboard/pages/Stats';
+// import Profile from '../modules/dashboard/pages/Profile';
+// import Settings from '../modules/dashboard/pages/Settings';
 
 // 404 page
 import NotFound from '../shared/components/NotFound';
 
 // Auth guard
-interface ProtectedRouteProps {
-  children: ReactNode;
-  requiredRole?: 'admin' | 'editor' | 'viewer';
-}
+// interface ProtectedRouteProps {
+//   children: ReactNode;
+//   requiredRole?: 'admin' | 'editor' | 'viewer';
+// }
 
-const ProtectedRoute = ({ children, requiredRole }: ProtectedRouteProps) => {
-  const [isAuthenticated, setIsAuthenticated] = useState<boolean | null>(null);
-  const [hasAccess, setHasAccess] = useState<boolean | null>(null);
+// const ProtectedRoute = ({ children, requiredRole }: ProtectedRouteProps) => {
+//   const [isAuthenticated, setIsAuthenticated] = useState<boolean | null>(null);
+//   const [hasAccess, setHasAccess] = useState<boolean | null>(null);
   
-  useEffect(() => {
-    const checkAuth = async () => {
-      try {
-        const user = await getCurrentUser();
-        setIsAuthenticated(!!user);
+//   useEffect(() => {
+//     const checkAuth = async () => {
+//       try {
+//         const user = await getCurrentUser();
+//         setIsAuthenticated(!!user);
         
-        if (user && requiredRole) {
-          const userRole = await getUserRole();
+//         if (user && requiredRole) {
+//           const userRole = await getUserRole();
           
-          if (requiredRole === 'admin') {
-            setHasAccess(userRole === 'admin');
-          } else if (requiredRole === 'editor') {
-            setHasAccess(userRole === 'admin' || userRole === 'editor');
-          } else {
-            setHasAccess(true); // 'viewer' role or no specific role required
-          }
-        } else {
-          setHasAccess(!!user);
-        }
-      } catch (error) {
-        console.error('Auth check error:', error);
-        setIsAuthenticated(false);
-        setHasAccess(false);
-      }
-    };
+//           if (requiredRole === 'admin') {
+//             setHasAccess(userRole === 'admin');
+//           } else if (requiredRole === 'editor') {
+//             setHasAccess(userRole === 'admin' || userRole === 'editor');
+//           } else {
+//             setHasAccess(true); // 'viewer' role or no specific role required
+//           }
+//         } else {
+//           setHasAccess(!!user);
+//         }
+//       } catch (error) {
+//         console.error('Auth check error:', error);
+//         setIsAuthenticated(false);
+//         setHasAccess(false);
+//       }
+//     };
     
-    checkAuth();
-  }, [requiredRole]);
+//     checkAuth();
+//   }, [requiredRole]);
   
-  if (isAuthenticated === null || hasAccess === null) {
-    // Loading state
-    return (
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary-600"></div>
-      </div>
-    );
-  }
+//   if (isAuthenticated === null || hasAccess === null) {
+//     // Loading state
+//     return (
+//       <div className="min-h-screen flex items-center justify-center">
+//         <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary-600"></div>
+//       </div>
+//     );
+//   }
   
-  if (!isAuthenticated) {
-    return <Navigate to="/login" replace />;
-  }
+//   if (!isAuthenticated) {
+//     return <Navigate to="/login" replace />;
+//   }
   
-  if (!hasAccess) {
-    return <Navigate to="/dashboard" replace />;
-  }
+//   if (!hasAccess) {
+//     return <Navigate to="/dashboard" replace />;
+//   }
   
-  return <>{children}</>;
-};
+//   return <>{children}</>;
+// };
 
 // Page transitions
 const PageTransition = ({ children }: { children: ReactNode }) => {
@@ -175,7 +175,7 @@ const AppRoutes = () => {
       <Route path="/reset-password" element={<ResetPassword />} />
       
       {/* Dashboard pages */}
-      <Route
+      {/* <Route
         path="/dashboard"
         element={
           <ProtectedRoute>
@@ -306,7 +306,7 @@ const AppRoutes = () => {
             </DashboardLayout>
           </ProtectedRoute>
         }
-      />
+      /> */}
       
       {/* 404 page */}
       <Route path="*" element={<NotFound />} />

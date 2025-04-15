@@ -3,16 +3,16 @@ import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
 import { FiClock } from 'react-icons/fi';
 import { useCompanyHistory } from '../services/landingService';
-import { useTheme } from '../../../shared/hooks/useTheme';
+// import { useTheme } from '../../../shared/hooks/useTheme';
 import Image from '../../../shared/components/Image';
 
 const Timeline = () => {
   const { t, i18n } = useTranslation();
-  const { theme } = useTheme();
+  // const { theme } = useTheme();
   const { data: history, isLoading, error } = useCompanyHistory();
   
   const currentLanguage = i18n.language as 'en' | 'ar';
-  const isRTL = currentLanguage === 'ar';
+  // const isRTL = currentLanguage === 'ar';
 
   // Animation variants
   const containerVariants = {

@@ -111,6 +111,8 @@ export interface Database {
       }
       projects: {
         Row: {
+          slug: string
+          category: string
           id: string
           created_at: string
           updated_at: string
@@ -149,6 +151,8 @@ export interface Database {
       }
       reviews: {
         Row: {
+          avatar_url: any
+          date: any
           id: string
           created_at: string
           updated_at: string

@@ -3,12 +3,12 @@ import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
 import { FiLinkedin, FiTwitter, FiMail, FiUser } from 'react-icons/fi';
 import { useTeamMembers } from '../services/landingService';
-import { useTheme } from '../../../shared/hooks/useTheme';
+// import { useTheme } from '../../../shared/hooks/useTheme';
 import Image from '../../../shared/components/Image';
 
 const Team = () => {
   const { t, i18n } = useTranslation();
-  const { theme } = useTheme();
+  // const { theme } = useTheme();
   const { data: team, isLoading, error } = useTeamMembers();
   
   const currentLanguage = i18n.language as 'en' | 'ar';

@@ -3,11 +3,11 @@ import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import Button from '../../../shared/components/Button';
-import { useTheme } from '../../../shared/hooks/useTheme';
+// import { useTheme } from '../../../shared/hooks/useTheme';
 
 const Hero = () => {
   const { t, i18n } = useTranslation();
-  const { theme } = useTheme();
+  // const { theme } = useTheme();
   const isRTL = i18n.language === 'ar';
 
   // Animation variants

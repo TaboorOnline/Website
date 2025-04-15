@@ -8,7 +8,7 @@ import { motion } from 'framer-motion';
 import { FiMail, FiUser, FiPhone, FiMessageSquare, FiMapPin, FiCheck } from 'react-icons/fi';
 import Button from '../../../shared/components/Button';
 import { sendContactMessage } from '../services/contactService';
-import { useTheme } from '../../../shared/hooks/useTheme';
+// import { useTheme } from '../../../shared/hooks/useTheme';
 
 interface ContactFormData {
   name: string;
@@ -19,7 +19,7 @@ interface ContactFormData {
 
 const ContactForm = () => {
   const { t, i18n } = useTranslation();
-  const { theme } = useTheme();
+  // const { theme } = useTheme();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const [error, setError] = useState('');

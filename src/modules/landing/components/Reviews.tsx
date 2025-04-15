@@ -5,12 +5,12 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { FiChevronLeft, FiChevronRight, FiStar, FiUser } from 'react-icons/fi';
 import { useReviews } from '../services/reviewService';
 import { Review } from '../../../shared/types/types';
-import { useTheme } from '../../../shared/hooks/useTheme';
+// import { useTheme } from '../../../shared/hooks/useTheme';
 import Image from '../../../shared/components/Image';
 
 const Reviews = () => {
   const { t, i18n } = useTranslation();
-  const { theme } = useTheme();
+  // const { theme } = useTheme();
   const { data: reviews, isLoading, error } = useReviews();
   const [currentIndex, setCurrentIndex] = useState(0);
 
@@ -57,7 +57,7 @@ const Reviews = () => {
   };
 
   const currentLanguage = i18n.language as 'en' | 'ar';
-  const isRTL = currentLanguage === 'ar';
+  // const isRTL = currentLanguage === 'ar';
 
   const renderReviewContent = (review: Review) => {
     const reviewTranslations = (review.translations as Record<'en' | 'ar', { content?: string, name?: string, position?: string, company?: string }> | undefined)?.[currentLanguage] || {};

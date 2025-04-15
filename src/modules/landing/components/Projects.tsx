@@ -6,12 +6,12 @@ import { motion } from 'framer-motion';
 import { FiArrowRight, FiCalendar, FiUser, FiImage } from 'react-icons/fi';
 import { useProjects } from '../services/landingService';
 import Button from '../../../shared/components/Button';
-import { useTheme } from '../../../shared/hooks/useTheme';
+// import { useTheme } from '../../../shared/hooks/useTheme';
 import Image from '../../../shared/components/Image';
 
 const Projects = () => {
   const { t, i18n } = useTranslation();
-  const { theme } = useTheme();
+  // const { theme } = useTheme();
   const { data: projects, isLoading, error } = useProjects();
   const [visibleProjects, setVisibleProjects] = useState(6);
   

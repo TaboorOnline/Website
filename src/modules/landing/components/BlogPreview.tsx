@@ -4,13 +4,13 @@ import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { FiArrowRight, FiCalendar, FiUser, FiFileText } from 'react-icons/fi';
 import { useBlogPosts } from '../services/blogService';
-import Button from '../../../shared/components/Button';
-import { useTheme } from '../../../shared/hooks/useTheme';
+// import Button from '../../../shared/components/Button';
+// import { useTheme } from '../../../shared/hooks/useTheme';
 import Image from '../../../shared/components/Image';
 
 const BlogPreview = () => {
   const { t, i18n } = useTranslation();
-  const { theme } = useTheme();
+  // const { theme } = useTheme();
   const { data: posts, isLoading, error } = useBlogPosts(3); // Limit to 3 most recent posts
   const currentLanguage = i18n.language as 'en' | 'ar';
   const isRTL = currentLanguage === 'ar';
@@ -115,7 +115,7 @@ const BlogPreview = () => {
               <div className="p-8" dir={isRTL ? "rtl" : "ltr"}>
                 <div className="mb-4">
                   <span className="px-3 py-1 text-xs font-medium text-indigo-700 dark:text-indigo-300 bg-indigo-100 dark:bg-indigo-900/40 rounded-full">
-                    {post.category || t('blog.defaultCategory')}
+                    {(post as { category?: string }).category || t('blog.defaultCategory')}
                   </span>
                 </div>
                 <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-4 line-clamp-2 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors duration-300">{title}</h3>

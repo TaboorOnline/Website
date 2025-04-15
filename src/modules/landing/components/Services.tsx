@@ -4,11 +4,12 @@ import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { FiArrowRight } from 'react-icons/fi';
 import { useServices } from '../../../shared/hooks/useSupabaseQuery';
-import { useTheme } from '../../../shared/hooks/useTheme';
+// import { useTheme } from '../../../shared/hooks/useTheme';
+import { Key } from 'react';
 
 const Services = () => {
   const { t, i18n } = useTranslation();
-  const { theme } = useTheme();
+  // const { theme } = useTheme();
   const { data: services, isLoading, error } = useServices();
   const isRTL = i18n.language === 'ar';
 
@@ -64,8 +65,8 @@ const Services = () => {
 
     const currentLanguage = i18n.language as 'en' | 'ar';
 
-    return services?.map((service) => {
-      const serviceTranslations = service.translations?.[currentLanguage] || {};
+    return services?.map((service: { translations: { [x: string]: object; }; title: any; description: any; id: Key | null | undefined; icon: any; }) => {
+      const serviceTranslations = service.translations?.[currentLanguage] as { title?: string; description?: string; } || {};
       const title = serviceTranslations.title || service.title;
       const description = serviceTranslations.description || service.description;
       
