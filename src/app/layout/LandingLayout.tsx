@@ -11,7 +11,7 @@ import { Language } from '../../shared/types/types';
 import { 
   FiSun, FiMoon, FiGlobe, FiMenu, FiX, FiTwitter, 
   FiLinkedin, FiFacebook, FiInstagram, FiMail, FiPhone, 
-  FiMapPin, FiArrowUp, FiChevronRight, FiHeart
+  FiMapPin, FiArrowUp, FiChevronRight
 } from 'react-icons/fi';
 
 interface LandingLayoutProps {
@@ -84,7 +84,7 @@ const LandingLayout = ({ children }: LandingLayoutProps) => {
                 transition={{ duration: 0.3 }}
                 className="flex items-center"
               >
-                <div className="w-10 h-10 rounded-xl bg-indigo-600 dark:bg-indigo-500 mr-3 flex items-center justify-center shadow-md">
+                <div className={`w-10 h-10 rounded-xl bg-indigo-600 dark:bg-indigo-500 ${isRTL ? "ml-3" : "mr-3"} flex items-center justify-center shadow-md`}>
                   <span className="text-white font-bold text-xl">H</span>
                 </div>
                 <span className="text-indigo-600 dark:text-indigo-400 text-2xl font-bold">
@@ -237,7 +237,7 @@ const LandingLayout = ({ children }: LandingLayoutProps) => {
               {/* About */}
               <div>
                 <div className="flex items-center mb-6">
-                  <div className="w-10 h-10 rounded-xl bg-indigo-600 dark:bg-indigo-500 mr-3 flex items-center justify-center">
+                  <div className={`w-10 h-10 rounded-xl bg-indigo-600 dark:bg-indigo-500 ${isRTL ? "ml-3" : "mr-3"} flex items-center justify-center shadow-md`}>
                     <span className="text-white font-bold text-xl">H</span>
                   </div>
                   <span className="text-indigo-600 dark:text-indigo-400 text-2xl font-bold">
@@ -330,11 +330,11 @@ const LandingLayout = ({ children }: LandingLayoutProps) => {
                   <input 
                     type="email" 
                     placeholder={t('footer.emailPlaceholder')} 
-                    className="flex-1 px-4 py-3 rounded-l-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:focus:ring-indigo-400"
+                    className={`flex-1 px-4 py-3 ${isRTL ? "rounded-r-lg" : "rounded-l-lg"} border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:focus:ring-indigo-400`}
                   />
                   <button 
                     type="submit"
-                    className="px-4 py-3 rounded-r-lg bg-indigo-600 hover:bg-indigo-700 dark:bg-indigo-600 dark:hover:bg-indigo-700 text-white font-medium transition-all duration-300"
+                    className={`px-4 py-3 ${!isRTL ? "rounded-r-lg" : "rounded-l-lg"} bg-indigo-600 hover:bg-indigo-700 dark:bg-indigo-600 dark:hover:bg-indigo-700 text-white font-medium transition-all duration-300`}
                   >
                     {t('footer.subscribe')}
                   </button>
