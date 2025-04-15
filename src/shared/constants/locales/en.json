@@ -33,7 +33,32 @@
     "yes": "Yes",
     "no": "No",
     "current": "Current",
-    "actions": "Actions"
+    "actions": "Actions",
+    "showing": "Showing",
+    "item": "item",
+    "items": "items",
+    "options": "Options",
+    "primaryInfo": "Primary Information",
+    "supportMessage": "Need help? Contact our support team."
+  },
+  "actions": {
+    "save": "Save",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "edit": "Edit",
+    "view": "View",
+    "add": "Add",
+    "remove": "Remove",
+    "search": "Search",
+    "filter": "Filter",
+    "sort": "Sort",
+    "export": "Export",
+    "import": "Import",
+    "download": "Download",
+    "upload": "Upload",
+    "submit": "Submit",
+    "confirm": "Confirm",
+    "back": "Back"
   },
   "nav": {
     "home": "Home",
@@ -53,8 +78,23 @@
     "profile": "Profile",
     "logout": "Logout",
     "close": "Close",
-    "menu": "Menu"
+    "menu": "Menu",
+    "analytics": "Analytics",
+    "calendar": "Calendar",
+    "security": "Security",
+    "billing": "Billing",
+    "help": "Help",
+    "user": "User",
+    "categories": {
+      "main": "Main",
+      "content": "Content",
+      "management": "Management",
+      "preferences": "Preferences"
+    },
+    "openMenu": "Open Menu",
+    "closeMenu": "Close Menu"
   },
+
   "hero": {
     "badge": "Welcome to Hilal Tech",
     "title": "Empower Your Business with",
@@ -94,7 +134,16 @@
     "keyFeatures": "Key Features & Benefits",
     "interestedInService": "Interested in this service or have questions?",
     "contactUs": "Contact Us Now",
-    "defaultCategory": "Service"
+    "defaultCategory": "Service",
+    "filterAll": "All Services",
+    "filterFeatured": "Featured Only",
+    "filterNonFeatured": "Non-Featured",
+    "titlePlaceholder": "Enter service title",
+    "descriptionPlaceholder": "Enter service description...",
+    "noSearchResults": "No matching services found",
+    "tryAnotherSearch": "Try adjusting your search terms or clear search to show all services",
+    "clearSearch": "Clear Search",
+    "readMore": "Read more"
   },
   "about": {
     "badge": "About Us",
@@ -243,6 +292,12 @@
     "emailUs": "Email Us",
     "callUs": "Call Us"
   },
+  "header": {
+    "searchPlaceholder": "Search...",
+    "search": "Search",
+    "help": "Help & Resources",
+    "quickAdd": "Quick Add"
+  },
   "blog": {
     "title": "Title",
     "content": "Content",
@@ -288,7 +343,45 @@
     "admin": "Administrator",
     "noPosts": "No blog posts available yet",
     "defaultCategory": "Post",
-    "imageNotAvailable": "Post image not available"
+    "imageNotAvailable": "Post image not available",
+    "today": "Today",
+    "yesterday": "Yesterday",
+    "daysAgo": "{{count}} days ago",
+    "weeksAgo": "{{count}} weeks ago",
+    "dropImageHere": "Drop image here or click to browse",
+    "titlePlaceholder": "Enter post title",
+    "excerptPlaceholder": "Enter a short description of your post",
+    "contentPlaceholder": "Write your post content here...",
+    "addTag": "Add Tag",
+    "addTagPlaceholder": "Enter a tag name",
+    "tagsHelp": "Tags help categorize your posts and make them easier to find",
+    "noContentToPreview": "No content to preview",
+    "untitledPost": "Untitled Post",
+    "noExcerpt": "No excerpt available",
+    "characters": "characters",
+    "markdown": "Markdown formatting supported",
+    "openPreview": "Open Preview",
+    "tabGeneral": "General",
+    "tabContent": "Content", 
+    "tabTranslations": "Translations",
+    "tabSEO": "SEO",
+    "unsavedChanges": "You have unsaved changes",
+    "gridView": "Grid View",
+    "listView": "List View",
+    "showingResults": "Showing {{count}} results",
+    "clearSearch": "Clear Search",
+    "tryDifferentSearch": "Try a different search term or clear the search to show all posts",
+    "noSearchResults": "No matching posts found",
+    "readMore": "Read more",
+    "seoPreview": "Search Engine Preview",
+    "seoTip": "How your post appears in search engine results can affect click-through rates. Make sure your title and excerpt are compelling.",
+    "seoOptimization": "SEO Optimization Tips",
+    "titleLength": "Title Length",
+    "titleLengthGood": "Your title is the optimal length for search engines.",
+    "slugFormat": "URL Slug Format",
+    "slugFormatGood": "Your URL slug follows best practices for SEO.",
+    "excerptLength": "Meta Description Length",
+    "excerptLengthGood": "Your excerpt has the ideal length for search engine results."
   },
   "users": {
     "name": "Name",
@@ -441,6 +534,27 @@
     "viewMyTasks": "View My Tasks",
     "backToDashboard": "Back to Dashboard"
   },
+  "user": {
+    "profile": {
+      "title": "Profile",
+      "editProfile": "Edit Profile",
+      "name": "Name",
+      "email": "Email",
+      "role": "Role",
+      "phone": "Phone",
+      "location": "Location",
+      "lastLogin": "Last Login",
+      "joinDate": "Join Date"
+    },
+    "settings": {
+      "title": "Account Settings",
+      "language": "Language",
+      "timezone": "Timezone",
+      "notifications": "Notifications",
+      "twoFactor": "Two-Factor Authentication",
+      "darkMode": "Dark Mode"
+    }
+  },
   "settings": {
     "title": "Settings",
     "subtitle": "Configure your account and site preferences",
@@ -553,7 +667,8 @@
     "last90Days": "Last 90 Days",
     "page": "Page",
     "visitors": "Visitors",
-    "bounceRate": "Bounce Rate"
+    "bounceRate": "Bounce Rate",
+    "refresh": "Refresh Data"
   },
   "table": {
     "search": "Search...",
@@ -564,6 +679,10 @@
     "next": "Next",
     "noData": "No data found",
     "loading": "Loading data..."
+  },
+  "loading": {
+    "title": "Loading",
+    "message": "Please wait while we prepare your dashboard"
   },
   "deleteModal": {
     "title": "Confirm Deletion",
@@ -598,7 +717,22 @@
     "failedToLoadTeam": "Failed to load team members",
     "failedToLoadProjects": "Failed to load projects",
     "failedToLoadBlog": "Failed to load blog posts",
-    "failedToLoadTimeline": "Failed to load company history"
+    "failedToLoadTimeline": "Failed to load company history",
+    "notFound": "Not Found",
+    "accessDenied": "Access Denied",
+    "serverError": "Server Error",
+    "networkError": "Network Error",
+    "tryAgain": "Try Again"
+  },
+  "quickActions": {
+    "title": "Quick Actions",
+    "addUser": "Add User",
+    "newPost": "New Post",
+    "addProduct": "Add Product",
+    "settings": "Settings"
+  },
+  "breadcrumbs": {
+    "home": "Home"
   },
   "validation": {
     "maxLength": "Must be at most {{count}} characters",
@@ -615,16 +749,27 @@
     "arabic": "Arabic"
   },
   "theme": {
-    "light": "Light Mode",
-    "dark": "Dark Mode"
+    "switchToLight": "Switch to Light Mode",
+    "switchToDark": "Switch to Dark Mode",
+    "light": "Light",
+    "dark": "Dark",
+    "system": "System"
   },
   "sidebar": {
     "collapse": "Collapse Sidebar",
-    "expand": "Expand Sidebar"
+    "expand": "Expand Sidebar",
+    "welcome": "Welcome"
   },
   "notifications": {
     "title": "Notifications",
-    "viewAll": "View All Notifications"
+    "markAllRead": "Mark all as read",
+    "viewAll": "View all",
+    "noNotifications": "No notifications",
+    "emptyStateMessage": "You're all caught up!",
+    "all": "All",
+    "unread": "Unread",
+    "mentions": "Mentions",
+    "settings": "Notification Settings"
   },
   "general": {
     "scrollToTop": "Scroll to top",
@@ -632,6 +777,8 @@
   },
   "notFound": {
     "title": "Page Not Found",
+    "badge": "Page Not Found",
+    "help": "Need help? Contact our support team.",
     "description": "Sorry, the page you are looking for doesn't exist. Please check the URL or return to the homepage.",
     "goHome": "Return to Home Page",
     "goBack": "Return to Previous Page"

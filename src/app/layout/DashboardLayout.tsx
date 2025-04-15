@@ -2,21 +2,23 @@
 import { ReactNode, useState, useEffect, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { useTheme } from '../../shared/hooks/useTheme'; // Adjust path
-import { signOut, getCurrentUser } from '../supabaseClient'; // Adjust path
+import { useTheme } from '../../shared/hooks/useTheme'; 
+import { signOut, getCurrentUser } from '../supabaseClient';
+import "./dashboard.css";
 
-// Import Icons (Consolidate if needed, or keep if specific icons are only here)
+// Import Icons
 import {
   FiHome, FiUsers, FiSettings, FiBox, FiStar, FiFileText,
-  FiMail, FiClipboard, FiBarChart2
+  FiMail, FiClipboard, FiBarChart2, FiCalendar, FiPieChart
 } from 'react-icons/fi';
 
 // Import Layout Components
-import { Header } from './components/Header'; // Adjust path
-import { Sidebar } from './components/Sidebar'; // Adjust path
+import { Header } from './components/Header';
+import { Sidebar } from './components/Sidebar';
+import { PageLoader } from './components/PageLoader'; // New component for loading state
+import { Breadcrumbs } from './components/Breadcrumbs'; // New breadcrumbs component
 
 // Define User type more specifically if possible
-// interface User { id: string; email?: string; /* other fields */ }
 type User = any; // Replace 'any' with a proper User interface/type if available
 
 interface DashboardLayoutProps {
@@ -25,7 +27,7 @@ interface DashboardLayoutProps {
 
 const DashboardLayout = ({ children }: DashboardLayoutProps) => {
   const { t } = useTranslation();
-  const { theme } = useTheme(); // Theme state from hook
+  const { theme } = useTheme();
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -34,19 +36,42 @@ const DashboardLayout = ({ children }: DashboardLayoutProps) => {
   const [user, setUser] = useState<User>(null);
   const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
   const [isNotificationsOpen, setIsNotificationsOpen] = useState(false);
+  const [isLoading, setIsLoading] = useState(true); // New state for loading
 
-  // Define Navigation links (consider moving to a separate config file if large)
+  // Refined navigation links with categories for better organization
   const navLinks = [
-    { path: '/dashboard', label: t('nav.dashboard'), icon: <FiHome /> },
-    { path: '/dashboard/users', label: t('nav.users'), icon: <FiUsers /> },
-    { path: '/dashboard/services', label: t('nav.services'), icon: <FiBox /> },
-    { path: '/dashboard/team', label: t('nav.team'), icon: <FiUsers /> }, // Consider different icon if needed
-    { path: '/dashboard/reviews', label: t('nav.reviews'), icon: <FiStar /> },
-    { path: '/dashboard/blog', label: t('nav.blog'), icon: <FiFileText /> },
-    { path: '/dashboard/inbox', label: t('nav.inbox'), icon: <FiMail /> },
-    { path: '/dashboard/tasks', label: t('nav.tasks'), icon: <FiClipboard /> },
-    { path: '/dashboard/stats', label: t('nav.stats'), icon: <FiBarChart2 /> },
-    { path: '/dashboard/settings', label: t('nav.settings'), icon: <FiSettings /> },
+    { 
+      category: t('nav.categories.main'),
+      items: [
+        { path: '/dashboard', label: t('nav.dashboard'), icon: <FiHome /> },
+        { path: '/dashboard/stats', label: t('nav.stats'), icon: <FiBarChart2 /> },
+        { path: '/dashboard/analytics', label: t('nav.analytics'), icon: <FiPieChart /> },
+        { path: '/dashboard/calendar', label: t('nav.calendar'), icon: <FiCalendar /> },
+      ]
+    },
+    {
+      category: t('nav.categories.content'),
+      items: [
+        { path: '/dashboard/services', label: t('nav.services'), icon: <FiBox /> },
+        { path: '/dashboard/blog', label: t('nav.blog'), icon: <FiFileText /> },
+        { path: '/dashboard/reviews', label: t('nav.reviews'), icon: <FiStar /> },
+      ]
+    },
+    {
+      category: t('nav.categories.management'),
+      items: [
+        { path: '/dashboard/users', label: t('nav.users'), icon: <FiUsers /> },
+        { path: '/dashboard/team', label: t('nav.team'), icon: <FiUsers className="text-indigo-500" /> },
+        { path: '/dashboard/inbox', label: t('nav.inbox'), icon: <FiMail /> },
+        { path: '/dashboard/tasks', label: t('nav.tasks'), icon: <FiClipboard /> },
+      ]
+    },
+    {
+      category: t('nav.categories.preferences'),
+      items: [
+        { path: '/dashboard/settings', label: t('nav.settings'), icon: <FiSettings /> },
+      ]
+    }
   ];
 
   // --- Effects ---
@@ -54,11 +79,19 @@ const DashboardLayout = ({ children }: DashboardLayoutProps) => {
   // Check user authentication status
   useEffect(() => {
     const checkUser = async () => {
-      const currentUser = await getCurrentUser();
-      if (!currentUser) {
-        navigate('/login', { replace: true }); // Use replace to prevent going back to dashboard
-      } else {
-        setUser(currentUser);
+      setIsLoading(true);
+      try {
+        const currentUser = await getCurrentUser();
+        if (!currentUser) {
+          navigate('/login', { replace: true });
+        } else {
+          setUser(currentUser);
+        }
+      } catch (error) {
+        console.error('Authentication error:', error);
+        navigate('/login', { replace: true });
+      } finally {
+        setIsLoading(false);
       }
     };
     checkUser();
@@ -73,25 +106,25 @@ const DashboardLayout = ({ children }: DashboardLayoutProps) => {
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth < 1024) {
-        setIsDesktopSidebarOpen(false); // Collapse on small screens
-      } else {
-         // Optional: Restore default state on larger screens, or keep user preference
-         // setIsDesktopSidebarOpen(true);
+        setIsDesktopSidebarOpen(false);
+      } else if (window.innerWidth >= 1536) {
+        // Always show sidebar on extra large screens
+        setIsDesktopSidebarOpen(true);
       }
     };
 
-    handleResize(); // Check on initial load
+    handleResize();
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  // Close dropdowns when one opens (optional UX enhancement)
+  // Close dropdowns when one opens
   useEffect(() => {
-      if (isUserMenuOpen) setIsNotificationsOpen(false);
+    if (isUserMenuOpen) setIsNotificationsOpen(false);
   }, [isUserMenuOpen]);
 
   useEffect(() => {
-      if (isNotificationsOpen) setIsUserMenuOpen(false);
+    if (isNotificationsOpen) setIsUserMenuOpen(false);
   }, [isNotificationsOpen]);
 
   // --- Callbacks ---
@@ -99,37 +132,32 @@ const DashboardLayout = ({ children }: DashboardLayoutProps) => {
   const handleLogout = useCallback(async () => {
     try {
       await signOut();
-      setUser(null); // Clear local user state
+      setUser(null);
       navigate('/login', { replace: true });
     } catch (error) {
       console.error('Logout error:', error);
-      // Optionally: Show an error message to the user
     }
   }, [navigate]);
 
   const toggleMobileSidebar = useCallback(() => {
-      setIsMobileSidebarOpen(prev => !prev);
+    setIsMobileSidebarOpen(prev => !prev);
   }, []);
 
   const closeMobileSidebar = useCallback(() => {
-      setIsMobileSidebarOpen(false);
+    setIsMobileSidebarOpen(false);
   }, []);
 
   const toggleDesktopSidebar = useCallback(() => {
-      setIsDesktopSidebarOpen(prev => !prev);
+    setIsDesktopSidebarOpen(prev => !prev);
   }, []);
 
-
-  // --- Render ---
-
-  // Optional: Show loading state while checking user
-  // if (user === null) {
-  //    return <div>Loading...</div>; // Or a spinner component
-  // }
+  // Show loading state while checking user
+  if (isLoading) {
+    return <PageLoader />;
+  }
 
   return (
-    // Apply theme class to the root element if useTheme manages it this way
-    <div className={`flex h-screen bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 ${theme}`}>
+    <div className={`flex h-screen bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-200 ${theme}`}>
       {/* Sidebar Component */}
       <Sidebar
         isDesktopOpen={isDesktopSidebarOpen}
@@ -139,13 +167,14 @@ const DashboardLayout = ({ children }: DashboardLayoutProps) => {
         navLinks={navLinks}
         handleLogout={handleLogout}
         appName="Hilal Tech"
+        user={user}
       />
 
       {/* Main Content Area */}
       <div className="flex flex-col flex-1 overflow-hidden">
         {/* Header Component */}
         <Header
-          userEmail={user?.email}
+          user={user}
           handleLogout={handleLogout}
           toggleMobileSidebar={toggleMobileSidebar}
           isMobileSidebarOpen={isMobileSidebarOpen}
@@ -157,13 +186,14 @@ const DashboardLayout = ({ children }: DashboardLayoutProps) => {
         />
 
         {/* Page Content */}
-        <main className="flex-1 overflow-x-hidden overflow-y-auto bg-gray-100 dark:bg-gray-900 p-4 md:p-6 lg:p-8">
-          {/* Animate page transitions if desired */}
-          {/* <AnimatePresence mode="wait"> */}
-          {/* <motion.div key={location.pathname} ...> */}
-                {children}
-          {/* </motion.div> */}
-          {/* </AnimatePresence> */}
+        <main className="flex-1 overflow-x-hidden overflow-y-auto bg-gray-100 dark:bg-gray-800 p-4 md:p-6 lg:p-8">
+          {/* Breadcrumbs navigation */}
+          <Breadcrumbs currentPath={location.pathname} />
+          
+          {/* Page content container with subtle animation */}
+          <div className="mt-4 transition-all duration-300 animate-fadeIn">
+            {children}
+          </div>
         </main>
       </div>
     </div>

@@ -15,6 +15,7 @@ html {
 
 button {
   cursor: pointer;
+  outline: none !important;
 }
 
 @layer base {

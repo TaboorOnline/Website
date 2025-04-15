@@ -1,17 +1,21 @@
 // src/modules/dashboard/components/StatsCard.tsx
 import { ReactNode } from 'react';
+import { FiArrowUp, FiArrowDown } from 'react-icons/fi';
 import { motion } from 'framer-motion';
+
+interface TrendData {
+  value: number;
+  isPositive: boolean;
+}
 
 interface StatsCardProps {
   title: string;
-  value: string | number;
+  value: number | string;
   icon: ReactNode;
-  trend?: {
-    value: number;
-    isPositive: boolean;
-  };
+  trend?: TrendData;
   isLoading?: boolean;
-  color?: 'primary' | 'secondary' | 'success' | 'warning' | 'danger' | 'info';
+  color?: 'blue' | 'purple' | 'emerald' | 'amber' | 'red' | 'gray';
+  className?: string;
 }
 
 const StatsCard = ({
@@ -20,77 +24,131 @@ const StatsCard = ({
   icon,
   trend,
   isLoading = false,
-  color = 'primary',
+  color = 'blue',
+  className = '',
 }: StatsCardProps) => {
-  const colorClasses = {
-    primary: {
-      bg: 'bg-primary-50 dark:bg-primary-900/20',
-      text: 'text-primary-600 dark:text-primary-400',
+  // Color mapping for different styles
+  const colorStyles = {
+    blue: {
+      bgLight: 'bg-blue-50',
+      bgDark: 'dark:bg-blue-900/20',
+      textLight: 'text-blue-700',
+      textDark: 'dark:text-blue-400',
+      iconBg: 'bg-blue-100 dark:bg-blue-900/40',
+      iconColor: 'text-blue-600 dark:text-blue-400',
+      trendUp: 'text-emerald-600 dark:text-emerald-400',
+      trendDown: 'text-red-600 dark:text-red-400',
     },
-    secondary: {
-      bg: 'bg-secondary-50 dark:bg-secondary-900/20',
-      text: 'text-secondary-600 dark:text-secondary-400',
+    purple: {
+      bgLight: 'bg-purple-50',
+      bgDark: 'dark:bg-purple-900/20',
+      textLight: 'text-purple-700',
+      textDark: 'dark:text-purple-400',
+      iconBg: 'bg-purple-100 dark:bg-purple-900/40',
+      iconColor: 'text-purple-600 dark:text-purple-400',
+      trendUp: 'text-emerald-600 dark:text-emerald-400',
+      trendDown: 'text-red-600 dark:text-red-400',
     },
-    success: {
-      bg: 'bg-green-50 dark:bg-green-900/20',
-      text: 'text-green-600 dark:text-green-400',
+    emerald: {
+      bgLight: 'bg-emerald-50',
+      bgDark: 'dark:bg-emerald-900/20',
+      textLight: 'text-emerald-700',
+      textDark: 'dark:text-emerald-400',
+      iconBg: 'bg-emerald-100 dark:bg-emerald-900/40',
+      iconColor: 'text-emerald-600 dark:text-emerald-400',
+      trendUp: 'text-emerald-600 dark:text-emerald-400',
+      trendDown: 'text-red-600 dark:text-red-400',
     },
-    warning: {
-      bg: 'bg-yellow-50 dark:bg-yellow-900/20',
-      text: 'text-yellow-600 dark:text-yellow-400',
+    amber: {
+      bgLight: 'bg-amber-50',
+      bgDark: 'dark:bg-amber-900/20',
+      textLight: 'text-amber-700',
+      textDark: 'dark:text-amber-400',
+      iconBg: 'bg-amber-100 dark:bg-amber-900/40',
+      iconColor: 'text-amber-600 dark:text-amber-400',
+      trendUp: 'text-emerald-600 dark:text-emerald-400',
+      trendDown: 'text-red-600 dark:text-red-400',
     },
-    danger: {
-      bg: 'bg-red-50 dark:bg-red-900/20',
-      text: 'text-red-600 dark:text-red-400',
+    red: {
+      bgLight: 'bg-red-50',
+      bgDark: 'dark:bg-red-900/20',
+      textLight: 'text-red-700',
+      textDark: 'dark:text-red-400',
+      iconBg: 'bg-red-100 dark:bg-red-900/40',
+      iconColor: 'text-red-600 dark:text-red-400',
+      trendUp: 'text-emerald-600 dark:text-emerald-400',
+      trendDown: 'text-red-600 dark:text-red-400',
     },
-    info: {
-      bg: 'bg-blue-50 dark:bg-blue-900/20',
-      text: 'text-blue-600 dark:text-blue-400',
+    gray: {
+      bgLight: 'bg-gray-50',
+      bgDark: 'dark:bg-gray-800',
+      textLight: 'text-gray-700',
+      textDark: 'dark:text-gray-300',
+      iconBg: 'bg-gray-100 dark:bg-gray-700',
+      iconColor: 'text-gray-600 dark:text-gray-400',
+      trendUp: 'text-emerald-600 dark:text-emerald-400',
+      trendDown: 'text-red-600 dark:text-red-400',
     },
   };
+  
+  const styles = colorStyles[color];
 
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.3 }}
-      className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-sm"
-    >
-      <div className="flex justify-between">
-        <div className={`${colorClasses[color].bg} p-3 rounded-lg`}>
-          <div className={`${colorClasses[color].text}`}>{icon}</div>
+    <div className={`bg-white dark:bg-gray-800 rounded-lg shadow-sm ${className}`}>
+      <div className="p-6 relative">
+        {/* Background decoration */}
+        <div className="absolute top-0 right-0 h-full w-1/2 overflow-hidden pointer-events-none">
+          <div className={`absolute -right-6 -top-6 w-24 h-24 rounded-full opacity-10 ${
+            color === 'gray' ? 'bg-gray-500' : `bg-${color}-500`
+          }`}></div>
         </div>
-        
-        {trend && (
-          <div className={`flex items-center ${trend.isPositive ? 'text-green-600 dark:text-green-400' : 'text-red-600 dark:text-red-400'}`}>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className={`h-4 w-4 ${trend.isPositive ? '' : 'transform rotate-180'}`}
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 10l7-7m0 0l7 7m-7-7v18" />
-            </svg>
-            <span className="text-sm font-medium ml-1">{Math.abs(trend.value)}%</span>
-          </div>
-        )}
-      </div>
 
-      {isLoading ? (
-        <div className="mt-4 animate-pulse">
-          <div className="h-8 bg-gray-200 dark:bg-gray-700 rounded mb-2"></div>
-          <div className="h-4 bg-gray-200 dark:bg-gray-700 rounded w-2/3"></div>
+        <div className="relative">
+          {/* Header with title and icon */}
+          <div className="flex justify-between items-start mb-4">
+            <h3 className="text-sm font-medium text-gray-500 dark:text-gray-400">{title}</h3>
+            <div className={`p-2 rounded-md ${styles.iconBg} ${styles.iconColor}`}>
+              {icon}
+            </div>
+          </div>
+
+          {/* Value */}
+          {isLoading ? (
+            <div className="animate-pulse mt-3 h-8 bg-gray-200 dark:bg-gray-700 rounded w-1/3"></div>
+          ) : (
+            <motion.div
+              initial={{ opacity: 0, y: 5 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.3 }}
+              className="flex items-baseline"
+            >
+              <h2 className="text-3xl font-bold text-gray-900 dark:text-white">
+                {typeof value === 'number' ? value.toLocaleString() : value}
+              </h2>
+            </motion.div>
+          )}
+
+          {/* Trend indicator */}
+          {trend && !isLoading && (
+            <div className="mt-3 flex items-center">
+              <span className={`inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium ${
+                trend.isPositive
+                  ? `bg-emerald-100 dark:bg-emerald-900/30 ${styles.trendUp}`
+                  : `bg-red-100 dark:bg-red-900/30 ${styles.trendDown}`
+              }`}>
+                {trend.isPositive ? (
+                  <FiArrowUp className="mr-1" />
+                ) : (
+                  <FiArrowDown className="mr-1" />
+                )}
+                {Math.abs(trend.value)}%
+              </span>
+              <span className="ml-2 text-xs text-gray-500 dark:text-gray-400">vs. last month</span>
+            </div>
+          )}
         </div>
-      ) : (
-        <>
-          <h3 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mt-4">
-            {value}
-          </h3>
-          <p className="text-gray-600 dark:text-gray-400 text-sm">{title}</p>
-        </>
-      )}
-    </motion.div>
+      </div>
+    </div>
   );
 };
 

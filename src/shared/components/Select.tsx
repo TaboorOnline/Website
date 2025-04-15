@@ -45,7 +45,7 @@ const Select = forwardRef<HTMLSelectElement, SelectProps>(
           <select
             ref={ref}
             id={selectId}
-            className={`input ${fullWidth ? 'w-full' : ''} ${
+            className={`input outline-none ${fullWidth ? 'w-full' : ''} ${
               error ? 'border-red-300 text-red-900 focus:ring-red-500 focus:border-red-500' : ''
             } pr-10 appearance-none`}
             aria-invalid={error ? 'true' : 'false'}

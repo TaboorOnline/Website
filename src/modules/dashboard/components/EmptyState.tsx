@@ -1,15 +1,15 @@
 // src/modules/dashboard/components/EmptyState.tsx
 import { ReactNode } from 'react';
-import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
 import Button from '../../../shared/components/Button';
 
 interface EmptyStateProps {
-  title?: string;
-  message?: string;
-  icon?: ReactNode;
+  title: string;
+  message: string;
+  icon: ReactNode;
   actionLabel?: string;
   onAction?: () => void;
+  className?: string;
 }
 
 const EmptyState = ({
@@ -18,34 +18,65 @@ const EmptyState = ({
   icon,
   actionLabel,
   onAction,
+  className = '',
 }: EmptyStateProps) => {
-  const { t } = useTranslation();
-
   return (
-    <motion.div
+    <motion.div 
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
-      className="text-center py-16 px-4 bg-gray-50 dark:bg-gray-800 rounded-lg"
+      className={`py-12 flex flex-col items-center justify-center ${className}`}
     >
-      {icon && (
-        <div className="flex justify-center mb-4">
+      <motion.div 
+        initial={{ scale: 0.8, opacity: 0 }}
+        animate={{ scale: 1, opacity: 1 }}
+        transition={{ duration: 0.5, delay: 0.2 }}
+        className="w-24 h-24 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center mb-6 shadow-inner"
+      >
+        <motion.div
+          animate={{ 
+            rotate: [0, 5, -5, 5, 0],
+            scale: [1, 1.05, 1]
+          }}
+          transition={{ 
+            duration: 3, 
+            repeat: Infinity,
+            repeatType: "reverse",
+            ease: "easeInOut"
+          }}
+        >
           {icon}
-        </div>
-      )}
-      
-      <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
-        {title || t('emptyState.title')}
-      </h3>
-      
-      <p className="text-gray-600 dark:text-gray-400 max-w-md mx-auto mb-6">
-        {message || t('emptyState.message')}
-      </p>
-      
-      {onAction && (
-        <Button onClick={onAction}>
-          {actionLabel || t('emptyState.action')}
-        </Button>
+        </motion.div>
+      </motion.div>
+
+      <motion.h2 
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.5, delay: 0.3 }}
+        className="text-xl font-bold text-gray-900 dark:text-white mb-2 text-center"
+      >
+        {title}
+      </motion.h2>
+
+      <motion.p 
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.5, delay: 0.4 }}
+        className="text-gray-600 dark:text-gray-400 text-center max-w-md mb-6"
+      >
+        {message}
+      </motion.p>
+
+      {actionLabel && onAction && (
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.5 }}
+        >
+          <Button onClick={onAction} size="lg" className="border border-gray-300 dark:border-gray-600 shadow-sm">
+            {actionLabel}
+          </Button>
+        </motion.div>
       )}
     </motion.div>
   );
