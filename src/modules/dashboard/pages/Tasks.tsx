@@ -462,7 +462,7 @@ const TaskCard = ({ task, formatDueDate, getPriorityColor, onStatusChange, onEdi
         <div className="flex space-x-1">
           <button
             onClick={() => onEdit(task)}
-            className="p-1 text-gray-500 hover:text-primary-600 dark:text-gray-400 dark:hover:text-primary-400"
+            className="p-1 text-gray-500 hover:text-indigo-600 dark:text-gray-400 dark:hover:text-indigo-400"
             title={t('common.edit')}
           >
             <FiEdit2 size={16} />
@@ -504,7 +504,7 @@ const TaskCard = ({ task, formatDueDate, getPriorityColor, onStatusChange, onEdi
         
         <button
           onClick={() => onStatusChange(task.id, getNextStatus())}
-          className="text-xs bg-primary-50 dark:bg-primary-900/20 text-primary-600 dark:text-primary-400 px-2 py-1 rounded hover:bg-primary-100 dark:hover:bg-primary-900/30 transition-colors"
+          className="text-xs bg-indigo-50 dark:bg-indigo-900/20 text-indigo-600 dark:text-indigo-400 px-2 py-1 rounded hover:bg-indigo-100 dark:hover:bg-indigo-900/30 transition-colors"
         >
           {getNextStatusLabel()}
         </button>

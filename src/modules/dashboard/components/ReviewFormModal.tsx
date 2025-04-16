@@ -179,7 +179,7 @@ const ReviewFormModal = ({ isOpen, onClose, review }: ReviewFormModalProps) => {
             key={star}
             type="button"
             onClick={() => setValue('rating', star)}
-            className={`p-1 rounded-full focus:outline-none focus:ring-2 focus:ring-primary-500 ${
+            className={`p-1 rounded-full focus:outline-none focus:ring-2 focus:ring-indigo-500 ${
               star <= currentRating
                 ? 'text-yellow-400'
                 : 'text-gray-300 dark:text-gray-600'
@@ -206,10 +206,10 @@ const ReviewFormModal = ({ isOpen, onClose, review }: ReviewFormModalProps) => {
     >
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="space-y-6">
-          {/* Primary Language Fields */}
+          {/* indigo Language Fields */}
           <div className="space-y-4">
             <h3 className="text-lg font-medium text-gray-900 dark:text-white">
-              {t('common.primaryInfo')}
+              {t('common.indigoInfo')}
             </h3>
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -228,7 +228,7 @@ const ReviewFormModal = ({ isOpen, onClose, review }: ReviewFormModalProps) => {
                       <input
                         type="checkbox"
                         id="approved"
-                        className="h-4 w-4 text-primary-600 focus:ring-primary-500 border-gray-300 rounded"
+                        className="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded"
                         checked={field.value}
                         onChange={(e) => field.onChange(e.target.checked)}
                       />
@@ -294,7 +294,7 @@ const ReviewFormModal = ({ isOpen, onClose, review }: ReviewFormModalProps) => {
             <h3 className="text-lg font-medium text-gray-900 dark:text-white flex items-center">
               {t('languages.english')}
               {currentLanguage === 'en' && (
-                <span className="ml-2 text-xs bg-primary-100 dark:bg-primary-900/30 text-primary-800 dark:text-primary-200 py-1 px-2 rounded-full">
+                <span className="ml-2 text-xs bg-indigo-100 dark:bg-indigo-900/30 text-indigo-800 dark:text-indigo-200 py-1 px-2 rounded-full">
                   {t('common.current')}
                 </span>
               )}
@@ -327,7 +327,7 @@ const ReviewFormModal = ({ isOpen, onClose, review }: ReviewFormModalProps) => {
             <h3 className="text-lg font-medium text-gray-900 dark:text-white flex items-center">
               {t('languages.arabic')}
               {currentLanguage === 'ar' && (
-                <span className="ml-2 text-xs bg-primary-100 dark:bg-primary-900/30 text-primary-800 dark:text-primary-200 py-1 px-2 rounded-full">
+                <span className="ml-2 text-xs bg-indigo-100 dark:bg-indigo-900/30 text-indigo-800 dark:text-indigo-200 py-1 px-2 rounded-full">
                   {t('common.current')}
                 </span>
               )}

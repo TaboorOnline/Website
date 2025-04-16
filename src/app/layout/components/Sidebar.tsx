@@ -51,10 +51,10 @@ export const Sidebar = ({
         {(isDesktopOpen || isMobile) && (
           <Link to="/dashboard" className="flex items-center space-x-2" onClick={isMobile ? closeMobileSidebar : undefined}>
             {/* Logo or Icon */}
-            <div className="w-8 h-8 bg-gradient-to-br from-primary-500 to-primary-600 rounded-md flex items-center justify-center text-white font-bold text-lg shadow-md">
+            <div className="w-8 h-8 bg-gradient-to-br from-indigo-500 to-indigo-600 rounded-md flex items-center justify-center text-white font-bold text-lg shadow-md">
               H
             </div>
-            <span className="text-primary-600 dark:text-primary-400 text-xl font-bold whitespace-nowrap">
+            <span className="text-indigo-600 dark:text-indigo-400 text-xl font-bold whitespace-nowrap">
               {appName}
             </span>
           </Link>
@@ -63,7 +63,7 @@ export const Sidebar = ({
         {!isMobile && (
           <button
             onClick={toggleDesktopSidebar}
-            className={`p-1.5 rounded-md text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 hover:text-primary-600 dark:hover:text-primary-400 ${!isDesktopOpen ? 'rotate-180' : ''} transition-all duration-300`}
+            className={`p-1.5 rounded-md text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 hover:text-indigo-600 dark:hover:text-indigo-400 ${!isDesktopOpen ? 'rotate-180' : ''} transition-all duration-300`}
             aria-label={isDesktopOpen ? t('sidebar.collapse') : t('sidebar.expand')}
             title={isDesktopOpen ? t('sidebar.collapse') : t('sidebar.expand')}
           >
@@ -76,7 +76,7 @@ export const Sidebar = ({
       {(isDesktopOpen || isMobile) && (
         <div className="px-4 py-4 border-b border-gray-200 dark:border-gray-700">
           <div className="flex items-center space-x-3">
-            <div className="h-10 w-10 rounded-full bg-gradient-to-r from-primary-500 to-primary-600 text-white flex items-center justify-center text-sm font-semibold shadow-sm">
+            <div className="h-10 w-10 rounded-full bg-gradient-to-r from-indigo-500 to-indigo-600 text-white flex items-center justify-center text-sm font-semibold shadow-sm">
               {userInitial}
             </div>
             <div className="flex-1 min-w-0">

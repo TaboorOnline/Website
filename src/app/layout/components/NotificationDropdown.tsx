@@ -97,14 +97,14 @@ export const NotificationDropdown = ({ isOpen, setIsOpen, notificationCount }: N
             {/* Header */}
             <div className="flex items-center justify-between px-4 py-3 border-b border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800/80">
               <h3 className="text-sm font-semibold text-gray-800 dark:text-gray-200">{t('notifications.title')} ({notificationCount})</h3>
-              <button className="text-xs text-primary-600 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-300 font-medium">
+              <button className="text-xs text-indigo-600 dark:text-indigo-400 hover:text-indigo-700 dark:hover:text-indigo-300 font-medium">
                 {t('notifications.markAllRead')}
               </button>
             </div>
 
             {/* Notification Tabs (optional) */}
             <div className="flex border-b border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800/80">
-              <button className="flex-1 py-2 text-xs font-medium text-primary-600 dark:text-primary-400 border-b-2 border-primary-500">
+              <button className="flex-1 py-2 text-xs font-medium text-indigo-600 dark:text-indigo-400 border-b-2 border-indigo-500">
                 {t('notifications.all')}
               </button>
               <button className="flex-1 py-2 text-xs font-medium text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300">
@@ -163,7 +163,7 @@ export const NotificationDropdown = ({ isOpen, setIsOpen, notificationCount }: N
               <button className="text-xs text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300">
                 {t('notifications.settings')}
               </button>
-              <button className="text-xs text-primary-600 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-300 font-medium">
+              <button className="text-xs text-indigo-600 dark:text-indigo-400 hover:text-indigo-700 dark:hover:text-indigo-300 font-medium">
                 {t('notifications.viewAll')}
               </button>
             </div>

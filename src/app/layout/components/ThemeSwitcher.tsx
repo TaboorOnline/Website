@@ -26,7 +26,7 @@ export const ThemeSwitcher = () => {
         onClick={() => setTheme('system')}
         className={`p-2 rounded-md transition-colors duration-200 ${
           theme === 'system' 
-            ? 'bg-white dark:bg-gray-800 text-primary-500 shadow-sm' 
+            ? 'bg-white dark:bg-gray-800 text-indigo-500 shadow-sm' 
             : 'text-gray-500 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-600'
         }`}
         aria-label={t('theme.system')}

@@ -121,7 +121,7 @@ function DataTable<T>({
               </div>
               <input
                 type="text"
-                className="block w-full pl-10 pr-10 py-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 focus:ring-primary-500 focus:border-primary-500"
+                className="block w-full pl-10 pr-10 py-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 focus:ring-indigo-500 focus:border-indigo-500"
                 placeholder={searchPlaceholder || t('table.search')}
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}

@@ -214,7 +214,7 @@ const Inbox = () => {
                       onClick={() => handleMessageClick(message)}
                       className={`p-4 cursor-pointer transition-colors ${
                         selectedMessage?.id === message.id
-                          ? 'bg-primary-50 dark:bg-primary-900/20'
+                          ? 'bg-indigo-50 dark:bg-indigo-900/20'
                           : 'hover:bg-gray-50 dark:hover:bg-gray-800'
                       } ${!message.read ? 'bg-blue-50 dark:bg-blue-900/10' : ''}`}
                     >
@@ -324,7 +324,7 @@ const Inbox = () => {
                         </span>
                         <a 
                           href={`mailto:${selectedMessage.email}`}
-                          className="text-primary-600 dark:text-primary-400 hover:underline"
+                          className="text-indigo-600 dark:text-indigo-400 hover:underline"
                         >
                           {selectedMessage.email}
                         </a>
@@ -337,7 +337,7 @@ const Inbox = () => {
                         </span>
                         <a 
                           href={`tel:${selectedMessage.phone}`}
-                          className="text-primary-600 dark:text-primary-400 hover:underline"
+                          className="text-indigo-600 dark:text-indigo-400 hover:underline"
                         >
                           {selectedMessage.phone}
                         </a>

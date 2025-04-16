@@ -253,10 +253,10 @@ const TeamMemberFormModal = ({ isOpen, onClose, teamMember }: TeamMemberFormModa
     >
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="space-y-6">
-          {/* Primary Language Fields */}
+          {/* indigo Language Fields */}
           <div className="space-y-4">
             <h3 className="text-lg font-medium text-gray-900 dark:text-white">
-              {t('common.primaryInfo')}
+              {t('common.indigoInfo')}
             </h3>
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -351,7 +351,7 @@ const TeamMemberFormModal = ({ isOpen, onClose, teamMember }: TeamMemberFormModa
                       <div className="mt-2">
                         <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2.5">
                           <div
-                            className="bg-primary-600 h-2.5 rounded-full transition-all duration-300"
+                            className="bg-indigo-600 h-2.5 rounded-full transition-all duration-300"
                             style={{ width: `${uploadProgress}%` }}
                           ></div>
                         </div>
@@ -413,7 +413,7 @@ const TeamMemberFormModal = ({ isOpen, onClose, teamMember }: TeamMemberFormModa
             <h3 className="text-lg font-medium text-gray-900 dark:text-white flex items-center">
               {t('languages.english')}
               {currentLanguage === 'en' && (
-                <span className="ml-2 text-xs bg-primary-100 dark:bg-primary-900/30 text-primary-800 dark:text-primary-200 py-1 px-2 rounded-full">
+                <span className="ml-2 text-xs bg-indigo-100 dark:bg-indigo-900/30 text-indigo-800 dark:text-indigo-200 py-1 px-2 rounded-full">
                   {t('common.current')}
                 </span>
               )}
@@ -460,7 +460,7 @@ const TeamMemberFormModal = ({ isOpen, onClose, teamMember }: TeamMemberFormModa
             <h3 className="text-lg font-medium text-gray-900 dark:text-white flex items-center">
               {t('languages.arabic')}
               {currentLanguage === 'ar' && (
-                <span className="ml-2 text-xs bg-primary-100 dark:bg-primary-900/30 text-primary-800 dark:text-primary-200 py-1 px-2 rounded-full">
+                <span className="ml-2 text-xs bg-indigo-100 dark:bg-indigo-900/30 text-indigo-800 dark:text-indigo-200 py-1 px-2 rounded-full">
                   {t('common.current')}
                 </span>
               )}

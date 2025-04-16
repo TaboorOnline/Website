@@ -35,7 +35,7 @@ export const Breadcrumbs = ({ currentPath }: BreadcrumbsProps) => {
         <li className="inline-flex items-center">
           <Link 
             to="/dashboard" 
-            className="inline-flex items-center text-sm text-gray-500 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-400"
+            className="inline-flex items-center text-sm text-gray-500 dark:text-gray-400 hover:text-indigo-600 dark:hover:text-indigo-400"
           >
             <FiHome className="mr-1" size={16} />
             {t('nav.dashboard')}
@@ -52,7 +52,7 @@ export const Breadcrumbs = ({ currentPath }: BreadcrumbsProps) => {
             ) : (
               <Link
                 to={breadcrumb.path}
-                className="text-sm text-gray-500 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-400"
+                className="text-sm text-gray-500 dark:text-gray-400 hover:text-indigo-600 dark:hover:text-indigo-400"
               >
                 {t(`nav.${breadcrumb.title.toLowerCase()}`)}
               </Link>

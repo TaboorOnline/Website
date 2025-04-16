@@ -81,7 +81,7 @@ const Hero = () => {
                   size="lg" 
                   className="w-full sm:w-auto bg-indigo-600 hover:bg-indigo-700 dark:bg-indigo-600 dark:hover:bg-indigo-700 text-white"
                 >
-                  {t('hero.primaryCta')}
+                  {t('hero.indigoCta')}
                 </Button>
               </Link>
               <Link to="/services" className="w-full sm:w-auto">

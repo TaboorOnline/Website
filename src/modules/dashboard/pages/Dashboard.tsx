@@ -95,9 +95,9 @@ const Dashboard = () => {
           title={t('dashboard.welcomeMessage')}
           subtitle={
             <div className="flex items-center space-x-2 text-sm text-gray-600 dark:text-gray-400">
-              <FiCalendar className="text-primary-500" />
+              <FiCalendar className="text-indigo-500" />
               <span>{formatDate(currentTime)}</span>
-              <FiClock className="text-primary-500 ml-2" />
+              <FiClock className="text-indigo-500 ml-2" />
               <span>{formatTime(currentTime)}</span>
             </div>
           }
@@ -192,7 +192,7 @@ const Dashboard = () => {
                 <Button variant="ghost" size="sm" className="text-xs">
                   {t('dashboard.monthly')}
                 </Button>
-                <Button variant="ghost" size="sm" className="text-xs bg-primary-50 dark:bg-primary-900/20 text-primary-600 dark:text-primary-400">
+                <Button variant="ghost" size="sm" className="text-xs bg-indigo-50 dark:bg-indigo-900/20 text-indigo-600 dark:text-indigo-400">
                   {t('dashboard.weekly')}
                 </Button>
                 <Button variant="ghost" size="sm" className="text-xs">
@@ -204,7 +204,7 @@ const Dashboard = () => {
             <div className="relative h-80">
               {statsLoading ? (
                 <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="animate-spin rounded-full h-10 w-10 border-b-2 border-primary-600"></div>
+                  <div className="animate-spin rounded-full h-10 w-10 border-b-2 border-indigo-600"></div>
                 </div>
               ) : (
                 <div className="h-full flex flex-col">
@@ -269,9 +269,9 @@ const Dashboard = () => {
                             >
                               <div 
                                 className={`w-full h-full rounded-t-md bg-gradient-to-t ${i % 2 === 0 
-                                  ? 'from-primary-500/80 to-primary-400/90' 
-                                  : 'from-primary-600/80 to-primary-500/90'
-                                } relative group transition-all hover:from-primary-600 hover:to-primary-500 cursor-pointer`}
+                                  ? 'from-indigo-500/80 to-indigo-400/90' 
+                                  : 'from-indigo-600/80 to-indigo-500/90'
+                                } relative group transition-all hover:from-indigo-600 hover:to-indigo-500 cursor-pointer`}
                               >
                                 <div className="absolute -top-10 left-1/2 transform -translate-x-1/2 bg-gray-900 text-white text-xs py-1 px-2 rounded opacity-0 group-hover:opacity-100 transition-opacity">
                                   {height * 120}
@@ -314,10 +314,10 @@ const Dashboard = () => {
             headerClass="border-b border-gray-200 dark:border-gray-700"
             headerAction={
               <div className="relative group">
-                <Button variant="ghost" size="sm" className="text-primary-600 dark:text-primary-400">
+                <Button variant="ghost" size="sm" className="text-indigo-600 dark:text-indigo-400">
                   {t('dashboard.viewDetails')}
                 </Button>
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary-500 group-hover:w-full transition-all duration-300"></span>
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-indigo-500 group-hover:w-full transition-all duration-300"></span>
               </div>
             }
           >
@@ -368,7 +368,7 @@ const Dashboard = () => {
                   <Link to="/dashboard/stats" className="group block">
                     <Button 
                       variant="outline" 
-                      className="w-full group-hover:bg-primary-50 dark:group-hover:bg-primary-900/20 group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-all duration-300"
+                      className="w-full group-hover:bg-indigo-50 dark:group-hover:bg-indigo-900/20 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-all duration-300"
                     >
                       <span>{t('dashboard.viewAllStats')}</span>
                       <FiChevronRight className="ml-2 opacity-50 group-hover:opacity-100 transform group-hover:translate-x-1 transition-all duration-300" />
@@ -403,7 +403,7 @@ const Dashboard = () => {
               <Link to="/dashboard/reviews" className="group block">
                 <Button 
                   variant="outline" 
-                  className="w-full group-hover:bg-primary-50 dark:group-hover:bg-primary-900/20 group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-all duration-300"
+                  className="w-full group-hover:bg-indigo-50 dark:group-hover:bg-indigo-900/20 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-all duration-300"
                 >
                   <span>{t('dashboard.viewAllReviews')}</span>
                   <FiChevronRight className="ml-2 opacity-50 group-hover:opacity-100 transform group-hover:translate-x-1 transition-all duration-300" />
@@ -486,7 +486,7 @@ const Dashboard = () => {
                     <FiStar className="h-8 w-8 text-gray-400 dark:text-gray-500" />
                   </div>
                   <p className="text-sm">{t('dashboard.noReviews')}</p>
-                  <button className="mt-2 text-primary-600 dark:text-primary-400 text-sm hover:underline">
+                  <button className="mt-2 text-indigo-600 dark:text-indigo-400 text-sm hover:underline">
                     {t('dashboard.refreshData')}
                   </button>
                 </div>
@@ -507,7 +507,7 @@ const Dashboard = () => {
             headerClass="border-b border-gray-200 dark:border-gray-700"
             headerAction={
               <div className="p-1 bg-gray-100 dark:bg-gray-700 rounded-lg flex text-xs">
-                <button className="px-2 py-1 rounded-md bg-white dark:bg-gray-800 shadow-sm font-medium text-primary-600 dark:text-primary-400">
+                <button className="px-2 py-1 rounded-md bg-white dark:bg-gray-800 shadow-sm font-medium text-indigo-600 dark:text-indigo-400">
                   {t('dashboard.unreadFirst')}
                 </button>
                 <button className="px-2 py-1 rounded-md font-medium text-gray-600 dark:text-gray-400">
@@ -519,7 +519,7 @@ const Dashboard = () => {
               <Link to="/dashboard/inbox" className="group block">
                 <Button 
                   variant="outline" 
-                  className="w-full group-hover:bg-primary-50 dark:group-hover:bg-primary-900/20 group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-all duration-300"
+                  className="w-full group-hover:bg-indigo-50 dark:group-hover:bg-indigo-900/20 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-all duration-300"
                 >
                   <span>{t('dashboard.viewAllMessages')}</span>
                   <FiChevronRight className="ml-2 opacity-50 group-hover:opacity-100 transform group-hover:translate-x-1 transition-all duration-300" />
@@ -553,14 +553,14 @@ const Dashboard = () => {
                       transition={{ duration: 0.3, delay: index * 0.1 }}
                       className={`p-4 rounded-lg shadow-sm hover:shadow-md transition-all duration-200 border hover:border-gray-200 dark:hover:border-gray-600 ${
                         !message.read 
-                          ? 'bg-primary-50 dark:bg-primary-900/10 border-primary-100 dark:border-primary-900/30' 
+                          ? 'bg-indigo-50 dark:bg-indigo-900/10 border-indigo-100 dark:border-indigo-900/30' 
                           : 'bg-white dark:bg-gray-800 border-gray-100 dark:border-gray-700'
                       }`}
                     >
                       <div className="flex items-start">
                         <div className={`h-12 w-12 rounded-full flex items-center justify-center shadow-sm text-white font-medium ${
                           !message.read 
-                            ? 'bg-gradient-to-br from-primary-400 to-primary-600 dark:from-primary-600 dark:to-primary-800' 
+                            ? 'bg-gradient-to-br from-indigo-400 to-indigo-600 dark:from-indigo-600 dark:to-indigo-800' 
                             : 'bg-gradient-to-br from-gray-400 to-gray-600 dark:from-gray-600 dark:to-gray-800'
                         }`}>
                           {message.name ? String(message.name).charAt(0) : '?'}
@@ -570,7 +570,7 @@ const Dashboard = () => {
                             <h4 className="font-semibold text-gray-900 dark:text-white flex items-center">
                               {message.name || t('dashboard.anonymous')}
                               {!message.read && (
-                                <span className="ml-2 inline-block w-2 h-2 bg-primary-500 rounded-full animate-pulse"></span>
+                                <span className="ml-2 inline-block w-2 h-2 bg-indigo-500 rounded-full animate-pulse"></span>
                               )}
                             </h4>
                             <span className="text-xs text-gray-500 dark:text-gray-400">
@@ -584,7 +584,7 @@ const Dashboard = () => {
                             {message.message}
                           </p>
                           <div className="mt-3 flex justify-end">
-                            <button className="text-xs text-primary-600 dark:text-primary-400 hover:underline">
+                            <button className="text-xs text-indigo-600 dark:text-indigo-400 hover:underline">
                               {t('dashboard.readMore')}
                             </button>
                           </div>
@@ -599,7 +599,7 @@ const Dashboard = () => {
                     <FiMail className="h-8 w-8 text-gray-400 dark:text-gray-500" />
                   </div>
                   <p className="text-sm">{t('dashboard.noMessages')}</p>
-                  <button className="mt-2 text-primary-600 dark:text-primary-400 text-sm hover:underline">
+                  <button className="mt-2 text-indigo-600 dark:text-indigo-400 text-sm hover:underline">
                     {t('dashboard.refreshData')}
                   </button>
                 </div>
@@ -620,7 +620,7 @@ const Dashboard = () => {
           className="bg-gradient-to-br from-white to-gray-50 dark:from-gray-800 dark:to-gray-900"
           headerClass="border-b border-gray-200 dark:border-gray-700"
           headerAction={
-            <select className="form-select text-xs rounded-lg border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 focus:border-primary-500 dark:focus:border-primary-500 focus:ring focus:ring-primary-500/20 transition-all duration-200">
+            <select className="form-select text-xs rounded-lg border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 focus:border-indigo-500 dark:focus:border-indigo-500 focus:ring focus:ring-indigo-500/20 transition-all duration-200">
               <option value="visitors">{t('dashboard.byVisitors')}</option>
               <option value="views">{t('dashboard.byPageViews')}</option>
               <option value="time">{t('dashboard.byTimeSpent')}</option>

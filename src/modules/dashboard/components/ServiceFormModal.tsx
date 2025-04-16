@@ -170,9 +170,9 @@ const ServiceFormModal = ({ isOpen, onClose, service }: ServiceFormModalProps) =
     }
   };
 
-  // When the language changes, update the primary title/description fields
+  // When the language changes, update the indigo title/description fields
   useEffect(() => {
-    const updatePrimaryFields = () => {
+    const updateindigoFields = () => {
       if (currentLanguage === 'en' || currentLanguage === 'ar') {
         const title = (service?.translations as ServiceFormValues['translations'])?.[currentLanguage]?.title || '';
         const description = (service?.translations as ServiceFormValues['translations'])?.[currentLanguage]?.description || '';
@@ -183,7 +183,7 @@ const ServiceFormModal = ({ isOpen, onClose, service }: ServiceFormModalProps) =
     };
     
     if (isUpdating) {
-      updatePrimaryFields();
+      updateindigoFields();
     }
   }, [currentLanguage, service, setValue, isUpdating]);
 
@@ -204,7 +204,7 @@ const ServiceFormModal = ({ isOpen, onClose, service }: ServiceFormModalProps) =
             className="flex justify-center"
           >
             <div className="relative">
-              <div className="w-16 h-16 bg-gradient-to-br from-primary-100 to-primary-200 dark:from-primary-900/30 dark:to-primary-800/30 rounded-xl flex items-center justify-center text-4xl text-primary-600 dark:text-primary-400 shadow-md border border-primary-200 dark:border-primary-700">
+              <div className="w-16 h-16 bg-gradient-to-br from-indigo-100 to-indigo-200 dark:from-indigo-900/30 dark:to-indigo-800/30 rounded-xl flex items-center justify-center text-4xl text-indigo-600 dark:text-indigo-400 shadow-md border border-indigo-200 dark:border-indigo-700">
                 {watchedIcon || '🔍'}
               </div>
               {watchedFeatured && (
@@ -220,14 +220,14 @@ const ServiceFormModal = ({ isOpen, onClose, service }: ServiceFormModalProps) =
         <div className="flex-1 overflow-y-auto p-6">
           <form id="service-form" onSubmit={handleSubmit(onSubmit)}>
             <div className="space-y-6">
-              {/* Primary Language Fields */}
+              {/* indigo Language Fields */}
               <div className="bg-white dark:bg-gray-800 p-5 rounded-xl border border-gray-300 dark:border-gray-600 shadow-sm space-y-4">
                 <div className="flex items-center mb-4">
-                  <div className="p-2 rounded-full bg-primary-100 dark:bg-primary-900/30 text-primary-600 dark:text-primary-400 mr-3 border border-primary-200 dark:border-primary-700">
+                  <div className="p-2 rounded-full bg-indigo-100 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400 mr-3 border border-indigo-200 dark:border-indigo-700">
                     <FiGlobe size={18} />
                   </div>
                   <h3 className="text-lg font-medium text-gray-900 dark:text-white">
-                    {t('common.primaryInfo')}
+                    {t('common.indigoInfo')}
                   </h3>
                 </div>
                 
@@ -236,7 +236,7 @@ const ServiceFormModal = ({ isOpen, onClose, service }: ServiceFormModalProps) =
                     <div className="mb-4">
                       <label htmlFor="title" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
                         <div className="flex items-center">
-                          <FiType className="mr-2 text-primary-500" size={16} />
+                          <FiType className="mr-2 text-indigo-500" size={16} />
                           {t('services.title')}
                         </div>
                       </label>
@@ -247,7 +247,7 @@ const ServiceFormModal = ({ isOpen, onClose, service }: ServiceFormModalProps) =
                           className={`block w-full px-4 py-2.5 bg-white dark:bg-gray-800 border ${
                             errors.title
                               ? 'border-red-300 dark:border-red-600 focus:ring-red-500 focus:border-red-500'
-                              : 'border-gray-300 dark:border-gray-600 focus:ring-primary-500 focus:border-primary-500'
+                              : 'border-gray-300 dark:border-gray-600 focus:ring-indigo-500 focus:border-indigo-500'
                           } rounded-lg shadow-sm focus:outline-none focus:ring-2 transition-colors`}
                           placeholder={t('services.titlePlaceholder')}
                           {...register('title')}
@@ -268,7 +268,7 @@ const ServiceFormModal = ({ isOpen, onClose, service }: ServiceFormModalProps) =
                     <div className="mb-4">
                       <label htmlFor="icon" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
                         <div className="flex items-center">
-                          <span className="mr-2 text-primary-500">🔍</span>
+                          <span className="mr-2 text-indigo-500">🔍</span>
                           {t('services.icon')}
                         </div>
                       </label>
@@ -279,7 +279,7 @@ const ServiceFormModal = ({ isOpen, onClose, service }: ServiceFormModalProps) =
                           className={`block w-full px-4 py-2.5 bg-white dark:bg-gray-800 border ${
                             errors.icon
                               ? 'border-red-300 dark:border-red-600 focus:ring-red-500 focus:border-red-500'
-                              : 'border-gray-300 dark:border-gray-600 focus:ring-primary-500 focus:border-primary-500'
+                              : 'border-gray-300 dark:border-gray-600 focus:ring-indigo-500 focus:border-indigo-500'
                           } rounded-lg shadow-sm focus:outline-none focus:ring-2 transition-colors`}
                           placeholder="🚀"
                           {...register('icon')}
@@ -304,7 +304,7 @@ const ServiceFormModal = ({ isOpen, onClose, service }: ServiceFormModalProps) =
                       <div className="flex-1">
                         <label htmlFor="order" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
                           <div className="flex items-center">
-                            <FiHash className="mr-2 text-primary-500" size={16} />
+                            <FiHash className="mr-2 text-indigo-500" size={16} />
                             {t('services.order')}
                           </div>
                         </label>
@@ -315,7 +315,7 @@ const ServiceFormModal = ({ isOpen, onClose, service }: ServiceFormModalProps) =
                             className={`block w-full px-4 py-2.5 bg-white dark:bg-gray-800 border ${
                               errors.order
                                 ? 'border-red-300 dark:border-red-600 focus:ring-red-500 focus:border-red-500'
-                                : 'border-gray-300 dark:border-gray-600 focus:ring-primary-500 focus:border-primary-500'
+                                : 'border-gray-300 dark:border-gray-600 focus:ring-indigo-500 focus:border-indigo-500'
                             } rounded-lg shadow-sm focus:outline-none focus:ring-2 transition-colors`}
                             placeholder="0"
                             {...register('order', { valueAsNumber: true })}
@@ -383,7 +383,7 @@ const ServiceFormModal = ({ isOpen, onClose, service }: ServiceFormModalProps) =
                         className={`block w-full px-4 py-2.5 bg-white dark:bg-gray-800 border ${
                           errors.description
                             ? 'border-red-300 dark:border-red-600 focus:ring-red-500 focus:border-red-500'
-                            : 'border-gray-300 dark:border-gray-600 focus:ring-primary-500 focus:border-primary-500'
+                            : 'border-gray-300 dark:border-gray-600 focus:ring-indigo-500 focus:border-indigo-500'
                         } rounded-lg shadow-sm focus:outline-none focus:ring-2 transition-colors`}
                         {...register('description')}
                         placeholder={t('services.descriptionPlaceholder')}
@@ -433,7 +433,7 @@ const ServiceFormModal = ({ isOpen, onClose, service }: ServiceFormModalProps) =
                         className={`block w-full px-4 py-2.5 bg-white dark:bg-gray-800 border ${
                           errors.translations?.en?.title
                             ? 'border-red-300 dark:border-red-600 focus:ring-red-500 focus:border-red-500'
-                            : 'border-gray-300 dark:border-gray-600 focus:ring-primary-500 focus:border-primary-500'
+                            : 'border-gray-300 dark:border-gray-600 focus:ring-indigo-500 focus:border-indigo-500'
                         } rounded-lg shadow-sm focus:outline-none focus:ring-2 transition-colors`}
                         placeholder={t('services.titlePlaceholder')}
                         {...register('translations.en.title')}
@@ -462,7 +462,7 @@ const ServiceFormModal = ({ isOpen, onClose, service }: ServiceFormModalProps) =
                         className={`block w-full px-4 py-2.5 bg-white dark:bg-gray-800 border ${
                           errors.translations?.en?.description
                             ? 'border-red-300 dark:border-red-600 focus:ring-red-500 focus:border-red-500'
-                            : 'border-gray-300 dark:border-gray-600 focus:ring-primary-500 focus:border-primary-500'
+                            : 'border-gray-300 dark:border-gray-600 focus:ring-indigo-500 focus:border-indigo-500'
                         } rounded-lg shadow-sm focus:outline-none focus:ring-2 transition-colors`}
                         placeholder={t('services.descriptionPlaceholder')}
                         {...register('translations.en.description')}
@@ -513,7 +513,7 @@ const ServiceFormModal = ({ isOpen, onClose, service }: ServiceFormModalProps) =
                         className={`block w-full px-4 py-2.5 bg-white dark:bg-gray-800 border font-arabic ${
                           errors.translations?.ar?.title
                             ? 'border-red-300 dark:border-red-600 focus:ring-red-500 focus:border-red-500'
-                            : 'border-gray-300 dark:border-gray-600 focus:ring-primary-500 focus:border-primary-500'
+                            : 'border-gray-300 dark:border-gray-600 focus:ring-indigo-500 focus:border-indigo-500'
                         } rounded-lg shadow-sm focus:outline-none focus:ring-2 transition-colors`}
                         placeholder={t('services.titlePlaceholder')}
                         {...register('translations.ar.title')}
@@ -543,7 +543,7 @@ const ServiceFormModal = ({ isOpen, onClose, service }: ServiceFormModalProps) =
                         className={`block w-full px-4 py-2.5 bg-white dark:bg-gray-800 border font-arabic ${
                           errors.translations?.ar?.description
                             ? 'border-red-300 dark:border-red-600 focus:ring-red-500 focus:border-red-500'
-                            : 'border-gray-300 dark:border-gray-600 focus:ring-primary-500 focus:border-primary-500'
+                            : 'border-gray-300 dark:border-gray-600 focus:ring-indigo-500 focus:border-indigo-500'
                         } rounded-lg shadow-sm focus:outline-none focus:ring-2 transition-colors`}
                         placeholder={t('services.descriptionPlaceholder')}
                         {...register('translations.ar.description')}

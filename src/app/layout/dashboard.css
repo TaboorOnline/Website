@@ -83,23 +83,23 @@
   width: 5px;
 }
 
-/* Modal/Dialog scrollbar with primary color accent */
+/* Modal/Dialog scrollbar with indigo color accent */
 .modal-content::-webkit-scrollbar-thumb {
-  background-color: rgba(var(--color-primary-500), 0.6);
+  background-color: rgba(var(--color-indigo-500), 0.6);
   border: 2px solid #f1f5f9;
 }
 
 .dark .modal-content::-webkit-scrollbar-thumb {
-  background-color: rgba(var(--color-primary-400), 0.5);
+  background-color: rgba(var(--color-indigo-400), 0.5);
   border: 2px solid #1e293b;
 }
 
 .modal-content::-webkit-scrollbar-thumb:hover {
-  background-color: rgba(var(--color-primary-600), 0.8);
+  background-color: rgba(var(--color-indigo-600), 0.8);
 }
 
 .dark .modal-content::-webkit-scrollbar-thumb:hover {
-  background-color: rgba(var(--color-primary-300), 0.7);
+  background-color: rgba(var(--color-indigo-300), 0.7);
 }
 
 /* Dashboard content scrollbar with subtle design */
@@ -124,12 +124,12 @@
 }
 
 .table-wrapper::-webkit-scrollbar-thumb {
-  background-color: rgba(var(--color-primary-300), 0.5);
+  background-color: rgba(var(--color-indigo-300), 0.5);
   border-radius: 10px;
 }
 
 .dark .table-wrapper::-webkit-scrollbar-thumb {
-  background-color: rgba(var(--color-primary-900), 0.5);
+  background-color: rgba(var(--color-indigo-900), 0.5);
 }
 
 /* Code blocks and pre-formatted text scrollbar */
@@ -170,10 +170,10 @@ code::-webkit-scrollbar-thumb {
 }
 
 .chart-container::-webkit-scrollbar-thumb {
-  background-color: rgba(var(--color-primary-500), 0.3);
+  background-color: rgba(var(--color-indigo-500), 0.3);
   border-radius: 10px;
 }
 
 .dark .chart-container::-webkit-scrollbar-thumb {
-  background-color: rgba(var(--color-primary-400), 0.3);
+  background-color: rgba(var(--color-indigo-400), 0.3);
 }

@@ -140,7 +140,7 @@ const Settings = () => {
               
               <div className="flex flex-col sm:flex-row gap-4">
                 <Button
-                  variant={language === 'en' ? 'primary' : 'outline'}
+                  variant={language === 'en' ? 'indigo' : 'outline'}
                   onClick={() => handleLanguageChange('en')}
                   icon={<FiGlobe className="mr-2" />}
                 >
@@ -148,7 +148,7 @@ const Settings = () => {
                 </Button>
                 
                 <Button
-                  variant={language === 'ar' ? 'primary' : 'outline'}
+                  variant={language === 'ar' ? 'indigo' : 'outline'}
                   onClick={() => handleLanguageChange('ar')}
                   icon={<FiGlobe className="mr-2" />}
                 >
@@ -171,7 +171,7 @@ const Settings = () => {
               
               <div className="flex flex-col sm:flex-row gap-4">
                 <Button
-                  variant={theme === 'light' ? 'primary' : 'outline'}
+                  variant={theme === 'light' ? 'indigo' : 'outline'}
                   onClick={() => handleThemeChange('light')}
                   icon={<FiSun className="mr-2" />}
                 >
@@ -179,7 +179,7 @@ const Settings = () => {
                 </Button>
                 
                 <Button
-                  variant={theme === 'dark' ? 'primary' : 'outline'}
+                  variant={theme === 'dark' ? 'indigo' : 'outline'}
                   onClick={() => handleThemeChange('dark')}
                   icon={<FiMoon className="mr-2" />}
                 >

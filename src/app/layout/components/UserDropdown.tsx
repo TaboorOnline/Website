@@ -33,7 +33,7 @@ export const UserDropdown = ({ isOpen, setIsOpen, user, handleLogout }: UserDrop
         aria-haspopup="true"
       >
         {/* Avatar with gradient background */}
-        <div className="h-8 w-8 rounded-full bg-gradient-to-br from-primary-500 to-primary-600 text-white flex items-center justify-center text-sm font-medium shadow-sm">
+        <div className="h-8 w-8 rounded-full bg-gradient-to-br from-indigo-500 to-indigo-600 text-white flex items-center justify-center text-sm font-medium shadow-sm">
           {userInitial}
         </div>
         
@@ -61,13 +61,13 @@ export const UserDropdown = ({ isOpen, setIsOpen, user, handleLogout }: UserDrop
             {/* User Info Header with improved styling */}
             <div className="px-4 py-3 border-b border-gray-100 dark:border-gray-700 bg-gray-50 dark:bg-gray-800/80">
               <div className="flex items-center space-x-3">
-                <div className="h-10 w-10 rounded-full bg-gradient-to-br from-primary-500 to-primary-600 text-white flex items-center justify-center text-sm font-semibold shadow-sm">
+                <div className="h-10 w-10 rounded-full bg-gradient-to-br from-indigo-500 to-indigo-600 text-white flex items-center justify-center text-sm font-semibold shadow-sm">
                   {userInitial}
                 </div>
                 <div>
                   <p className="text-sm font-medium text-gray-800 dark:text-gray-200">{displayName}</p>
                   <p className="text-xs text-gray-500 dark:text-gray-400 truncate">{displayEmail}</p>
-                  <span className="inline-flex items-center mt-1 px-2 py-0.5 rounded text-xs font-medium bg-primary-100 dark:bg-primary-900/40 text-primary-800 dark:text-primary-300">
+                  <span className="inline-flex items-center mt-1 px-2 py-0.5 rounded text-xs font-medium bg-indigo-100 dark:bg-indigo-900/40 text-indigo-800 dark:text-indigo-300">
                     {userRole}
                   </span>
                 </div>

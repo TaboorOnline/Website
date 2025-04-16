@@ -90,7 +90,7 @@ const Reviews = () => {
         <div className="flex justify-end items-center space-x-2">
           {!review.approved && (
             <Button
-              variant="primary"
+              variant="indigo"
               size="sm"
               onClick={(e) => {
                 e.stopPropagation();

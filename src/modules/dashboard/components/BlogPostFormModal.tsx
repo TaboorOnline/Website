@@ -395,7 +395,7 @@ const BlogPostFormModal = ({ isOpen, onClose, blogPost }: BlogPostFormModalProps
             onClick={() => setActiveTab('general')} 
             className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors duration-200 flex items-center ${
               activeTab === 'general' 
-                ? 'bg-white dark:bg-gray-800 text-primary-600 dark:text-primary-400 shadow-sm border border-gray-300 dark:border-gray-600' 
+                ? 'bg-white dark:bg-gray-800 text-indigo-600 dark:text-indigo-400 shadow-sm border border-gray-300 dark:border-gray-600' 
                 : 'text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800'
             }`}
           >
@@ -406,7 +406,7 @@ const BlogPostFormModal = ({ isOpen, onClose, blogPost }: BlogPostFormModalProps
             onClick={() => setActiveTab('content')} 
             className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors duration-200 flex items-center ${
               activeTab === 'content' 
-                ? 'bg-white dark:bg-gray-800 text-primary-600 dark:text-primary-400 shadow-sm border border-gray-300 dark:border-gray-600' 
+                ? 'bg-white dark:bg-gray-800 text-indigo-600 dark:text-indigo-400 shadow-sm border border-gray-300 dark:border-gray-600' 
                 : 'text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800'
             }`}
           >
@@ -417,7 +417,7 @@ const BlogPostFormModal = ({ isOpen, onClose, blogPost }: BlogPostFormModalProps
             onClick={() => setActiveTab('translations')} 
             className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors duration-200 flex items-center ${
               activeTab === 'translations' 
-                ? 'bg-white dark:bg-gray-800 text-primary-600 dark:text-primary-400 shadow-sm border border-gray-300 dark:border-gray-600' 
+                ? 'bg-white dark:bg-gray-800 text-indigo-600 dark:text-indigo-400 shadow-sm border border-gray-300 dark:border-gray-600' 
                 : 'text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800'
             }`}
           >
@@ -428,7 +428,7 @@ const BlogPostFormModal = ({ isOpen, onClose, blogPost }: BlogPostFormModalProps
             onClick={() => setActiveTab('seo')} 
             className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors duration-200 flex items-center ${
               activeTab === 'seo' 
-                ? 'bg-white dark:bg-gray-800 text-primary-600 dark:text-primary-400 shadow-sm border border-gray-300 dark:border-gray-600' 
+                ? 'bg-white dark:bg-gray-800 text-indigo-600 dark:text-indigo-400 shadow-sm border border-gray-300 dark:border-gray-600' 
                 : 'text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800'
             }`}
           >
@@ -477,7 +477,7 @@ const BlogPostFormModal = ({ isOpen, onClose, blogPost }: BlogPostFormModalProps
                     {watchedTags.map((tag, index) => (
                       <span
                         key={index}
-                        className="px-2 py-1 text-xs rounded-full bg-primary-100 dark:bg-primary-900/30 text-primary-800 dark:text-primary-300 border border-primary-200 dark:border-primary-800"
+                        className="px-2 py-1 text-xs rounded-full bg-indigo-100 dark:bg-indigo-900/30 text-indigo-800 dark:text-indigo-300 border border-indigo-200 dark:border-indigo-800"
                       >
                         {tag}
                       </span>
@@ -517,7 +517,7 @@ const BlogPostFormModal = ({ isOpen, onClose, blogPost }: BlogPostFormModalProps
                     <div className="md:col-span-2">
                       <label htmlFor="title" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
                         <div className="flex items-center">
-                          <FiType className="mr-2 text-primary-500" size={16} />
+                          <FiType className="mr-2 text-indigo-500" size={16} />
                           {t('blog.title')}
                         </div>
                       </label>
@@ -528,7 +528,7 @@ const BlogPostFormModal = ({ isOpen, onClose, blogPost }: BlogPostFormModalProps
                           className={`block w-full px-4 py-2.5 bg-white dark:bg-gray-800 border ${
                             errors.title
                               ? 'border-red-300 dark:border-red-600 focus:ring-red-500 focus:border-red-500'
-                              : 'border-gray-300 dark:border-gray-600 focus:ring-primary-500 focus:border-primary-500'
+                              : 'border-gray-300 dark:border-gray-600 focus:ring-indigo-500 focus:border-indigo-500'
                           } rounded-lg shadow-sm focus:outline-none focus:ring-2 transition-colors`}
                           placeholder={t('blog.titlePlaceholder')}
                           {...register('title')}
@@ -550,7 +550,7 @@ const BlogPostFormModal = ({ isOpen, onClose, blogPost }: BlogPostFormModalProps
                       <div className="relative flex-grow">
                         <label htmlFor="slug" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
                           <div className="flex items-center">
-                            <FiLink className="mr-2 text-primary-500" size={16} />
+                            <FiLink className="mr-2 text-indigo-500" size={16} />
                             {t('blog.slug')}
                           </div>
                         </label>
@@ -560,7 +560,7 @@ const BlogPostFormModal = ({ isOpen, onClose, blogPost }: BlogPostFormModalProps
                           className={`block w-full px-4 py-2.5 bg-white dark:bg-gray-800 border ${
                             errors.slug
                               ? 'border-red-300 dark:border-red-600 focus:ring-red-500 focus:border-red-500'
-                              : 'border-gray-300 dark:border-gray-600 focus:ring-primary-500 focus:border-primary-500'
+                              : 'border-gray-300 dark:border-gray-600 focus:ring-indigo-500 focus:border-indigo-500'
                           } rounded-lg shadow-sm focus:outline-none focus:ring-2 transition-colors`}
                           placeholder="my-post-slug"
                           {...register('slug')}
@@ -590,7 +590,7 @@ const BlogPostFormModal = ({ isOpen, onClose, blogPost }: BlogPostFormModalProps
                   <div className="bg-white dark:bg-gray-800 p-4 rounded-lg border border-gray-300 dark:border-gray-600 shadow-sm">
                     <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-3">
                       <div className="flex items-center">
-                        <FiImage className="mr-2 text-primary-500" size={16} />
+                        <FiImage className="mr-2 text-indigo-500" size={16} />
                         {t('blog.featuredImage')}
                       </div>
                     </label>
@@ -645,7 +645,7 @@ const BlogPostFormModal = ({ isOpen, onClose, blogPost }: BlogPostFormModalProps
                             className={`block w-full px-4 py-2.5 bg-white dark:bg-gray-800 border ${
                               errors.featured_image
                                 ? 'border-red-300 dark:border-red-600 focus:ring-red-500 focus:border-red-500'
-                                : 'border-gray-300 dark:border-gray-600 focus:ring-primary-500 focus:border-primary-500'
+                                : 'border-gray-300 dark:border-gray-600 focus:ring-indigo-500 focus:border-indigo-500'
                             } rounded-lg shadow-sm focus:outline-none focus:ring-2 transition-colors pl-10`}
                             placeholder="https://example.com/my-image.jpg"
                             {...register('featured_image')}
@@ -680,7 +680,7 @@ const BlogPostFormModal = ({ isOpen, onClose, blogPost }: BlogPostFormModalProps
                           <div className="mt-2">
                             <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2.5 overflow-hidden border border-gray-300 dark:border-gray-600">
                               <div
-                                className="bg-primary-600 h-2.5 rounded-full transition-all duration-300"
+                                className="bg-indigo-600 h-2.5 rounded-full transition-all duration-300"
                                 style={{ width: `${uploadProgress}%` }}
                               ></div>
                             </div>
@@ -703,7 +703,7 @@ const BlogPostFormModal = ({ isOpen, onClose, blogPost }: BlogPostFormModalProps
                   <div className="bg-white dark:bg-gray-800 p-4 rounded-lg border border-gray-300 dark:border-gray-600 shadow-sm">
                     <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-3">
                       <div className="flex items-center">
-                        <FiTag className="mr-2 text-primary-500" size={16} />
+                        <FiTag className="mr-2 text-indigo-500" size={16} />
                         {t('blog.tags')}
                       </div>
                     </label>
@@ -712,13 +712,13 @@ const BlogPostFormModal = ({ isOpen, onClose, blogPost }: BlogPostFormModalProps
                       {(watchedTags || []).map((tag, index) => (
                         <div 
                           key={index} 
-                          className="px-3 py-1 rounded-full bg-primary-100 dark:bg-primary-900/30 text-primary-800 dark:text-primary-300 text-sm flex items-center border border-primary-200 dark:border-primary-800"
+                          className="px-3 py-1 rounded-full bg-indigo-100 dark:bg-indigo-900/30 text-indigo-800 dark:text-indigo-300 text-sm flex items-center border border-indigo-200 dark:border-indigo-800"
                         >
                           <span>{tag}</span>
                           <button 
                             type="button"
                             onClick={() => handleRemoveTag(tag)}
-                            className="ml-2 text-primary-500 hover:text-primary-700 dark:text-primary-400 dark:hover:text-primary-200"
+                            className="ml-2 text-indigo-500 hover:text-indigo-700 dark:text-indigo-400 dark:hover:text-indigo-200"
                           >
                             <FiX size={14} />
                           </button>
@@ -740,7 +740,7 @@ const BlogPostFormModal = ({ isOpen, onClose, blogPost }: BlogPostFormModalProps
                             }
                           }}
                           placeholder={t('blog.addTagPlaceholder')}
-                          className="block w-full px-4 py-2.5 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors pl-10"
+                          className="block w-full px-4 py-2.5 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-colors pl-10"
                         />
                         <div className="absolute left-3 top-1/2 transform -translate-y-1/2">
                           <FiTag className="text-gray-400" size={16} />
@@ -770,7 +770,7 @@ const BlogPostFormModal = ({ isOpen, onClose, blogPost }: BlogPostFormModalProps
                       <div>
                         <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
                           <div className="flex items-center">
-                            <FiUser className="mr-2 text-primary-500" size={16} />
+                            <FiUser className="mr-2 text-indigo-500" size={16} />
                             {t('blog.author')}
                           </div>
                         </label>
@@ -833,14 +833,14 @@ const BlogPostFormModal = ({ isOpen, onClose, blogPost }: BlogPostFormModalProps
                         <div>
                           <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
                             <div className="flex items-center">
-                              <FiCalendar className="mr-2 text-primary-500" size={16} />
+                              <FiCalendar className="mr-2 text-indigo-500" size={16} />
                               {t('blog.publishDate')}
                             </div>
                           </label>
                           <div className="relative">
                             <input
                               type="datetime-local"
-                              className="block w-full px-4 py-2.5 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors pl-10"
+                              className="block w-full px-4 py-2.5 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-colors pl-10"
                               {...register('published_at')}
                             />
                             <div className="absolute left-3 top-1/2 transform -translate-y-1/2">
@@ -872,7 +872,7 @@ const BlogPostFormModal = ({ isOpen, onClose, blogPost }: BlogPostFormModalProps
                   <div className="bg-white dark:bg-gray-800 p-4 rounded-lg border border-gray-300 dark:border-gray-600 shadow-sm">
                     <label htmlFor="excerpt" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
                       <div className="flex items-center">
-                        <FiAlignLeft className="mr-2 text-primary-500" size={16} />
+                        <FiAlignLeft className="mr-2 text-indigo-500" size={16} />
                         {t('blog.excerpt')}
                       </div>
                     </label>
@@ -883,7 +883,7 @@ const BlogPostFormModal = ({ isOpen, onClose, blogPost }: BlogPostFormModalProps
                         className={`block w-full px-4 py-2.5 bg-white dark:bg-gray-800 border ${
                           errors.excerpt
                             ? 'border-red-300 dark:border-red-600 focus:ring-red-500 focus:border-red-500'
-                            : 'border-gray-300 dark:border-gray-600 focus:ring-primary-500 focus:border-primary-500'
+                            : 'border-gray-300 dark:border-gray-600 focus:ring-indigo-500 focus:border-indigo-500'
                         } rounded-lg shadow-sm focus:outline-none focus:ring-2 transition-colors`}
                         placeholder={t('blog.excerptPlaceholder')}
                         {...register('excerpt')}
@@ -903,7 +903,7 @@ const BlogPostFormModal = ({ isOpen, onClose, blogPost }: BlogPostFormModalProps
                   <div className="bg-white dark:bg-gray-800 p-4 rounded-lg border border-gray-300 dark:border-gray-600 shadow-sm">
                     <label htmlFor="content" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
                       <div className="flex items-center">
-                        <FiFileText className="mr-2 text-primary-500" size={16} />
+                        <FiFileText className="mr-2 text-indigo-500" size={16} />
                         {t('blog.content')}
                       </div>
                     </label>
@@ -925,7 +925,7 @@ const BlogPostFormModal = ({ isOpen, onClose, blogPost }: BlogPostFormModalProps
                         className={`block w-full px-4 py-2.5 bg-white dark:bg-gray-800 border ${
                           errors.content
                             ? 'border-red-300 dark:border-red-600 focus:ring-red-500 focus:border-red-500'
-                            : 'border-gray-300 dark:border-gray-600 focus:ring-primary-500 focus:border-primary-500'
+                            : 'border-gray-300 dark:border-gray-600 focus:ring-indigo-500 focus:border-indigo-500'
                         } rounded-lg shadow-sm focus:outline-none focus:ring-2 transition-colors font-mono text-sm`}
                         placeholder={t('blog.contentPlaceholder')}
                         {...register('content')}
@@ -951,7 +951,7 @@ const BlogPostFormModal = ({ isOpen, onClose, blogPost }: BlogPostFormModalProps
                     <div className="flex items-center justify-between mb-3">
                       <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">
                         <div className="flex items-center">
-                          <FiEye className="mr-2 text-primary-500" size={16} />
+                          <FiEye className="mr-2 text-indigo-500" size={16} />
                           {t('blog.preview')}
                         </div>
                       </label>
@@ -1025,7 +1025,7 @@ const BlogPostFormModal = ({ isOpen, onClose, blogPost }: BlogPostFormModalProps
                         className={`block w-full px-4 py-2.5 bg-white dark:bg-gray-800 border ${
                           errors.translations?.en?.title
                             ? 'border-red-300 dark:border-red-600 focus:ring-red-500 focus:border-red-500'
-                            : 'border-gray-300 dark:border-gray-600 focus:ring-primary-500 focus:border-primary-500'
+                            : 'border-gray-300 dark:border-gray-600 focus:ring-indigo-500 focus:border-indigo-500'
                         } rounded-lg shadow-sm focus:outline-none focus:ring-2 transition-colors`}
                         placeholder={t('blog.titlePlaceholder')}
                         {...register('translations.en.title')}
@@ -1047,7 +1047,7 @@ const BlogPostFormModal = ({ isOpen, onClose, blogPost }: BlogPostFormModalProps
                         className={`block w-full px-4 py-2.5 bg-white dark:bg-gray-800 border ${
                           errors.translations?.en?.excerpt
                             ? 'border-red-300 dark:border-red-600 focus:ring-red-500 focus:border-red-500'
-                            : 'border-gray-300 dark:border-gray-600 focus:ring-primary-500 focus:border-primary-500'
+                            : 'border-gray-300 dark:border-gray-600 focus:ring-indigo-500 focus:border-indigo-500'
                         } rounded-lg shadow-sm focus:outline-none focus:ring-2 transition-colors`}
                         placeholder={t('blog.excerptPlaceholder')}
                         {...register('translations.en.excerpt')}
@@ -1069,7 +1069,7 @@ const BlogPostFormModal = ({ isOpen, onClose, blogPost }: BlogPostFormModalProps
                         className={`block w-full px-4 py-2.5 bg-white dark:bg-gray-800 border ${
                           errors.translations?.en?.content
                             ? 'border-red-300 dark:border-red-600 focus:ring-red-500 focus:border-red-500'
-                            : 'border-gray-300 dark:border-gray-600 focus:ring-primary-500 focus:border-primary-500'
+                            : 'border-gray-300 dark:border-gray-600 focus:ring-indigo-500 focus:border-indigo-500'
                         } rounded-lg shadow-sm focus:outline-none focus:ring-2 transition-colors font-mono text-sm`}
                         placeholder={t('blog.contentPlaceholder')}
                         {...register('translations.en.content')}
@@ -1116,7 +1116,7 @@ const BlogPostFormModal = ({ isOpen, onClose, blogPost }: BlogPostFormModalProps
                         className={`block w-full px-4 py-2.5 bg-white dark:bg-gray-800 border font-arabic ${
                           errors.translations?.ar?.title
                             ? 'border-red-300 dark:border-red-600 focus:ring-red-500 focus:border-red-500'
-                            : 'border-gray-300 dark:border-gray-600 focus:ring-primary-500 focus:border-primary-500'
+                            : 'border-gray-300 dark:border-gray-600 focus:ring-indigo-500 focus:border-indigo-500'
                         } rounded-lg shadow-sm focus:outline-none focus:ring-2 transition-colors`}
                         placeholder={t('blog.titlePlaceholder')}
                         {...register('translations.ar.title')}
@@ -1139,7 +1139,7 @@ const BlogPostFormModal = ({ isOpen, onClose, blogPost }: BlogPostFormModalProps
                         className={`block w-full px-4 py-2.5 bg-white dark:bg-gray-800 border font-arabic ${
                           errors.translations?.ar?.excerpt
                             ? 'border-red-300 dark:border-red-600 focus:ring-red-500 focus:border-red-500'
-                            : 'border-gray-300 dark:border-gray-600 focus:ring-primary-500 focus:border-primary-500'
+                            : 'border-gray-300 dark:border-gray-600 focus:ring-indigo-500 focus:border-indigo-500'
                         } rounded-lg shadow-sm focus:outline-none focus:ring-2 transition-colors`}
                         placeholder={t('blog.excerptPlaceholder')}
                         {...register('translations.ar.excerpt')}
@@ -1162,7 +1162,7 @@ const BlogPostFormModal = ({ isOpen, onClose, blogPost }: BlogPostFormModalProps
                         className={`block w-full px-4 py-2.5 bg-white dark:bg-gray-800 border font-arabic ${
                           errors.translations?.ar?.content
                             ? 'border-red-300 dark:border-red-600 focus:ring-red-500 focus:border-red-500'
-                            : 'border-gray-300 dark:border-gray-600 focus:ring-primary-500 focus:border-primary-500'
+                            : 'border-gray-300 dark:border-gray-600 focus:ring-indigo-500 focus:border-indigo-500'
                         } rounded-lg shadow-sm focus:outline-none focus:ring-2 transition-colors font-mono text-sm`}
                         placeholder={t('blog.contentPlaceholder')}
                         {...register('translations.ar.content')}
@@ -1191,7 +1191,7 @@ const BlogPostFormModal = ({ isOpen, onClose, blogPost }: BlogPostFormModalProps
                       {t('blog.seoPreview')}
                     </h3>
                     <div className="p-4 border border-gray-300 dark:border-gray-600 rounded-lg bg-gray-50 dark:bg-gray-900">
-                      <div className="text-primary-600 text-base font-medium mb-1 truncate">
+                      <div className="text-indigo-600 text-base font-medium mb-1 truncate">
                         {watchedTitle || t('blog.untitledPost')}
                       </div>
                       <div className="text-green-600 dark:text-green-400 text-sm mb-1 truncate">

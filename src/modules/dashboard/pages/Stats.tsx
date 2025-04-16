@@ -77,7 +77,7 @@ const Stats = () => {
                 isPositive: stats.pageViewsTrend > 0
               } : undefined}
               isLoading={isLoading}
-              color="primary"
+              color="indigo"
             />
             
             <StatsCard
@@ -126,7 +126,7 @@ const Stats = () => {
             >
               {isLoading ? (
                 <div className="h-full flex items-center justify-center">
-                  <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary-600"></div>
+                  <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-indigo-600"></div>
                 </div>
               ) : (
                 <div className="h-full flex items-center justify-center">
@@ -144,7 +144,7 @@ const Stats = () => {
             >
               {isLoading ? (
                 <div className="h-full flex items-center justify-center">
-                  <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary-600"></div>
+                  <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-indigo-600"></div>
                 </div>
               ) : stats?.referrers ? (
                 <div className="h-full flex flex-col">
@@ -160,7 +160,7 @@ const Stats = () => {
                         </div>
                         <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
                           <div
-                            className="bg-primary-600 h-2 rounded-full"
+                            className="bg-indigo-600 h-2 rounded-full"
                             style={{ width: `${referrer.percentage}%` }}
                           ></div>
                         </div>

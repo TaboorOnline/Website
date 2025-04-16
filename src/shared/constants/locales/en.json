@@ -38,7 +38,7 @@
     "item": "item",
     "items": "items",
     "options": "Options",
-    "primaryInfo": "Primary Information",
+    "indigoInfo": "indigo Information",
     "supportMessage": "Need help? Contact our support team."
   },
   "actions": {
@@ -100,7 +100,7 @@
     "title": "Empower Your Business with",
     "titleHighlight": "Innovative Solutions",
     "subtitle": "We offer custom software development, web applications, and IT consulting services tailored to your business needs.",
-    "primaryCta": "Get Started",
+    "indigoCta": "Get Started",
     "secondaryCta": "Our Services",
     "trustedBy": "Trusted by leading companies"
   },
@@ -149,38 +149,38 @@
     "badge": "About Us",
     "title": "Who We Are",
     "subtitle": "Learn about our journey, mission and the team that makes it all possible",
-    
+
     "companyOverview": "Company Overview",
     "overviewTitle": "Building Digital Solutions Since 2013",
     "overviewParagraph1": "Founded in 2013, Hilal Tech has been at the forefront of digital innovation, creating transformative solutions for businesses across various industries. Our approach combines technical expertise with strategic insight to deliver results that exceed expectations.",
     "overviewParagraph2": "We believe in the power of technology to solve complex problems and create meaningful experiences. Our diverse team brings together different perspectives, skills, and backgrounds to drive innovation and deliver excellence in everything we do.",
-    
+
     "yearsExperience": "Years of Experience",
     "projectsDelivered": "Projects Delivered",
     "teamMembers": "Team Members",
     "happyClients": "Happy Clients",
-    
+
     "missionVision": "Mission & Vision",
     "purposeTitle": "Our Purpose & Principles",
     "purposeSubtitle": "Guided by strong values and a clear vision, we work to make a positive impact through technology",
-    
+
     "missionTitle": "Our Mission",
     "missionText": "To empower organizations through innovative technology solutions that drive growth, efficiency, and competitive advantage while delivering exceptional user experiences.",
-    
+
     "visionTitle": "Our Vision",
     "visionText": "To be the leading digital partner that transforms how businesses and people interact with technology, making complex processes simple and accessible for everyone.",
-    
+
     "valuesTitle": "Our Core Values",
-    
+
     "value1Title": "Innovation",
     "value1Text": "We constantly push boundaries and explore new technologies to create forward-thinking solutions that address current and future challenges.",
-    
+
     "value2Title": "Excellence",
     "value2Text": "We are committed to delivering the highest quality in everything we do, from code to customer service, always striving to exceed expectations.",
 
     "value3Title": "Integrity",
     "value3Text": "We build relationships based on trust, transparency, and honesty, ensuring ethical practices in all our business interactions.",
-    "photoNotAvailable":"Image not available"
+    "photoNotAvailable": "Image not available"
   },
   "projects": {
     "badge": "Our Work",
@@ -362,7 +362,7 @@
     "markdown": "Markdown formatting supported",
     "openPreview": "Open Preview",
     "tabGeneral": "General",
-    "tabContent": "Content", 
+    "tabContent": "Content",
     "tabTranslations": "Translations",
     "tabSEO": "SEO",
     "unsavedChanges": "You have unsaved changes",

@@ -63,14 +63,14 @@ export const Header = ({
           {/* Mobile Menu Button */}
           <button
             onClick={toggleMobileSidebar}
-            className="lg:hidden p-2 rounded-md text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-primary-500 dark:focus:ring-primary-400 focus:ring-opacity-50 transition-colors duration-200"
+            className="lg:hidden p-2 rounded-md text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:focus:ring-indigo-400 focus:ring-opacity-50 transition-colors duration-200"
             aria-label={isMobileSidebarOpen ? t('nav.closeMenu') : t('nav.openMenu')}
           >
             {isMobileSidebarOpen ? <FiX size={20} /> : <FiMenu size={20} />}
           </button>
 
           {/* Desktop Logo/Brand */}
-          <Link to="/dashboard" className="hidden lg:block text-primary-600 dark:text-primary-400 text-xl font-bold ml-2">
+          <Link to="/dashboard" className="hidden lg:block text-indigo-600 dark:text-indigo-400 text-xl font-bold ml-2">
             {appName}
           </Link>
         </div>
@@ -85,11 +85,11 @@ export const Header = ({
               type="text"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full bg-gray-100 dark:bg-gray-700 h-10 pl-10 pr-4 py-1 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary-500 dark:focus:ring-primary-400 border border-transparent focus:border-primary-500 dark:focus:border-primary-400 transition-colors duration-200"
+              className="w-full bg-gray-100 dark:bg-gray-700 h-10 pl-10 pr-4 py-1 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:focus:ring-indigo-400 border border-transparent focus:border-indigo-500 dark:focus:border-indigo-400 transition-colors duration-200"
               placeholder={t('header.searchPlaceholder')}
               aria-label={t('header.search')}
             />
-            <button type="submit" className="absolute inset-y-0 right-0 flex items-center pr-3 text-primary-600 dark:text-primary-400">
+            <button type="submit" className="absolute inset-y-0 right-0 flex items-center pr-3 text-indigo-600 dark:text-indigo-400">
               {/* Optional: Add a search button icon here */}
             </button>
           </form>
@@ -99,7 +99,7 @@ export const Header = ({
         <div className="flex items-center space-x-1 sm:space-x-2">
           {/* Help Button */}
           <button
-            className="p-2 rounded-full text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 hover:text-primary-600 dark:hover:text-primary-400 transition-colors duration-200"
+            className="p-2 rounded-full text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors duration-200"
             aria-label={t('header.help')}
             title={t('header.help')}
           >

@@ -111,7 +111,7 @@ const NotFound = () => {
             onClick={() => window.history.back()} 
             icon={<FiArrowLeft />} 
             iconPosition="left"
-            variant="primary"
+            variant="indigo"
             size="lg"
             className="w-full sm:w-auto"
           >
