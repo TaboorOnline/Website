@@ -1,14 +1,11 @@
-
-// src/main.tsx
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
-import AppRoutes from './app/routes';
-import { initLanguage } from './shared/utils/i18n';
-import { initTheme } from './shared/utils/theme';
-import './shared/utils/i18n'; // This initializes i18n
+import AppRoutes from './routes';
+import { initLanguage } from './utils/i18n/i18n';
+import { initTheme } from './utils/theme';
+import './utils/i18n/i18n';
 import './global.css';
 
 // Initialize language and theme preferences
@@ -32,7 +29,6 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
       <BrowserRouter>
         <AppRoutes />
       </BrowserRouter>
-      {import.meta.env.DEV && <ReactQueryDevtools initialIsOpen={false} />}
     </QueryClientProvider>
   </React.StrictMode>,
 );

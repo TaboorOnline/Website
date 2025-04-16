@@ -1,0 +1,109 @@
+{
+  "projects": [
+    {
+      "id": "proj001",
+      "slug": "smart-city-dashboard",
+      "title": "Smart City Dashboard",
+      "description": "A comprehensive urban analytics platform that leverages AI to provide real-time insights into city infrastructure, traffic management, and public services.",
+      "image_url": "/images/smart-city-dashboard.jpg",
+      "year": "2022",
+      "client": "Metropolitan City Council",
+      "category": "Urban Tech",
+      "tags": ["AI", "Data Visualization", "Smart Cities"],
+      "translations": {
+        "en": {
+          "title": "Smart City Dashboard",
+          "description": "A comprehensive urban analytics platform that leverages AI to provide real-time insights into city infrastructure, traffic management, and public services."
+        },
+        "ar": {
+          "title": "لوحة معلومات المدينة الذكية",
+          "description": "منصة تحليلات حضرية شاملة تستفيد من الذكاء الاصطناعي لتوفير رؤى فورية حول البنية التحتية للمدينة وإدارة المرور والخدمات العامة."
+        }
+      }
+    },
+    {
+      "id": "proj002",
+      "slug": "eco-travel-app",
+      "title": "Eco Travel Companion",
+      "description": "A mobile application that helps travelers make sustainable choices by providing eco-friendly route planning, carbon footprint tracking, and green accommodation recommendations.",
+      "image_url": "/images/eco-travel-app.jpg",
+      "year": "2021",
+      "client": "Green Horizon Innovations",
+      "category": "Sustainability",
+      "tags": ["Mobile App", "Sustainability", "Travel Tech"],
+      "translations": {
+        "en": {
+          "title": "Eco Travel Companion",
+          "description": "A mobile application that helps travelers make sustainable choices by providing eco-friendly route planning, carbon footprint tracking, and green accommodation recommendations."
+        },
+        "ar": {
+          "title": "رفيق السفر البيئي",
+          "description": "تطبيق محمول يساعد المسافرين على اتخاذ خيارات مستدامة من خلال توفير التخطيط البيئي للطرق وتتبع البصمة الكربونية وتوصيات الإقامة الخضراء."
+        }
+      }
+    },
+    {
+      "id": "proj003",
+      "slug": "healthcare-ai-platform",
+      "title": "HealthSync AI",
+      "description": "An advanced healthcare platform using machine learning to predict patient risks, optimize treatment plans, and provide personalized medical insights.",
+      "image_url": "/images/healthcare-ai-platform.jpg",
+      "year": "2023",
+      "client": "Global Health Solutions",
+      "category": "Healthcare Tech",
+      "tags": ["AI", "Healthcare", "Machine Learning"],
+      "translations": {
+        "en": {
+          "title": "HealthSync AI",
+          "description": "An advanced healthcare platform using machine learning to predict patient risks, optimize treatment plans, and provide personalized medical insights."
+        },
+        "ar": {
+          "title": "HealthSync الذكي",
+          "description": "منصة رعاية صحية متقدمة تستخدم التعلم الآلي للتنبؤ بمخاطر المرضى وتحسين خطط العلاج وتقديم رؤى طبية شخصية."
+        }
+      }
+    },
+    {
+      "id": "proj004",
+      "slug": "renewable-energy-tracker",
+      "title": "Green Energy Pulse",
+      "description": "A comprehensive renewable energy monitoring system that tracks energy production, consumption, and provides predictive maintenance for sustainable infrastructure.",
+      "image_url": "/images/renewable-energy-tracker.jpg",
+      "year": "2022",
+      "client": "EcoGrid Enterprises",
+      "category": "Clean Energy",
+      "tags": ["Renewable Energy", "IoT", "Sustainability"],
+      "translations": {
+        "en": {
+          "title": "Green Energy Pulse",
+          "description": "A comprehensive renewable energy monitoring system that tracks energy production, consumption, and provides predictive maintenance for sustainable infrastructure."
+        },
+        "ar": {
+          "title": "نبض الطاقة الخضراء",
+          "description": "نظام شامل لمراقبة الطاقة المتجددة يتتبع إنتاج واستهلاك الطاقة ويوفر الصيانة التنبؤية للبنية التحتية المستدامة."
+        }
+      }
+    },
+    {
+      "id": "proj005",
+      "slug": "augmented-education-platform",
+      "title": "LearnSphere AR",
+      "description": "An innovative augmented reality educational platform that transforms learning experiences through interactive 3D models, virtual field trips, and immersive educational content.",
+      "image_url": "/images/augmented-education-platform.jpg",
+      "year": "2023",
+      "client": "Global Education Innovations",
+      "category": "EdTech",
+      "tags": ["AR", "Education", "Technology"],
+      "translations": {
+        "en": {
+          "title": "LearnSphere AR",
+          "description": "An innovative augmented reality educational platform that transforms learning experiences through interactive 3D models, virtual field trips, and immersive educational content."
+        },
+        "ar": {
+          "title": "LearnSphere الواقع المعزز",
+          "description": "منصة تعليمية مبتكرة للواقع المعزز تحول تجارب التعلم من خلال النماذج ثلاثية الأبعاد التفاعلية، والرحلات الميدانية الافتراضية، والمحتوى التعليمي الغامر."
+        }
+      }
+    }
+  ]
+}

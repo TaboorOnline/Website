@@ -1,4 +1,4 @@
-# Hilal Tech - Company Website & Admin Dashboard
+# Helal Tech - Company Website & Admin Dashboard
 
 A modern, multi-language, high-performance company website and admin dashboard built with React, TypeScript, and Supabase.
 
@@ -57,8 +57,8 @@ A modern, multi-language, high-performance company website and admin dashboard b
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/your-username/hilal-tech.git
-cd hilal-tech
+git clone https://github.com/your-username/helal-tech.git
+cd helal-tech
 ```
 
 2. Install dependencies:

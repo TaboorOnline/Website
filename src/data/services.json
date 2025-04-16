@@ -1,0 +1,81 @@
+{
+  "services": [
+    {
+      "title": "Web Development",
+      "description": "Custom web applications built with the latest technologies.",
+      "icon": "code",
+      "order": 1,
+      "active": true,
+      "translations": {
+        "en": {"title": "Web Development", "description": "Custom web applications built with the latest technologies."},
+        "ar": {"title": "تطوير الويب", "description": "تطبيقات ويب مخصصة مبنية بأحدث التقنيات."}
+      }
+    },
+    {
+      "title": "Mobile App Development",
+      "description": "Native and cross-platform mobile applications for iOS and Android.",
+      "icon": "smartphone",
+      "order": 2,
+      "active": true,
+      "translations": {
+        "en": {"title": "Mobile App Development", "description": "Native and cross-platform mobile applications for iOS and Android."},
+        "ar": {"title": "تطوير تطبيقات الجوال", "description": "تطبيقات جوال أصلية ومتعددة المنصات لنظامي iOS و Android."}
+      }
+    },
+    {
+      "title": "UI/UX Design",
+      "description": "User-centered design that enhances the user experience.",
+      "icon": "palette",
+      "order": 3,
+      "active": true,
+      "translations": {
+        "en": {"title": "UI/UX Design", "description": "User-centered design that enhances the user experience."},
+        "ar": {"title": "تصميم UI/UX", "description": "تصميم يركز على المستخدم ويعزز تجربة المستخدم."}
+      }
+    },
+    {
+      "title": "Cloud Services",
+      "description": "Scalable and secure cloud infrastructure solutions.",
+      "icon": "cloud",
+      "order": 4,
+      "active": true,
+      "translations": {
+        "en": {"title": "Cloud Services", "description": "Scalable and secure cloud infrastructure solutions."},
+        "ar": {"title": "خدمات السحابة", "description": "حلول بنية تحتية سحابية قابلة للتوسع وآمنة."}
+      }
+    },
+    {
+      "title": "E-commerce Solutions",
+      "description": "Full-featured online stores with payment processing.",
+      "icon": "shopping-cart",
+      "order": 5,
+      "active": true,
+      "translations": {
+        "en": {"title": "E-commerce Solutions", "description": "Full-featured online stores with payment processing."},
+        "ar": {"title": "حلول التجارة الإلكترونية", "description": "متاجر إلكترونية كاملة المميزات مع معالجة الدفع."}
+      }
+    },
+    {
+      "title": "SEO & Marketing",
+      "description": "Digital marketing strategies to grow your online presence.",
+      "icon": "trending-up",
+      "order": 6,
+      "active": true,
+      "translations": {
+        "en": {"title": "SEO & Marketing", "description": "Digital marketing strategies to grow your online presence."},
+        "ar": {"title": "تحسين محركات البحث والتسويق", "description": "استراتيجيات التسويق الرقمي لتنمية وجودك عبر الإنترنت."}
+      }
+    },
+    {
+      "title": "Maintenance & Support",
+      "description": "24/7 technical support and regular updates for your applications.",
+      "icon": "life-buoy",
+      "order": 7,
+      "active": true,
+      "translations": {
+        "en": {"title": "Maintenance & Support", "description": "24/7 technical support and regular updates for your applications."},
+        "ar": {"title": "الصيانة والدعم", "description": "دعم فني على مدار الساعة وتحديثات منتظمة لتطبيقاتك."}
+      }
+    }
+  ]
+}

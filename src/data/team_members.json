@@ -1,0 +1,89 @@
+{
+  "team_members": [
+    {
+      "name": "John Doe",
+      "title": "CEO & Founder",
+      "bio": "John has over 15 years of experience in software development and leadership...",
+      "image_url": "https://via.placeholder.com/300",
+      "order": 1,
+      "social_links": {
+        "linkedin": "https://linkedin.com/in/johndoe",
+        "twitter": "https://twitter.com/johndoe",
+        "facebook": "https://facebook.com/johndoe",
+        "email": "john@example.com"
+      },
+      "translations": {
+        "en": {"name": "John Doe", "title": "CEO & Founder", "bio": "John has over 15 years of experience in software development and leadership..."},
+        "ar": {"name": "جون دو", "title": "الرئيس التنفيذي والمؤسس", "bio": "يتمتع جون بأكثر من 15 عامًا من الخبرة في تطوير البرمجيات والقيادة..."}
+      }
+    },
+    {
+      "name": "Jane Smith",
+      "title": "CTO",
+      "bio": "Jane leads our technology team with expertise in cloud architecture...",
+      "image_url": "https://via.placeholder.com/300",
+      "order": 2,
+      "social_links": {
+        "linkedin": "https://linkedin.com/in/janesmith",
+        "twitter": "https://twitter.com/janesmith",
+        "facebook": "",
+        "email": "jane@example.com"
+      },
+      "translations": {
+        "en": {"name": "Jane Smith", "title": "CTO", "bio": "Jane leads our technology team with expertise in cloud architecture..."},
+        "ar": {"name": "جين سميث", "title": "المدير التقني", "bio": "تقود جين فريق التكنولوجيا لدينا بخبرة في هندسة السحابة..."}
+      }
+    },
+    {
+      "name": "Michael Brown",
+      "title": "Lead Developer",
+      "bio": "Michael specializes in React and modern JavaScript frameworks...",
+      "image_url": "https://via.placeholder.com/300",
+      "order": 3,
+      "social_links": {
+        "linkedin": "https://linkedin.com/in/michaelbrown",
+        "twitter": "https://twitter.com/michaelbrown",
+        "facebook": "",
+        "email": "michael@example.com"
+      },
+      "translations": {
+        "en": {"name": "Michael Brown", "title": "Lead Developer", "bio": "Michael specializes in React and modern JavaScript frameworks..."},
+        "ar": {"name": "مايكل براون", "title": "مطور رئيسي", "bio": "يتخصص مايكل في React وأطر عمل JavaScript الحديثة..."}
+      }
+    },
+    {
+      "name": "Sarah Johnson",
+      "title": "UX Designer",
+      "bio": "Sarah creates beautiful, intuitive interfaces with a focus on user experience...",
+      "image_url": "https://via.placeholder.com/300",
+      "order": 4,
+      "social_links": {
+        "linkedin": "https://linkedin.com/in/sarahjohnson",
+        "twitter": "",
+        "facebook": "",
+        "email": "sarah@example.com"
+      },
+      "translations": {
+        "en": {"name": "Sarah Johnson", "title": "UX Designer", "bio": "Sarah creates beautiful, intuitive interfaces with a focus on user experience..."},
+        "ar": {"name": "سارة جونسون", "title": "مصمم تجربة المستخدم", "bio": "تنشئ سارة واجهات جميلة وبديهية مع التركيز على تجربة المستخدم..."}
+      }
+    },
+    {
+      "name": "David Wilson",
+      "title": "Marketing Director",
+      "bio": "David oversees our marketing strategy with a data-driven approach...",
+      "image_url": "https://via.placeholder.com/300",
+      "order": 5,
+      "social_links": {
+        "linkedin": "https://linkedin.com/in/davidwilson",
+        "twitter": "https://twitter.com/davidwilson",
+        "facebook": "https://facebook.com/davidwilson",
+        "email": "david@example.com"
+      },
+      "translations": {
+        "en": {"name": "David Wilson", "title": "Marketing Director", "bio": "David oversees our marketing strategy with a data-driven approach..."},
+        "ar": {"name": "ديفيد ويلسون", "title": "مدير التسويق", "bio": "يشرف ديفيد على استراتيجية التسويق لدينا باتباع نهج قائم على البيانات..."}
+      }
+    }
+  ]
+}

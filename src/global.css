@@ -1,12 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@200..1000&display=swap');
 @import 'tailwindcss';
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-@tailwind screens;
-@tailwind typography;
-
 html {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -150,16 +144,16 @@ button {
 }
 
 
-/* Global scrollbar styles that match Hilal Tech dark theme */
+/* Global scrollbar styles that match Helal Tech dark theme */
 
 :root {
   --scrollbar-width: 6px;
   
-  /* Primary colors from Hilal Tech website */
-  --hilal-bg: #0a0b14;
-  --hilal-purple: #6c5ce7;
-  --hilal-purple-hover: #8878ff;
-  --hilal-gray: #2d3748;
+  /* Primary colors from Helal Tech website */
+  --helal-bg: #0a0b14;
+  --helal-purple: #6c5ce7;
+  --helal-purple-hover: #8878ff;
+  --helal-gray: #2d3748;
 }
 
 /* Webkit browsers (Chrome, Safari, Edge) */
@@ -169,24 +163,24 @@ button {
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--hilal-bg);
+  background: var(--helal-bg);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--hilal-gray);
+  background: var(--helal-gray);
   border-radius: 3px;
   transition: background-color 0.3s ease;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--hilal-purple);
-  box-shadow: 0 0 8px var(--hilal-purple-hover);
+  background: var(--helal-purple);
+  box-shadow: 0 0 8px var(--helal-purple-hover);
 }
 
 /* Firefox */
 * {
   scrollbar-width: thin;
-  scrollbar-color: var(--hilal-gray) var(--hilal-bg);
+  scrollbar-color: var(--helal-gray) var(--helal-bg);
 }
 
 /* Firefox hover effect needs to be implemented via JS */

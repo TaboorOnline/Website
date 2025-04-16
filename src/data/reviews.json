@@ -1,0 +1,54 @@
+{
+  "reviews": [
+    {
+      "name": "Alex Thompson",
+      "content": "Great service! The team was responsive and delivered on time.",
+      "rating": 5
+    },
+    {
+      "name": "Emily Rodriguez",
+      "content": "Excellent work on our mobile app. Users love it!",
+      "rating": 5
+    },
+    {
+      "name": "Mark Johnson",
+      "content": "Good overall experience, though there were some minor issues that needed to be fixed.",
+      "rating": 4
+    },
+    {
+      "name": "Laura Chen",
+      "content": "The design exceeded our expectations. Very creative team!",
+      "rating": 5
+    },
+    {
+      "name": "Robert Smith",
+      "content": "Solid development work but communication could have been better.",
+      "rating": 3
+    },
+    {
+      "name": "Jessica Lee",
+      "content": "Transformed our business with their e-commerce solution. Highly recommended!",
+      "rating": 5
+    },
+    {
+      "name": "Chris Miller",
+      "content": "Great value for the quality of work delivered.",
+      "rating": 4
+    },
+    {
+      "name": "Samantha White",
+      "content": "The team was knowledgeable and helpful throughout the entire process.",
+      "rating": 5
+    },
+    {
+      "name": "Daniel Brown",
+      "content": "Had some delays but the final product was worth the wait.",
+      "rating": 4
+    },
+    {
+      "name": "Nicole Taylor",
+      "content": "Amazing attention to detail in the UI design.",
+      "rating": 5
+    }
+  ]
+}
