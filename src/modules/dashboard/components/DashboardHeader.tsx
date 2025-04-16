@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 
 interface DashboardHeaderProps {
   title: string;
-  subtitle?: string;
+  subtitle?: React.ReactNode;
   actions?: React.ReactNode;
 }
 

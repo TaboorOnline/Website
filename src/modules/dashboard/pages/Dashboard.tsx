@@ -13,7 +13,6 @@ import {
   FiEye,
   FiClock,
   FiCalendar,
-  FiBarChart2,
   FiChevronRight,
   FiRefreshCw,
   FiActivity
@@ -108,7 +107,7 @@ const Dashboard = () => {
           variant="outline" 
           size="sm" 
           onClick={handleRefresh}
-          className="mt-4 md:mt-0 flex items-center"
+          className="py-3 mt-4 md:mt-0 flex items-center"
         >
           <FiRefreshCw className="mr-2" />
           {t('dashboard.refresh')}
@@ -163,14 +162,14 @@ const Dashboard = () => {
           <StatsCard
             title={t('dashboard.unreadMessages')}
             value={statsLoading ? '--' : stats?.unreadMessageCount || 0}
-            icon={<FiMail size={20} className="text-emerald-500" />}
+            icon={<FiMail size={20} className="text-green-500" />}
             trend={!statsLoading && stats?.messageTrend ? {
               value: stats.messageTrend,
               isPositive: stats.messageTrend > 0
             } : undefined}
             isLoading={statsLoading}
-            color="emerald"
-            className="hover:shadow-lg transition-all duration-200 border-t-4 border-emerald-500 overflow-hidden"
+            color="green"
+            className="hover:shadow-lg transition-all duration-200 border-t-4 border-green-500 overflow-hidden"
           />
         </motion.div>
       </motion.div>
@@ -187,19 +186,6 @@ const Dashboard = () => {
           <Card
             title={t('dashboard.websiteTraffic')}
             className="h-full bg-gradient-to-br from-white to-gray-50 dark:from-gray-800 dark:to-gray-900 overflow-hidden"
-            headerAction={
-              <div className="flex items-center space-x-2">
-                <Button variant="ghost" size="sm" className="text-xs">
-                  {t('dashboard.monthly')}
-                </Button>
-                <Button variant="ghost" size="sm" className="text-xs bg-indigo-50 dark:bg-indigo-900/20 text-indigo-600 dark:text-indigo-400">
-                  {t('dashboard.weekly')}
-                </Button>
-                <Button variant="ghost" size="sm" className="text-xs">
-                  {t('dashboard.daily')}
-                </Button>
-              </div>
-            }
           >
             <div className="relative h-80">
               {statsLoading ? (
@@ -303,24 +289,8 @@ const Dashboard = () => {
         </motion.div>
 
         {/* Traffic Sources */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.3 }}
-        >
-          <Card
-            title={t('dashboard.trafficSources')}
-            className="h-full bg-gradient-to-br from-white to-gray-50 dark:from-gray-800 dark:to-gray-900"
-            headerClass="border-b border-gray-200 dark:border-gray-700"
-            headerAction={
-              <div className="relative group">
-                <Button variant="ghost" size="sm" className="text-indigo-600 dark:text-indigo-400">
-                  {t('dashboard.viewDetails')}
-                </Button>
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-indigo-500 group-hover:w-full transition-all duration-300"></span>
-              </div>
-            }
-          >
+        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.3 }}>
+          <Card title={t('dashboard.trafficSources')} className="h-full bg-gradient-to-br from-white to-gray-50 dark:from-gray-800 dark:to-gray-900">
             {statsLoading ? (
               <div className="space-y-4 p-4">
                 {Array(5).fill(0).map((_, i) => (
@@ -334,11 +304,11 @@ const Dashboard = () => {
               <>
                 <div className="space-y-5 p-4">
                   {[
-                    { source: 'Google', value: 42, trend: 'up', color: 'emerald' },
+                    { source: 'Google', value: 42, trend: 'up', color: 'green' },
                     { source: 'Direct', value: 25, trend: 'up', color: 'blue' },
                     { source: 'Social', value: 18, trend: 'down', color: 'red' },
-                    { source: 'Referral', value: 10, trend: 'up', color: 'emerald' },
-                    { source: 'Other', value: 5, trend: 'up', color: 'emerald' },
+                    { source: 'Referral', value: 10, trend: 'up', color: 'green' },
+                    { source: 'Other', value: 5, trend: 'up', color: 'green' },
                   ].map((item, index) => (
                     <div key={index} className="group">
                       <div className="flex items-center justify-between mb-1">
@@ -392,13 +362,7 @@ const Dashboard = () => {
           <Card
             title={t('dashboard.recentReviews')}
             className="h-full bg-gradient-to-br from-white to-gray-50 dark:from-gray-800 dark:to-gray-900"
-            headerClass="border-b border-gray-200 dark:border-gray-700"
-            headerAction={
-              <div className="flex items-center space-x-1">
-                <FiStar className="text-amber-400" size={16} />
-                <span className="text-amber-500 dark:text-amber-400 font-medium">4.8</span>
-              </div>
-            }
+            headerClassName="border-b border-gray-200 dark:border-gray-700"
             footer={
               <Link to="/dashboard/reviews" className="group block">
                 <Button 
@@ -469,7 +433,7 @@ const Dashboard = () => {
                             </span>
                             <span className={`px-2 py-1 rounded-full text-xs font-medium ${
                               review.approved
-                                ? 'bg-emerald-100 dark:bg-emerald-900/30 text-emerald-800 dark:text-emerald-400'
+                                ? 'bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-400'
                                 : 'bg-amber-100 dark:bg-amber-900/30 text-amber-800 dark:text-amber-400'
                             }`}>
                               {review.approved ? t('dashboard.approved') : t('dashboard.pending')}
@@ -487,7 +451,7 @@ const Dashboard = () => {
                   </div>
                   <p className="text-sm">{t('dashboard.noReviews')}</p>
                   <button className="mt-2 text-indigo-600 dark:text-indigo-400 text-sm hover:underline">
-                    {t('dashboard.refreshData')}
+                    {t('dashboard.refresh')}
                   </button>
                 </div>
               )}
@@ -504,17 +468,7 @@ const Dashboard = () => {
           <Card
             title={t('dashboard.recentMessages')}
             className="h-full bg-gradient-to-br from-white to-gray-50 dark:from-gray-800 dark:to-gray-900"
-            headerClass="border-b border-gray-200 dark:border-gray-700"
-            headerAction={
-              <div className="p-1 bg-gray-100 dark:bg-gray-700 rounded-lg flex text-xs">
-                <button className="px-2 py-1 rounded-md bg-white dark:bg-gray-800 shadow-sm font-medium text-indigo-600 dark:text-indigo-400">
-                  {t('dashboard.unreadFirst')}
-                </button>
-                <button className="px-2 py-1 rounded-md font-medium text-gray-600 dark:text-gray-400">
-                  {t('dashboard.newest')}
-                </button>
-              </div>
-            }
+            headerClassName="border-b border-gray-200 dark:border-gray-700"
             footer={
               <Link to="/dashboard/inbox" className="group block">
                 <Button 
@@ -600,7 +554,7 @@ const Dashboard = () => {
                   </div>
                   <p className="text-sm">{t('dashboard.noMessages')}</p>
                   <button className="mt-2 text-indigo-600 dark:text-indigo-400 text-sm hover:underline">
-                    {t('dashboard.refreshData')}
+                    {t('dashboard.refresh')}
                   </button>
                 </div>
               )}
@@ -618,14 +572,7 @@ const Dashboard = () => {
         <Card
           title={t('dashboard.popularPages')}
           className="bg-gradient-to-br from-white to-gray-50 dark:from-gray-800 dark:to-gray-900"
-          headerClass="border-b border-gray-200 dark:border-gray-700"
-          headerAction={
-            <select className="form-select text-xs rounded-lg border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 focus:border-indigo-500 dark:focus:border-indigo-500 focus:ring focus:ring-indigo-500/20 transition-all duration-200">
-              <option value="visitors">{t('dashboard.byVisitors')}</option>
-              <option value="views">{t('dashboard.byPageViews')}</option>
-              <option value="time">{t('dashboard.byTimeSpent')}</option>
-            </select>
-          }
+          headerClassName="border-b border-gray-200 dark:border-gray-700"
         >
           {statsLoading ? (
             <div className="animate-pulse p-4">
@@ -680,7 +627,7 @@ const Dashboard = () => {
                           <span className={`px-2 py-1 rounded-full text-xs font-medium inline-flex items-center ${
                             row.trend === 'up' 
                               ? 'bg-red-100 dark:bg-red-900/30 text-red-600 dark:text-red-400' 
-                              : 'bg-emerald-100 dark:bg-emerald-900/30 text-emerald-600 dark:text-emerald-400'
+                              : 'bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400'
                           }`}>
                             {row.trend === 'up' ? (
                               <FiArrowUp className="mr-1" size={12} />
