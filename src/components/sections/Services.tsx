@@ -87,7 +87,7 @@ const Services = () => {
             dir="auto"
           >
             <div className="p-8">
-              <div className="text-indigo-600 dark:text-indigo-400 mb-6 transition-transform duration-300 transform group-hover:scale-110 group-hover:-rotate-12">
+              <div className={`text-indigo-600 dark:text-indigo-400 mb-6 transition-transform duration-300 transform group-hover:scale-110 group-hover:${!isRTL && "-"}translate-x-1`}>
                 <div className="w-14 h-14 bg-indigo-100 dark:bg-indigo-900/40 rounded-xl flex items-center justify-center">
                     {iconMap[service.icon] ? (
                     React.createElement(iconMap[service.icon], { className: "text-2xl" })
@@ -104,7 +104,7 @@ const Services = () => {
                 className="inline-flex items-center font-medium text-indigo-600 dark:text-indigo-400 transition-all duration-300 hover:text-indigo-700 dark:hover:text-indigo-300 group/link"
               >
                 {t('services.learnMore')}
-                <FiArrowRight className={`w-4 h-4 transition-all duration-300 group-hover/link:translate-x-1 ${isRTL ? 'mr-2' : 'ml-2'}`} />
+                <FiArrowRight className={`w-4 h-4 transition-all duration-300 group-hover/link:translate-x-1 ${isRTL ? 'mr-2 rotate-180' : 'ml-2'}`} />
               </Link>
             </div>
           </div>

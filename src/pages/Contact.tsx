@@ -187,6 +187,7 @@ const Contact = () => {
       {/* Contact Form */}
       <section id="contact-form" className="bg-gray-50 dark:bg-gray-900">
         <ContactForm />
+        
       </section>
     </div>
   );

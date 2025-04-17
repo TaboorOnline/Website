@@ -86,7 +86,7 @@ const LandingLayout = ({ children }: LandingLayoutProps) => {
                   <span className="text-white font-bold text-xl">H</span>
                 </div>
                 <span className="text-indigo-600 dark:text-indigo-400 text-2xl font-bold">
-                  Helal Tech
+                  {isRTL ? "هلال تك" : "Helal Tech"}
                 </span>
               </motion.div>
             </Link>
@@ -120,7 +120,7 @@ const LandingLayout = ({ children }: LandingLayoutProps) => {
             {/* Actions */}
             <div className="flex items-center space-x-2">
               {/* Theme Toggle */}
-              <button
+              {/* <button
                 onClick={toggleTheme}
                 className="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-900 transition-colors"
                 aria-label={theme === 'dark' ? t('theme.light') : t('theme.dark')}
@@ -130,7 +130,7 @@ const LandingLayout = ({ children }: LandingLayoutProps) => {
                 ) : (
                   <FiMoon className="text-gray-700 w-5 h-5" />
                 )}
-              </button>
+              </button> */}
 
               {/* Language Toggle */}
               <button
@@ -138,7 +138,7 @@ const LandingLayout = ({ children }: LandingLayoutProps) => {
                 className="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-900 flex items-center transition-colors"
                 aria-label={i18n.language === 'en' ? t('language.arabic') : t('language.english')}
               >
-                <FiGlobe className="w-5 h-5 mr-1 text-indigo-600 dark:text-indigo-400" />
+                <FiGlobe className={`w-5 h-5 ${isRTL ? "ml-1" : "mr-1"} text-indigo-600 dark:text-indigo-400`} />
                 <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
                   {i18n.language === 'en' ? 'AR' : 'EN'}
                 </span>
@@ -231,7 +231,7 @@ const LandingLayout = ({ children }: LandingLayoutProps) => {
         <div className="relative">
           
           <div className="container mx-auto px-6 py-16 relative">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
               {/* About */}
               <div>
                 <div className="flex items-center mb-6">
@@ -239,7 +239,7 @@ const LandingLayout = ({ children }: LandingLayoutProps) => {
                     <span className="text-white font-bold text-xl">H</span>
                   </div>
                   <span className="text-indigo-600 dark:text-indigo-400 text-2xl font-bold">
-                    Helal Tech
+                    {isRTL ? "هلال تك" : "Helal Tech"}
                   </span>
                 </div>
                 <p className="text-gray-600 dark:text-gray-400 mb-6 leading-relaxed">
@@ -271,7 +271,7 @@ const LandingLayout = ({ children }: LandingLayoutProps) => {
                         to={link.path}
                         className="text-gray-600 dark:text-gray-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors duration-300 flex items-center"
                       >
-                        <FiChevronRight className={`w-4 h-4 ${isRTL ? 'ml-2' : 'mr-2'} text-indigo-500/70 dark:text-indigo-400/70`} />
+                        <FiChevronRight className={`w-4 h-4 ${isRTL ? 'ml-2 rotate-180' : 'mr-2'} text-indigo-500/70 dark:text-indigo-400/70`} />
                         {link.label}
                       </Link>
                     </li>
@@ -314,29 +314,6 @@ const LandingLayout = ({ children }: LandingLayoutProps) => {
                     </a>
                   </li>
                 </ul>
-              </div>
-
-              {/* Newsletter */}
-              <div>
-                <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-6">
-                  {t('footer.newsletter')}
-                </h3>
-                <p className="text-gray-600 dark:text-gray-400 mb-4">
-                  {t('footer.newsletterDescription')}
-                </p>
-                <form className="flex">
-                  <input 
-                    type="email" 
-                    placeholder={t('footer.emailPlaceholder')} 
-                    className={`flex-1 px-4 py-3 ${isRTL ? "rounded-r-lg" : "rounded-l-lg"} border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:focus:ring-indigo-400`}
-                  />
-                  <button 
-                    type="submit"
-                    className={`px-4 py-3 ${!isRTL ? "rounded-r-lg" : "rounded-l-lg"} bg-indigo-600 hover:bg-indigo-700 dark:bg-indigo-600 dark:hover:bg-indigo-700 text-white font-medium transition-all duration-300`}
-                  >
-                    {t('footer.subscribe')}
-                  </button>
-                </form>
               </div>
             </div>
           </div>

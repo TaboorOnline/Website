@@ -1,6 +1,7 @@
 {
   "services": [
     {
+      "id": 1,
       "title": "Web Development",
       "description": "Custom web applications built with the latest technologies.",
       "icon": "code",
@@ -10,8 +11,9 @@
         "en": {"title": "Web Development", "description": "Custom web applications built with the latest technologies."},
         "ar": {"title": "تطوير الويب", "description": "تطبيقات ويب مخصصة مبنية بأحدث التقنيات."}
       }
-    },
-    {
+        },
+        {
+      "id": 2,
       "title": "Mobile App Development",
       "description": "Native and cross-platform mobile applications for iOS and Android.",
       "icon": "smartphone",
@@ -21,8 +23,9 @@
         "en": {"title": "Mobile App Development", "description": "Native and cross-platform mobile applications for iOS and Android."},
         "ar": {"title": "تطوير تطبيقات الجوال", "description": "تطبيقات جوال أصلية ومتعددة المنصات لنظامي iOS و Android."}
       }
-    },
-    {
+        },
+        {
+      "id": 3,
       "title": "UI/UX Design",
       "description": "User-centered design that enhances the user experience.",
       "icon": "palette",
@@ -32,8 +35,9 @@
         "en": {"title": "UI/UX Design", "description": "User-centered design that enhances the user experience."},
         "ar": {"title": "تصميم UI/UX", "description": "تصميم يركز على المستخدم ويعزز تجربة المستخدم."}
       }
-    },
-    {
+        },
+        {
+      "id": 4,
       "title": "Cloud Services",
       "description": "Scalable and secure cloud infrastructure solutions.",
       "icon": "cloud",
@@ -43,8 +47,9 @@
         "en": {"title": "Cloud Services", "description": "Scalable and secure cloud infrastructure solutions."},
         "ar": {"title": "خدمات السحابة", "description": "حلول بنية تحتية سحابية قابلة للتوسع وآمنة."}
       }
-    },
-    {
+        },
+        {
+      "id": 5,
       "title": "E-commerce Solutions",
       "description": "Full-featured online stores with payment processing.",
       "icon": "shopping-cart",
@@ -54,8 +59,9 @@
         "en": {"title": "E-commerce Solutions", "description": "Full-featured online stores with payment processing."},
         "ar": {"title": "حلول التجارة الإلكترونية", "description": "متاجر إلكترونية كاملة المميزات مع معالجة الدفع."}
       }
-    },
-    {
+        },
+        {
+      "id": 6,
       "title": "SEO & Marketing",
       "description": "Digital marketing strategies to grow your online presence.",
       "icon": "trending-up",
@@ -65,8 +71,9 @@
         "en": {"title": "SEO & Marketing", "description": "Digital marketing strategies to grow your online presence."},
         "ar": {"title": "تحسين محركات البحث والتسويق", "description": "استراتيجيات التسويق الرقمي لتنمية وجودك عبر الإنترنت."}
       }
-    },
-    {
+        },
+        {
+      "id": 7,
       "title": "Maintenance & Support",
       "description": "24/7 technical support and regular updates for your applications.",
       "icon": "life-buoy",

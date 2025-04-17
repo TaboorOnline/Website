@@ -13,6 +13,8 @@ const Reviews = () => {
   const { data: reviews, isLoading, error } = useReviews();
   const [currentIndex, setCurrentIndex] = useState(0);
 
+  const isRTL = i18n.language === "ar";
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -202,7 +204,7 @@ const Reviews = () => {
                 <div className="flex justify-between items-center mt-8">
                   <button
                     onClick={handlePrevious}
-                    className="p-3 rounded-full bg-white dark:bg-gray-900 text-gray-700 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 shadow-lg hover:shadow-xl border border-gray-100 dark:border-gray-800 hover:border-indigo-200 dark:hover:border-indigo-800 transition-all duration-300"
+                    className={`${isRTL && "rotate-180"}  p-3 rounded-full bg-white dark:bg-gray-900 text-gray-700 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 shadow-lg hover:shadow-xl border border-gray-100 dark:border-gray-800 hover:border-indigo-200 dark:hover:border-indigo-800 transition-all duration-300`}
                     aria-label={t('reviews.previous')}
                   >
                     <FiChevronLeft className="w-6 h-6" />
@@ -215,7 +217,7 @@ const Reviews = () => {
                   
                   <button
                     onClick={handleNext}
-                    className="p-3 rounded-full bg-white dark:bg-gray-900 text-gray-700 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 shadow-lg hover:shadow-xl border border-gray-100 dark:border-gray-800 hover:border-indigo-200 dark:hover:border-indigo-800 transition-all duration-300"
+                    className={`${isRTL && "rotate-180"} p-3 rounded-full bg-white dark:bg-gray-900 text-gray-700 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 shadow-lg hover:shadow-xl border border-gray-100 dark:border-gray-800 hover:border-indigo-200 dark:hover:border-indigo-800 transition-all duration-300`}
                     aria-label={t('reviews.next')}
                   >
                     <FiChevronRight className="w-6 h-6" />

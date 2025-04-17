@@ -210,7 +210,7 @@ const ServicesPage = () => {
                     <div 
                       onClick={() => {
                         setSelectedService(service.id);
-                        
+                        console.log(selectedService);
                         // Scroll to the service details
                         setTimeout(() => {
                           const element = document.getElementById('service-details');
@@ -238,7 +238,7 @@ const ServicesPage = () => {
                         <p className="text-gray-600 dark:text-gray-400 mb-6 flex-1 line-clamp-3">{description}</p>
                         <div className="flex items-center text-indigo-600 dark:text-indigo-400 font-medium group/link">
                           {t('services.learnMore')}
-                          <FiArrowRight className={`transition-transform duration-300 group-hover/link:translate-x-1 ${isRTL ? 'mr-2' : 'ml-2'}`} />
+                          <FiArrowRight className={`transition-transform duration-300 group-hover/link:translate-x-1 ${isRTL ? 'mr-2 rotate-180' : 'ml-2'}`} />
                         </div>
                       </div>
                     </div>
@@ -276,7 +276,10 @@ const ServicesPage = () => {
                   <>
                     <div className="flex flex-col md:flex-row md:items-center mb-12 gap-6">
                       <div className="w-20 h-20 bg-indigo-600 dark:bg-indigo-600 rounded-xl flex items-center justify-center text-white shadow-lg">
-                        <span className="text-3xl">{!selectedServiceContent.icon || '✦'}</span>
+                        {(() => {
+                          const Icon = iconMap[selectedServiceContent.icon as keyof typeof iconMap];
+                          return Icon ? <Icon className="w-10 h-10" /> : <span className="text-3xl">{selectedServiceContent.icon || '✦'}</span>;
+                        })()}
                       </div>
                       <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white">
                         {selectedServiceContent.title}
